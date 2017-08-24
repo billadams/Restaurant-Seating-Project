@@ -23,207 +23,115 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.grpSelectRole = new System.Windows.Forms.GroupBox();
-            this.optManager = new System.Windows.Forms.RadioButton();
-            this.optHost = new System.Windows.Forms.RadioButton();
-            this.optBusser = new System.Windows.Forms.RadioButton();
-            this.pnlInterface = new System.Windows.Forms.Panel();
-            this.btnCreateTableLayout = new System.Windows.Forms.Button();
-            this.btnUpdateTableLayout = new System.Windows.Forms.Button();
-            this.btnClearTableLayout = new System.Windows.Forms.Button();
-            this.grpTableSetup = new System.Windows.Forms.GroupBox();
-            this.grpServerSetup = new System.Windows.Forms.GroupBox();
-            this.lstServerSetup = new System.Windows.Forms.ListBox();
-            this.btnAddServer = new System.Windows.Forms.Button();
-            this.btnEditServer = new System.Windows.Forms.Button();
-            this.btnRemoveServer = new System.Windows.Forms.Button();
-            this.grpSelectRole.SuspendLayout();
-            this.pnlInterface.SuspendLayout();
-            this.grpTableSetup.SuspendLayout();
-            this.grpServerSetup.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutRestaurantSeatingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seatingLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seatingLayoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grpSelectRole
+            // menuStrip1
             // 
-            this.grpSelectRole.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grpSelectRole.Controls.Add(this.optBusser);
-            this.grpSelectRole.Controls.Add(this.optHost);
-            this.grpSelectRole.Controls.Add(this.optManager);
-            this.grpSelectRole.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.grpSelectRole.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grpSelectRole.Location = new System.Drawing.Point(308, 607);
-            this.grpSelectRole.Name = "grpSelectRole";
-            this.grpSelectRole.Size = new System.Drawing.Size(321, 79);
-            this.grpSelectRole.TabIndex = 0;
-            this.grpSelectRole.TabStop = false;
-            this.grpSelectRole.Text = "User Role";
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.managerToolStripMenuItem,
+            this.hostToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(936, 28);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // optManager
+            // fileToolStripMenuItem
             // 
-            this.optManager.AutoSize = true;
-            this.optManager.Location = new System.Drawing.Point(32, 33);
-            this.optManager.Name = "optManager";
-            this.optManager.Size = new System.Drawing.Size(85, 21);
-            this.optManager.TabIndex = 0;
-            this.optManager.TabStop = true;
-            this.optManager.Text = "Manager";
-            this.optManager.UseVisualStyleBackColor = true;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "&File";
             // 
-            // optHost
+            // exitToolStripMenuItem
             // 
-            this.optHost.AutoSize = true;
-            this.optHost.Location = new System.Drawing.Point(139, 33);
-            this.optHost.Name = "optHost";
-            this.optHost.Size = new System.Drawing.Size(58, 21);
-            this.optHost.TabIndex = 1;
-            this.optHost.TabStop = true;
-            this.optHost.Text = "Host";
-            this.optHost.UseVisualStyleBackColor = true;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Text = "E&xit";
             // 
-            // optBusser
+            // managerToolStripMenuItem
             // 
-            this.optBusser.AutoSize = true;
-            this.optBusser.Location = new System.Drawing.Point(217, 33);
-            this.optBusser.Name = "optBusser";
-            this.optBusser.Size = new System.Drawing.Size(73, 21);
-            this.optBusser.TabIndex = 2;
-            this.optBusser.TabStop = true;
-            this.optBusser.Text = "Busser";
-            this.optBusser.UseVisualStyleBackColor = true;
+            this.managerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seatingLayoutToolStripMenuItem});
+            this.managerToolStripMenuItem.Name = "managerToolStripMenuItem";
+            this.managerToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.managerToolStripMenuItem.Text = "&Manager";
             // 
-            // pnlInterface
+            // hostToolStripMenuItem
             // 
-            this.pnlInterface.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlInterface.Controls.Add(this.grpServerSetup);
-            this.pnlInterface.Controls.Add(this.grpTableSetup);
-            this.pnlInterface.Location = new System.Drawing.Point(21, 20);
-            this.pnlInterface.Name = "pnlInterface";
-            this.pnlInterface.Size = new System.Drawing.Size(895, 570);
-            this.pnlInterface.TabIndex = 1;
+            this.hostToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seatingLayoutToolStripMenuItem1});
+            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.hostToolStripMenuItem.Text = "H&ost";
             // 
-            // btnCreateTableLayout
+            // helpToolStripMenuItem
             // 
-            this.btnCreateTableLayout.Location = new System.Drawing.Point(26, 34);
-            this.btnCreateTableLayout.Name = "btnCreateTableLayout";
-            this.btnCreateTableLayout.Size = new System.Drawing.Size(254, 57);
-            this.btnCreateTableLayout.TabIndex = 0;
-            this.btnCreateTableLayout.Text = "Create Table Layout";
-            this.btnCreateTableLayout.UseVisualStyleBackColor = true;
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutRestaurantSeatingToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // btnUpdateTableLayout
+            // aboutRestaurantSeatingToolStripMenuItem
             // 
-            this.btnUpdateTableLayout.Location = new System.Drawing.Point(26, 114);
-            this.btnUpdateTableLayout.Name = "btnUpdateTableLayout";
-            this.btnUpdateTableLayout.Size = new System.Drawing.Size(254, 57);
-            this.btnUpdateTableLayout.TabIndex = 1;
-            this.btnUpdateTableLayout.Text = "Update Table Layout";
-            this.btnUpdateTableLayout.UseVisualStyleBackColor = true;
+            this.aboutRestaurantSeatingToolStripMenuItem.Name = "aboutRestaurantSeatingToolStripMenuItem";
+            this.aboutRestaurantSeatingToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
+            this.aboutRestaurantSeatingToolStripMenuItem.Text = "About Restaurant Seating";
             // 
-            // btnClearTableLayout
+            // seatingLayoutToolStripMenuItem
             // 
-            this.btnClearTableLayout.Location = new System.Drawing.Point(26, 194);
-            this.btnClearTableLayout.Name = "btnClearTableLayout";
-            this.btnClearTableLayout.Size = new System.Drawing.Size(254, 57);
-            this.btnClearTableLayout.TabIndex = 2;
-            this.btnClearTableLayout.Text = "Clear Table Layout";
-            this.btnClearTableLayout.UseVisualStyleBackColor = true;
+            this.seatingLayoutToolStripMenuItem.Name = "seatingLayoutToolStripMenuItem";
+            this.seatingLayoutToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.seatingLayoutToolStripMenuItem.Text = "&Seating Layout";
             // 
-            // grpTableSetup
+            // seatingLayoutToolStripMenuItem1
             // 
-            this.grpTableSetup.Controls.Add(this.btnClearTableLayout);
-            this.grpTableSetup.Controls.Add(this.btnUpdateTableLayout);
-            this.grpTableSetup.Controls.Add(this.btnCreateTableLayout);
-            this.grpTableSetup.Location = new System.Drawing.Point(21, 20);
-            this.grpTableSetup.Name = "grpTableSetup";
-            this.grpTableSetup.Size = new System.Drawing.Size(309, 273);
-            this.grpTableSetup.TabIndex = 3;
-            this.grpTableSetup.TabStop = false;
-            this.grpTableSetup.Text = "Table Setup";
-            // 
-            // grpServerSetup
-            // 
-            this.grpServerSetup.Controls.Add(this.btnRemoveServer);
-            this.grpServerSetup.Controls.Add(this.btnEditServer);
-            this.grpServerSetup.Controls.Add(this.btnAddServer);
-            this.grpServerSetup.Controls.Add(this.lstServerSetup);
-            this.grpServerSetup.Location = new System.Drawing.Point(531, 29);
-            this.grpServerSetup.Name = "grpServerSetup";
-            this.grpServerSetup.Size = new System.Drawing.Size(325, 323);
-            this.grpServerSetup.TabIndex = 4;
-            this.grpServerSetup.TabStop = false;
-            this.grpServerSetup.Text = "Server Setup";
-            // 
-            // lstServerSetup
-            // 
-            this.lstServerSetup.FormattingEnabled = true;
-            this.lstServerSetup.ItemHeight = 16;
-            this.lstServerSetup.Location = new System.Drawing.Point(146, 38);
-            this.lstServerSetup.Name = "lstServerSetup";
-            this.lstServerSetup.Size = new System.Drawing.Size(157, 260);
-            this.lstServerSetup.TabIndex = 0;
-            // 
-            // btnAddServer
-            // 
-            this.btnAddServer.Location = new System.Drawing.Point(20, 39);
-            this.btnAddServer.Name = "btnAddServer";
-            this.btnAddServer.Size = new System.Drawing.Size(111, 44);
-            this.btnAddServer.TabIndex = 1;
-            this.btnAddServer.Text = "Add Server";
-            this.btnAddServer.UseVisualStyleBackColor = true;
-            // 
-            // btnEditServer
-            // 
-            this.btnEditServer.Location = new System.Drawing.Point(20, 89);
-            this.btnEditServer.Name = "btnEditServer";
-            this.btnEditServer.Size = new System.Drawing.Size(111, 44);
-            this.btnEditServer.TabIndex = 2;
-            this.btnEditServer.Text = "Edit Server";
-            this.btnEditServer.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveServer
-            // 
-            this.btnRemoveServer.Location = new System.Drawing.Point(20, 139);
-            this.btnRemoveServer.Name = "btnRemoveServer";
-            this.btnRemoveServer.Size = new System.Drawing.Size(111, 44);
-            this.btnRemoveServer.TabIndex = 3;
-            this.btnRemoveServer.Text = "Remove Server";
-            this.btnRemoveServer.UseVisualStyleBackColor = true;
+            this.seatingLayoutToolStripMenuItem1.Name = "seatingLayoutToolStripMenuItem1";
+            this.seatingLayoutToolStripMenuItem1.Size = new System.Drawing.Size(182, 26);
+            this.seatingLayoutToolStripMenuItem1.Text = "&Seating Layout";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 707);
-            this.Controls.Add(this.pnlInterface);
-            this.Controls.Add(this.grpSelectRole);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Restaurant Seating";
-            this.grpSelectRole.ResumeLayout(false);
-            this.grpSelectRole.PerformLayout();
-            this.pnlInterface.ResumeLayout(false);
-            this.grpTableSetup.ResumeLayout(false);
-            this.grpServerSetup.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox grpSelectRole;
-        private System.Windows.Forms.RadioButton optBusser;
-        private System.Windows.Forms.RadioButton optHost;
-        private System.Windows.Forms.RadioButton optManager;
-        private System.Windows.Forms.Panel pnlInterface;
-        private System.Windows.Forms.GroupBox grpServerSetup;
-        private System.Windows.Forms.Button btnRemoveServer;
-        private System.Windows.Forms.Button btnEditServer;
-        private System.Windows.Forms.Button btnAddServer;
-        private System.Windows.Forms.ListBox lstServerSetup;
-        private System.Windows.Forms.GroupBox grpTableSetup;
-        private System.Windows.Forms.Button btnClearTableLayout;
-        private System.Windows.Forms.Button btnUpdateTableLayout;
-        private System.Windows.Forms.Button btnCreateTableLayout;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seatingLayoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seatingLayoutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutRestaurantSeatingToolStripMenuItem;
     }
 }
 
