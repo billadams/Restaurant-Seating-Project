@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,9 @@ using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
     public partial class frmCreateTableLayout : Form {
+
+        private ArrayList tables = new ArrayList();
+
         public frmCreateTableLayout() {
             InitializeComponent();
         }
