@@ -15,11 +15,11 @@ namespace RestaurantSeatingProject {
 
         }
 
-        public Table(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY ) {
+        public Table(int numberOfSeats, int tableNumber) {
             this.NumberOfSeats = numberOfSeats;
             this.TableNumber = tableNumber;
-            this.TablePositionX = tablePositionX;
-            this.TablePositionY = tablePositionY;
+            this.TablePositionX = 0;
+            this.TablePositionY = 0;
         }
     }
 }
