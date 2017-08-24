@@ -24,14 +24,15 @@
         /// </summary>
         private void InitializeComponent() {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.managerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutRestaurantSeatingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seatingLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seatingLayoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCreateSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,71 +40,79 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.managerToolStripMenuItem,
-            this.hostToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.mnuFile,
+            this.mnuManager,
+            this.mnuHost,
+            this.mnuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(936, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // mnuFile
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(44, 24);
+            this.mnuFile.Text = "&File";
             // 
-            // exitToolStripMenuItem
+            // mnuExit
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.exitToolStripMenuItem.Text = "E&xit";
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(181, 26);
+            this.mnuExit.Text = "E&xit";
             // 
-            // managerToolStripMenuItem
+            // mnuManager
             // 
-            this.managerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.seatingLayoutToolStripMenuItem});
-            this.managerToolStripMenuItem.Name = "managerToolStripMenuItem";
-            this.managerToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
-            this.managerToolStripMenuItem.Text = "&Manager";
+            this.mnuManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCreateSeatingLayout,
+            this.mnuEditSeatingLayout});
+            this.mnuManager.Name = "mnuManager";
+            this.mnuManager.Size = new System.Drawing.Size(80, 24);
+            this.mnuManager.Text = "&Manager";
             // 
-            // hostToolStripMenuItem
+            // mnuHost
             // 
-            this.hostToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.seatingLayoutToolStripMenuItem1});
-            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
-            this.hostToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
-            this.hostToolStripMenuItem.Text = "H&ost";
+            this.mnuHost.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSeatingLayout});
+            this.mnuHost.Name = "mnuHost";
+            this.mnuHost.Size = new System.Drawing.Size(52, 24);
+            this.mnuHost.Text = "H&ost";
             // 
-            // helpToolStripMenuItem
+            // mnuHelp
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutRestaurantSeatingToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAbout});
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(53, 24);
+            this.mnuHelp.Text = "&Help";
             // 
-            // aboutRestaurantSeatingToolStripMenuItem
+            // mnuAbout
             // 
-            this.aboutRestaurantSeatingToolStripMenuItem.Name = "aboutRestaurantSeatingToolStripMenuItem";
-            this.aboutRestaurantSeatingToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
-            this.aboutRestaurantSeatingToolStripMenuItem.Text = "About Restaurant Seating";
+            this.mnuAbout.Name = "mnuAbout";
+            this.mnuAbout.Size = new System.Drawing.Size(253, 26);
+            this.mnuAbout.Text = "About Restaurant Seating";
             // 
-            // seatingLayoutToolStripMenuItem
+            // mnuCreateSeatingLayout
             // 
-            this.seatingLayoutToolStripMenuItem.Name = "seatingLayoutToolStripMenuItem";
-            this.seatingLayoutToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.seatingLayoutToolStripMenuItem.Text = "&Seating Layout";
+            this.mnuCreateSeatingLayout.Name = "mnuCreateSeatingLayout";
+            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(229, 26);
+            this.mnuCreateSeatingLayout.Text = "&Create Seating Layout";
+            this.mnuCreateSeatingLayout.Click += new System.EventHandler(this.mnuCreateSeatingLayout_Click);
             // 
-            // seatingLayoutToolStripMenuItem1
+            // mnuSeatingLayout
             // 
-            this.seatingLayoutToolStripMenuItem1.Name = "seatingLayoutToolStripMenuItem1";
-            this.seatingLayoutToolStripMenuItem1.Size = new System.Drawing.Size(182, 26);
-            this.seatingLayoutToolStripMenuItem1.Text = "&Seating Layout";
+            this.mnuSeatingLayout.Name = "mnuSeatingLayout";
+            this.mnuSeatingLayout.Size = new System.Drawing.Size(182, 26);
+            this.mnuSeatingLayout.Text = "&Seating Layout";
+            // 
+            // mnuEditSeatingLayout
+            // 
+            this.mnuEditSeatingLayout.Name = "mnuEditSeatingLayout";
+            this.mnuEditSeatingLayout.Size = new System.Drawing.Size(229, 26);
+            this.mnuEditSeatingLayout.Text = "Edit Seating Layout";
             // 
             // frmMain
             // 
@@ -111,10 +120,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 707);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Restaurant Seating";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -124,14 +134,15 @@
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem managerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seatingLayoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seatingLayoutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutRestaurantSeatingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuManager;
+        private System.Windows.Forms.ToolStripMenuItem mnuCreateSeatingLayout;
+        private System.Windows.Forms.ToolStripMenuItem mnuHost;
+        private System.Windows.Forms.ToolStripMenuItem mnuSeatingLayout;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.ToolStripMenuItem mnuAbout;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditSeatingLayout;
     }
 }
 

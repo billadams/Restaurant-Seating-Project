@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCreateTableLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateTableLayout.Designer.cs">
+      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Yorkie1DataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmCreateTableLayout.resx">
+      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

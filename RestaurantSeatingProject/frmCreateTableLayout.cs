@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
-    public partial class frmMain : Form {
-        public frmMain() {
+    public partial class frmCreateTableLayout : Form {
+        public frmCreateTableLayout() {
             InitializeComponent();
         }
 
-        private void mnuCreateSeatingLayout_Click(object sender, EventArgs e) {
-            Form createTableLayout = new frmCreateTableLayout();
-            createTableLayout.MdiParent = this;
-            createTableLayout.Show();
+        private void btnCancelLayout_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }
