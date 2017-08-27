@@ -27,12 +27,12 @@
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCreateSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCreateSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.mnuExit.Name = "mnuExit";
             this.mnuExit.Size = new System.Drawing.Size(181, 26);
             this.mnuExit.Text = "E&xit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuManager
             // 
@@ -73,6 +74,19 @@
             this.mnuManager.Size = new System.Drawing.Size(80, 24);
             this.mnuManager.Text = "&Manager";
             // 
+            // mnuCreateSeatingLayout
+            // 
+            this.mnuCreateSeatingLayout.Name = "mnuCreateSeatingLayout";
+            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(229, 26);
+            this.mnuCreateSeatingLayout.Text = "&Create Seating Layout";
+            this.mnuCreateSeatingLayout.Click += new System.EventHandler(this.mnuCreateSeatingLayout_Click);
+            // 
+            // mnuEditSeatingLayout
+            // 
+            this.mnuEditSeatingLayout.Name = "mnuEditSeatingLayout";
+            this.mnuEditSeatingLayout.Size = new System.Drawing.Size(229, 26);
+            this.mnuEditSeatingLayout.Text = "Edit Seating Layout";
+            // 
             // mnuHost
             // 
             this.mnuHost.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -80,6 +94,12 @@
             this.mnuHost.Name = "mnuHost";
             this.mnuHost.Size = new System.Drawing.Size(52, 24);
             this.mnuHost.Text = "H&ost";
+            // 
+            // mnuSeatingLayout
+            // 
+            this.mnuSeatingLayout.Name = "mnuSeatingLayout";
+            this.mnuSeatingLayout.Size = new System.Drawing.Size(182, 26);
+            this.mnuSeatingLayout.Text = "&Seating Layout";
             // 
             // mnuHelp
             // 
@@ -94,25 +114,6 @@
             this.mnuAbout.Name = "mnuAbout";
             this.mnuAbout.Size = new System.Drawing.Size(253, 26);
             this.mnuAbout.Text = "About Restaurant Seating";
-            // 
-            // mnuCreateSeatingLayout
-            // 
-            this.mnuCreateSeatingLayout.Name = "mnuCreateSeatingLayout";
-            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(229, 26);
-            this.mnuCreateSeatingLayout.Text = "&Create Seating Layout";
-            this.mnuCreateSeatingLayout.Click += new System.EventHandler(this.mnuCreateSeatingLayout_Click);
-            // 
-            // mnuSeatingLayout
-            // 
-            this.mnuSeatingLayout.Name = "mnuSeatingLayout";
-            this.mnuSeatingLayout.Size = new System.Drawing.Size(182, 26);
-            this.mnuSeatingLayout.Text = "&Seating Layout";
-            // 
-            // mnuEditSeatingLayout
-            // 
-            this.mnuEditSeatingLayout.Name = "mnuEditSeatingLayout";
-            this.mnuEditSeatingLayout.Size = new System.Drawing.Size(229, 26);
-            this.mnuEditSeatingLayout.Text = "Edit Seating Layout";
             // 
             // frmMain
             // 

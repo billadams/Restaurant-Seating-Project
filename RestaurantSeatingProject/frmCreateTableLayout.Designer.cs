@@ -27,10 +27,10 @@
             this.pnlTableLayout = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTableNumber = new System.Windows.Forms.TextBox();
             this.txtNumberOfSeats = new System.Windows.Forms.TextBox();
+            this.txtTableNumber = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCancelLayout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +46,7 @@
             // 
             // pnlTableLayout
             // 
+            this.pnlTableLayout.AllowDrop = true;
             this.pnlTableLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTableLayout.Location = new System.Drawing.Point(12, 12);
             this.pnlTableLayout.Name = "pnlTableLayout";
@@ -60,6 +61,7 @@
             this.btnAddTable.TabIndex = 2;
             this.btnAddTable.Text = "&Add New Table";
             this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
             // groupBox1
             // 
@@ -73,16 +75,21 @@
             this.groupBox1.Size = new System.Drawing.Size(314, 192);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add New Tables";
+            this.groupBox1.Text = "Add New Table";
             // 
-            // label1
+            // txtNumberOfSeats
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Table Number:";
+            this.txtNumberOfSeats.Location = new System.Drawing.Point(203, 81);
+            this.txtNumberOfSeats.Name = "txtNumberOfSeats";
+            this.txtNumberOfSeats.Size = new System.Drawing.Size(39, 22);
+            this.txtNumberOfSeats.TabIndex = 6;
+            // 
+            // txtTableNumber
+            // 
+            this.txtTableNumber.Location = new System.Drawing.Point(203, 38);
+            this.txtTableNumber.Name = "txtTableNumber";
+            this.txtTableNumber.Size = new System.Drawing.Size(39, 22);
+            this.txtTableNumber.TabIndex = 5;
             // 
             // label2
             // 
@@ -93,19 +100,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Number of Seats:";
             // 
-            // txtTableNumber
+            // label1
             // 
-            this.txtTableNumber.Location = new System.Drawing.Point(203, 38);
-            this.txtTableNumber.Name = "txtTableNumber";
-            this.txtTableNumber.Size = new System.Drawing.Size(39, 22);
-            this.txtTableNumber.TabIndex = 5;
-            // 
-            // txtNumberOfSeats
-            // 
-            this.txtNumberOfSeats.Location = new System.Drawing.Point(203, 81);
-            this.txtNumberOfSeats.Name = "txtNumberOfSeats";
-            this.txtNumberOfSeats.Size = new System.Drawing.Size(39, 22);
-            this.txtNumberOfSeats.TabIndex = 6;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(95, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Table Number:";
             // 
             // btnCancelLayout
             // 

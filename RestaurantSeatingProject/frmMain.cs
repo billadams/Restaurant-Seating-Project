@@ -19,5 +19,9 @@ namespace RestaurantSeatingProject {
             createTableLayout.MdiParent = this;
             createTableLayout.Show();
         }
+
+        private void mnuExit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }
