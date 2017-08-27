@@ -23,5 +23,14 @@ namespace RestaurantSeatingProject {
         private void mnuExit_Click(object sender, EventArgs e) {
             this.Close();
         }
+
+        private void mnuAddServer_Click(object sender, EventArgs e)
+        {
+            Form frmAddServer = new frmAddServer();
+            frmAddServer.MdiParent = this;
+            frmAddServer.Show();
+        }
+
+
     }
 }

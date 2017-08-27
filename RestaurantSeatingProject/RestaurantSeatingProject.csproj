@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormValidation.cs" />
+    <Compile Include="frmAddServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddServer.Designer.cs">
+      <DependentUpon>frmAddServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreateTableLayout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Yorkie1DataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAddServer.resx">
+      <DependentUpon>frmAddServer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateTableLayout.resx">
       <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
     </EmbeddedResource>

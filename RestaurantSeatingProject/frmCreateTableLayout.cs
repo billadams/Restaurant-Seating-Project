@@ -75,5 +75,15 @@ namespace RestaurantSeatingProject {
         private void TableHandler(object sender, EventArgs e) {
 
         }
+
+        private void frmCreateTableLayout_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlTableLayout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
