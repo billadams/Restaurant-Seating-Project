@@ -67,6 +67,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantConnection.cs" />
+    <Compile Include="ServerDA.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Yorkie1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
