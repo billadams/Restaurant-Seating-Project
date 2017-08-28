@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormValidation.cs" />
+    <Compile Include="frmAddServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddServer.Designer.cs">
+      <DependentUpon>frmAddServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCreateTableLayout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant.cs" />
+    <Compile Include="RestaurantConnection.cs" />
+    <Compile Include="RestaurantDA.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="ServerDA.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="TableLayout.cs" />
     <Compile Include="Yorkie1DataSet.Designer.cs">
@@ -68,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Yorkie1DataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAddServer.resx">
+      <DependentUpon>frmAddServer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateTableLayout.resx">
       <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +103,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
