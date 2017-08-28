@@ -27,6 +27,7 @@ namespace RestaurantSeatingProject
             string sFirstName = txtFirstName.Text.Trim();
             string sLastName = txtLastName.Text.Trim();
             string sErrorMess = "";
+            Server oServer = new Server();
             bool bIsValid = true;
 
 
@@ -43,10 +44,16 @@ namespace RestaurantSeatingProject
 
 
 
-            //add server logic
+            //valid input
             if(bIsValid)
             {
                 //add server to database
+                oServer.FirstName = sFirstName;
+                oServer.LastName = sLastName;
+
+                //Might need to come back and add a try catch here
+                ServerDA.AddServer(oServer);
+                
             }
             else
             {
