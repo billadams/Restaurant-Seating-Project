@@ -24,8 +24,9 @@ namespace RestaurantSeatingProject {
         }
 
         private void btnAddTable_Click(object sender, EventArgs e) {
-            int startLeft = pnlTableLayout.Left;
-            int startTop = pnlTableLayout.Top;
+
+            int startLeft = pnlRoomLayout.Left;
+            int startTop = pnlRoomLayout.Top;
 
             table.TableNumber = Convert.ToInt32(txtTableNumber.Text);       
             table.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
@@ -39,11 +40,33 @@ namespace RestaurantSeatingProject {
                 + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
             button.Location = new Point(startLeft, startTop);
             button.Click += new EventHandler(TableHandler);
-            pnlTableLayout.Controls.Add(button);
+            pnlRoomLayout.Controls.Add(button);
+            button.MouseDown += button_MouseDown;
+
+            pnlRoomLayout.DragEnter += panel_DragEnter;
+            pnlRoomLayout.DragDrop += panel_DragDrop;
+
         }
 
         private void TableHandler(object sender, EventArgs e) {
 
         }
+
+        public void button_MouseDown(object sender, MouseEventArgs e) {
+
+            Button button = (Button)sender;
+            button.DoDragDrop(button, DragDropEffects.Move);
+        }
+
+        public void panel_DragEnter(object sender, DragEventArgs e) {
+
+          e.Effect = DragDropEffects.Move;
+        }
+
+        public void panel_DragDrop(object sender, DragEventArgs e) {
+
+          ((Button)e.Data.GetData(typeof(Button))).Parent = (Panel)sender;
+        }
+
     }
 }

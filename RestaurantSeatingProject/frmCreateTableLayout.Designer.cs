@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.btnSaveLayout = new System.Windows.Forms.Button();
-            this.pnlTableLayout = new System.Windows.Forms.Panel();
+            this.pnlRoomLayout = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNumberOfSeats = new System.Windows.Forms.TextBox();
@@ -44,14 +44,14 @@
             this.btnSaveLayout.Text = "&Save Layout";
             this.btnSaveLayout.UseVisualStyleBackColor = true;
             // 
-            // pnlTableLayout
+            // pnlRoomLayout
             // 
-            this.pnlTableLayout.AllowDrop = true;
-            this.pnlTableLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTableLayout.Location = new System.Drawing.Point(12, 12);
-            this.pnlTableLayout.Name = "pnlTableLayout";
-            this.pnlTableLayout.Size = new System.Drawing.Size(707, 674);
-            this.pnlTableLayout.TabIndex = 1;
+            this.pnlRoomLayout.AllowDrop = true;
+            this.pnlRoomLayout.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRoomLayout.Location = new System.Drawing.Point(12, 12);
+            this.pnlRoomLayout.Name = "pnlRoomLayout";
+            this.pnlRoomLayout.Size = new System.Drawing.Size(707, 674);
+            this.pnlRoomLayout.TabIndex = 1;
             // 
             // btnAddTable
             // 
@@ -130,7 +130,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelLayout);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pnlTableLayout);
+            this.Controls.Add(this.pnlRoomLayout);
             this.Controls.Add(this.btnSaveLayout);
             this.Name = "frmCreateTableLayout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -144,7 +144,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnSaveLayout;
-        private System.Windows.Forms.Panel pnlTableLayout;
+        private System.Windows.Forms.Panel pnlRoomLayout;
         private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtNumberOfSeats;
