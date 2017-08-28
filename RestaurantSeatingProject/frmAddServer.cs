@@ -53,7 +53,8 @@ namespace RestaurantSeatingProject
 
                 //Might need to come back and add a try catch here
                 ServerDA.AddServer(oServer);
-                
+                MessageBox.Show(sFirstName + " " + sLastName + " " + "Has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {

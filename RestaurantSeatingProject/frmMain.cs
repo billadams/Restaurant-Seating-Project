@@ -31,6 +31,13 @@ namespace RestaurantSeatingProject {
             frmAddServer.Show();
         }
 
+        private void mnuRegisterRestaurant_Click(object sender, EventArgs e)
+        {
+            Form frmRegister = new frmRegister();
+            frmRegister.MdiParent = this;
+            frmRegister.Show();
+        }
+
 
     }
 }
