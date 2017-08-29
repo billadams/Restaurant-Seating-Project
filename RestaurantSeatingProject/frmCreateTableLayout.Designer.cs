@@ -47,7 +47,6 @@
             // 
             // pnlRoom
             // 
-            this.pnlRoom.AllowDrop = true;
             this.pnlRoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRoom.Location = new System.Drawing.Point(12, 12);
             this.pnlRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -93,6 +92,7 @@
             // 
             // txtTableNumber
             // 
+            this.txtTableNumber.Enabled = false;
             this.txtTableNumber.Location = new System.Drawing.Point(203, 38);
             this.txtTableNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTableNumber.Name = "txtTableNumber";
