@@ -14,6 +14,8 @@ namespace RestaurantSeatingProject {
 
         private ArrayList tables = new ArrayList();
         Table table = new Table();
+        private Point mouseDownLocation;
+        private bool capturingMoves = false;
 
         public frmCreateTableLayout() {
             InitializeComponent();
@@ -24,8 +26,8 @@ namespace RestaurantSeatingProject {
         }
 
         private void btnAddTable_Click(object sender, EventArgs e) {
-            int startLeft = pnlTableLayout.Left;
-            int startTop = pnlTableLayout.Top;
+            int startLeft = pnlRoom.Left;
+            int startTop = pnlRoom.Top;
             string sErrorMess = "";
             bool bIsValid = true;
 
@@ -64,7 +66,15 @@ namespace RestaurantSeatingProject {
                     + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                 button.Location = new Point(startLeft, startTop);
                 button.Click += new EventHandler(TableHandler);
-                pnlTableLayout.Controls.Add(button);
+                button.AllowDrop = true;
+                pnlRoom.Controls.Add(button);
+
+                button.MouseDown += button_MouseDown;
+                button.MouseUp += button_MouseUp;
+                button.MouseMove += button_MouseMove;
+                pnlRoom.DragEnter += panel_DragEnter;
+                pnlRoom.DragDrop += panel_DragDrop;
+
             }
             else
             {
@@ -76,14 +86,72 @@ namespace RestaurantSeatingProject {
 
         }
 
-        private void frmCreateTableLayout_Load(object sender, EventArgs e)
-        {
+        public void button_MouseDown(object sender, MouseEventArgs e) {
+
+            Button button = (Button)sender;
+
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            // Might want to pad these values a bit if the line is only 1px,
+            // might be hard for the user to hit directly
+            if (e.Y >= button.Top && e.Y <= button.Top + button.Height) {
+                if (e.X >= button.Left && e.X <= button.Left + button.Width) {
+                    capturingMoves = true;
+                    return;
+                }
+            }
+
+            capturingMoves = false;
+        }
+
+        public void button_MouseMove(object sender, MouseEventArgs e) {
+            if (!capturingMoves)
+                return;
+
+            // Calculate the delta's and move the line here
+            Button button = (Button)sender;
+            button.Left = Cursor.Position.X;
+            button.Top = Cursor.Position.Y;
 
         }
 
-        private void pnlTableLayout_Paint(object sender, PaintEventArgs e)
-        {
+        public void button_MouseUp(object sender, MouseEventArgs e) {
+            if (capturingMoves) {
+                capturingMoves = false;
+                // Do any final placement
+            }
+        }
 
+        //public void button_MouseDown(object sender, MouseEventArgs e) {
+
+        //    Button button = (Button)sender;
+        //    button.DoDragDrop(button, DragDropEffects.Move);
+        //    mouseDownLocation = e.Location;
+        //}
+
+        //public void button_MouseUp(object sender, MouseEventArgs e) {
+        //    Button button = (Button)sender;
+        //    button.Left = e.X + button.Left - mouseDownLocation.X;
+        //    button.Top = e.Y + button.Top - mouseDownLocation.Y;
+        //}
+
+        //public void button_MouseMove(object sender, MouseEventArgs e) {
+        //    Button button = (Button)sender;
+            //button.Left += button.Left;
+            //button.Top += button.Top;
+            //button.Left = e.X + button.Left - mouseDownLocation.X;
+            //button.Top = e.Y + button.Top - mouseDownLocation.Y;
+        //}
+
+        public void panel_DragEnter(object sender, DragEventArgs e) {
+
+            e.Effect = DragDropEffects.Move;
+        }
+
+        public void panel_DragDrop(object sender, DragEventArgs e) {
+
+            ((Button)e.Data.GetData(typeof(Button))).Parent = (Panel)sender;
         }
     }
 }
