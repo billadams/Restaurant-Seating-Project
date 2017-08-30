@@ -43,6 +43,7 @@ namespace RestaurantSeatingProject {
                 }
             }
         }
+
         //public static ArrayList tables GetTableLayout() {
 
         //    private ArrayList tables = new ArrayList();
