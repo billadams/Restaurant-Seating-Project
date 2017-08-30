@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RestaurantSeatingProject
 {
-    class ServerDA
+    public class ServerDA
     {
 
         public static void AddServer(Server oServer)

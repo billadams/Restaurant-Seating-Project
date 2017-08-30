@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace RestaurantSeatingProject
 {
-    class RestaurantDA
+    public class RestaurantDA
     {
         //add check on username
 
