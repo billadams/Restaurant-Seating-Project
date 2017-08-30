@@ -25,6 +25,7 @@ namespace RestaurantSeatingProject {
 
         private void btnCancelLayout_Click(object sender, EventArgs e) {
 
+            Table.TotalTables = 1;
             this.Close();
 
         }
@@ -79,7 +80,7 @@ namespace RestaurantSeatingProject {
                 button.MouseUp += button_MouseUp;
                 button.MouseMove += button_MouseMove;
 
-                txtTableNumber.Text = Convert.ToString(table.TotalTables);
+                txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
             }
             else {

@@ -37,7 +37,5 @@ namespace RestaurantSeatingProject {
             frmRegister.MdiParent = this;
             frmRegister.Show();
         }
-
-
     }
 }

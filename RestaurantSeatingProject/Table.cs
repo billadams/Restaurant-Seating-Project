@@ -10,7 +10,7 @@ namespace RestaurantSeatingProject {
         public int TableNumber { get; set; }
         public int TablePositionX { get; set; }
         public int TablePositionY { get; set; }
-        public int TotalTables { get; }
+        private static int totalTables = 1;
 
         public Table() {
 
@@ -18,7 +18,7 @@ namespace RestaurantSeatingProject {
             this.TableNumber = 0;
             this.TablePositionX = 0;
             this.TablePositionY = 0;
-            this.TotalTables++;
+            TotalTables++;
 
         }
 
@@ -28,8 +28,14 @@ namespace RestaurantSeatingProject {
             this.TableNumber = tableNumber;
             this.TablePositionX = tablePositionX;
             this.TablePositionY = tablePositionY;
-            this.TotalTables++;
+            TotalTables++;
 
+        }
+
+        public static int TotalTables {
+
+            get { return totalTables; }
+            set { totalTables = value;  }
         }
     }
 }
