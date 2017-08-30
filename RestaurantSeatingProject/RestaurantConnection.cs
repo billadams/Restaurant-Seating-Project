@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace RestaurantSeatingProject
 {
-    public static class RestaurantConnection
+    class RestaurantConnection
     {
         public static SqlConnection GetConnection()
         {
