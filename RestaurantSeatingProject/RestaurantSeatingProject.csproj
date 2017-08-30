@@ -79,6 +79,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="ServerDA.cs" />
     <Compile Include="Table.cs" />
+    <Compile Include="TableDA.cs" />
     <Compile Include="TableLayout.cs" />
     <Compile Include="Yorkie1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

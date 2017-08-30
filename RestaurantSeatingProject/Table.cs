@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 namespace RestaurantSeatingProject {
     public class Table {
 
-        public int NumberOfSeats { get; set; }
         public int TableNumber { get; set; }
+
+        public int NumberOfSeats { get; set; }
+
         public int TablePositionX { get; set; }
+
         public int TablePositionY { get; set; }
+
         private static int totalTables = 1;
 
         public Table() {
