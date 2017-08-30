@@ -42,5 +42,86 @@ namespace RestaurantSeatingProject
             }
         }
 
+        public static List<Server> ViewServers()
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            List<Server> oServers = new List<Server>();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataReader oReader = null;
+
+            oCommand.CommandText = "Select * FROM servers";
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+
+                while(oReader.Read())
+                {
+                    Server oServer = new Server();
+                    oServer.FirstName = (string)oReader["FirstName"];
+                    oServer.FirstName = (string)oReader["LastName"];
+                    oServers.Add(oServer);
+                }
+
+                return oServers;
+               
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oServers;
+        }
+
+        public static int DeleteServer(string sID)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            List<Server> oServers = new List<Server>();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+
+            oCommand.CommandText = "Delete FROM servers " + "WHERE ID=@Id";
+            oCommand.Parameters.AddWithValue("@Id", sID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+
+                return nSuccess;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return nSuccess;
+        }
+
     }
 }
