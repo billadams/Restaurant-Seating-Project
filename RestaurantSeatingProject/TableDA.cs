@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
-    public class TableDA {
-        
+    class TableDA {
+
         public static void AddTableLayout(ArrayList tables) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
@@ -42,11 +42,14 @@ namespace RestaurantSeatingProject {
 
                 }
             }
-
-
         }
+        //public static ArrayList tables GetTableLayout() {
 
+        //    private ArrayList tables = new ArrayList();
 
+            
 
+        //    return tables;
+        //}
     }
 }
