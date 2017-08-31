@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace RestaurantSeatingProject {
     public partial class frmCreateTableLayout : Form {
 
-        private ArrayList tables = new ArrayList();
+        private List<Table> tables = new List<Table>();
         Table table;
         private int xPos;
         private int yPos;

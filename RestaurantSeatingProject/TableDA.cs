@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 namespace RestaurantSeatingProject {
     class TableDA {
 
-        public static void AddTableLayout(ArrayList tables) {
+        public static void AddTableLayout(List<Table> tables) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
             string insertStatement = "INSERT INTO table "
@@ -44,13 +45,51 @@ namespace RestaurantSeatingProject {
             }
         }
 
-        //public static ArrayList tables GetTableLayout() {
+        public static List<Table> GetTableLayout()
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            List<Table> oTables = new List<Table>();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataReader oReader = null;
 
-        //    private ArrayList tables = new ArrayList();
+            oCommand.CommandText = "Select * FROM Table";
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
 
-            
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
 
-        //    return tables;
-        //}
+                while (oReader.Read())
+                {
+                    Table oTable = new Table();
+                    oTable.NumberOfSeats = (int)oReader["numberOfSeats"];
+                    oTable.TableNumber = (int)oReader["tableNumber"];
+                    oTable.TablePositionX = (int)oReader["tablePositionX"];
+                    oTable.TablePositionY = (int)oReader["tablePositionY"];
+                    oTables.Add(oTable);
+                }
+
+                return oTables;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oTables;
+        }
+
     }
 }

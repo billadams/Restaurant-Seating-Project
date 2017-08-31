@@ -42,7 +42,7 @@ namespace RestaurantSeatingProject
             }
         }
 
-        public static List<Server> ViewServers()
+        public static List<Server> GetAllServers()
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
             List<Server> oServers = new List<Server>();
@@ -61,8 +61,8 @@ namespace RestaurantSeatingProject
                 while(oReader.Read())
                 {
                     Server oServer = new Server();
-                    oServer.FirstName = (string)oReader["FirstName"];
-                    oServer.FirstName = (string)oReader["LastName"];
+                    oServer.FirstName = (string)oReader["firstName"];
+                    oServer.FirstName = (string)oReader["lastName"];
                     oServers.Add(oServer);
                 }
 

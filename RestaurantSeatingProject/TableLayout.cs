@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace RestaurantSeatingProject {
     class TableLayout {
         private Panel roomLayout;
-        private ArrayList tables = new ArrayList();
+        private List<Table> tables = new List<Table>();
         Table table = new Table();
 
         public TableLayout() {
