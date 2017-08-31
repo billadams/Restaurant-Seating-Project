@@ -59,6 +59,12 @@
     <Compile Include="frmCreateTableLayout.Designer.cs">
       <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditTableLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditTableLayout.Designer.cs">
+      <DependentUpon>frmEditTableLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCreateTableLayout.resx">
       <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditTableLayout.resx">
+      <DependentUpon>frmEditTableLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
