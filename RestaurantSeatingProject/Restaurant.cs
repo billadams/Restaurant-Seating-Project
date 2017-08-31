@@ -13,10 +13,26 @@ namespace RestaurantSeatingProject
     public string Address { get; set; }
     public string City { get; set; }
     public string State { get; set; }
-    public string zip { get; set; }
+    public string Zip { get; set; }
         
     public Restaurant()
     {
+      RestaurantID = 0;
+      RestaurantName = "";
+      Address = "";
+      City = "";
+      State = "";
+      Zip = "";
+    }
+
+    public Restaurant(int restaurantID, string restaurantName, string address, string city, string state, string zip)
+    {
+      RestaurantID = restaurantID;
+      RestaurantName = restaurantName;
+      Address = address;
+      City = city;
+      State = state;
+      Zip = zip;
     }
   }
 }
