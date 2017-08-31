@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace RestaurantSeatingProject
 {
-    class Restaurant
+  public class Restaurant
+  {
+    public int RestaurantID { get; set; }
+    public string RestaurantName { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string zip { get; set; }
+        
+    public Restaurant()
     {
-        //COULD add password if we need to later so people can't mess with other people's stuff
-        public string RestaurantName { get; set; }
-        public string UserName { get; set; }
-        public Restaurant()
-        {
-
-        }
-
-        public Restaurant(string sRestaurantName, string sUserName)
-        {
-            this.RestaurantName = sRestaurantName;
-            this.UserName = sUserName;
-        }
     }
+  }
 }
