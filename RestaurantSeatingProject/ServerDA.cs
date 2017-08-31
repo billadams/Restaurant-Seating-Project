@@ -13,10 +13,10 @@ namespace RestaurantSeatingProject
     class ServerDA
     {
 
-        public static void AddServer(Server oServer)
+        public static bool AddServer(Server oServer)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
-            string insertString = "INSERT into servers (FirstName, LastName) values (@FirstName, @LastName)";
+            string insertString = "INSERT into server (firstName, lastName) values (@FirstName, @LastName)";
 
             SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
 
@@ -26,14 +26,17 @@ namespace RestaurantSeatingProject
             {
                 oConnection.Open();
                 insertCommand.ExecuteNonQuery();
+                return true;
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
 
             finally
@@ -49,7 +52,7 @@ namespace RestaurantSeatingProject
             SqlCommand oCommand = new SqlCommand();
             SqlDataReader oReader = null;
 
-            oCommand.CommandText = "Select * FROM servers";
+            oCommand.CommandText = "Select * FROM server";
             oCommand.CommandType = CommandType.Text;
             oCommand.Connection = oConnection;
 
@@ -62,7 +65,8 @@ namespace RestaurantSeatingProject
                 {
                     Server oServer = new Server();
                     oServer.FirstName = (string)oReader["firstName"];
-                    oServer.FirstName = (string)oReader["lastName"];
+                    oServer.LastName = (string)oReader["lastName"];
+                    oServer.Id = (int)oReader["serverID"];
                     oServers.Add(oServer);
                 }
 
@@ -93,8 +97,8 @@ namespace RestaurantSeatingProject
             SqlCommand oCommand = new SqlCommand();
             int nSuccess = 0;
 
-            oCommand.CommandText = "Delete FROM servers " + "WHERE ID=@Id";
-            oCommand.Parameters.AddWithValue("@Id", sID);
+            oCommand.CommandText = "Delete FROM server " + "WHERE serverID=@serverID";
+            oCommand.Parameters.AddWithValue("@serverID", sID);
             oCommand.CommandType = CommandType.Text;
             oCommand.Connection = oConnection;
 

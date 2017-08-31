@@ -41,8 +41,7 @@ namespace RestaurantSeatingProject
                 bIsValid = false;
                 sErrorMess += "\nPlease enter a Last Name";
             }
-
-
+            
 
             //valid input
             if(bIsValid)
@@ -52,8 +51,15 @@ namespace RestaurantSeatingProject
                 oServer.LastName = sLastName;
 
                 //Might need to come back and add a try catch here
-                ServerDA.AddServer(oServer);
-                MessageBox.Show(sFirstName + " " + sLastName + " " + "Has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                bool bSuccess = ServerDA.AddServer(oServer);
+                if (bSuccess)
+                {
+                    MessageBox.Show(sFirstName + " " + sLastName + " " + "has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                
+                
 
             }
             else

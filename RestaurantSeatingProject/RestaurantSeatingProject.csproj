@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisplayData.cs" />
     <Compile Include="FormValidation.cs" />
     <Compile Include="frmAddServer.cs">
       <SubType>Form</SubType>
@@ -70,6 +71,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageServers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageServers.Designer.cs">
+      <DependentUpon>frmManageServers.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
@@ -106,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageServers.resx">
+      <DependentUpon>frmManageServers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

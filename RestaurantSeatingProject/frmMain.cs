@@ -41,5 +41,12 @@ namespace RestaurantSeatingProject {
         private void mnuEditSeatingLayout_Click(object sender, EventArgs e) {
 
         }
+
+        private void mnuManageServers_Click(object sender, EventArgs e)
+        {
+            Form frmManageServers = new frmManageServers();
+            frmManageServers.MdiParent = this;
+            frmManageServers.Show();
+        }
     }
 }
