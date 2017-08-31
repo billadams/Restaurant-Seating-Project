@@ -83,6 +83,8 @@
     <Compile Include="Restaurant.cs" />
     <Compile Include="RestaurantConnection.cs" />
     <Compile Include="RestaurantDA.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="SectionDA.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ServerDA.cs" />
     <Compile Include="Table.cs" />
