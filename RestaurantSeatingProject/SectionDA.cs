@@ -1,18 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
-
 
 namespace RestaurantSeatingProject
 {
     class SectionDA
     {
-
         public static void AddServer(Section section)
         {
             SqlConnection conn = RestaurantConnection.GetConnection();
@@ -20,7 +18,7 @@ namespace RestaurantSeatingProject
 
             SqlCommand insertCommand = new SqlCommand(insertString, conn);
 
-            insertCommand.Parameters.AddWithValue("@FirstName", section.sectionNum);
+            insertCommand.Parameters.AddWithValue("@sectionNum", section.sectionNum);
             try
             {
                 conn.Open();
@@ -40,6 +38,5 @@ namespace RestaurantSeatingProject
                 conn.Close();
             }
         }
-
     }
 }
