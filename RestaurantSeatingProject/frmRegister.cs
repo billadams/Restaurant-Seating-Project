@@ -50,13 +50,14 @@ namespace RestaurantSeatingProject
             {
                 //add Restaurant to database
                 oRestaurant.RestaurantName = sRestaurantName;
-                oRestaurant.UserName = sUserName;
+                //oRestaurant.UserName = sUserName;
 
                 //db logic here to insert into database
 
                 //Success
-                MessageBox.Show(oRestaurant.RestaurantName + "Has been Added!" + "\nYour username is : " + oRestaurant.UserName, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(oRestaurant.RestaurantName + "Has been Added!" + "\nYour username is : " + oRestaurant.UserName, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                MessageBox.Show(oRestaurant.RestaurantName + "Has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
