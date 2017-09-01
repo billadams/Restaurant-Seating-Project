@@ -115,8 +115,16 @@ namespace RestaurantSeatingProject {
 
         public void button_MouseUp(object sender, MouseEventArgs e) {
 
-            table.TablePositionX = e.X;
-            table.TablePositionY = e.Y;
+            Button button = (Button)sender;
+            table.TablePositionX = button.Left;
+            table.TablePositionY = button.Top;
+
+        }
+
+        private void btnSaveLayout_Click(object sender, EventArgs e) {
+
+            TableDA.AddTableLayout(tables);
+            lblMessage.Text = "Table layout saved.";
 
         }
     }

@@ -14,82 +14,89 @@ namespace RestaurantSeatingProject {
         public static void AddTableLayout(List<Table> tables) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
-            string insertStatement = "INSERT INTO table "
+            string insertStatement = "INSERT INTO tables "
                                    + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY) "
                                    + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
-            foreach (Table table in tables) {
+            insertCommand.Parameters.AddWithValue("@tableNumber", SqlDbType.Int);
+            insertCommand.Parameters.AddWithValue("@numberOfSeats", SqlDbType.Int);
+            insertCommand.Parameters.AddWithValue("@tablePositionX", SqlDbType.Int);
+            insertCommand.Parameters.AddWithValue("@tablePositionY", SqlDbType.Int);
 
-                insertCommand.Parameters.AddWithValue("@tableNumber", table.TableNumber);
-                insertCommand.Parameters.AddWithValue("@numberOfSeats", table.NumberOfSeats);
-                insertCommand.Parameters.AddWithValue("@tablePositionX", table.TablePositionX);
-                insertCommand.Parameters.AddWithValue("@tablePositionY", table.TablePositionY);
+            connection.Open();
 
-                try {
+            try {
 
-                    connection.Open();
+                foreach (Table table in tables) {
+
+                    insertCommand.Parameters["@tableNumber"].Value = table.TableNumber;
+                    insertCommand.Parameters["@numberOfSeats"].Value = table.NumberOfSeats;
+                    insertCommand.Parameters["@tablePositionX"].Value = table.TablePositionX;
+                    insertCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
+
                     insertCommand.ExecuteNonQuery();
 
                 }
-                catch (SqlException ex) {
-
-                    MessageBox.Show(ex.Message);
-
-                }
-                finally {
-
-                    connection.Close();
-
-                }
-            }
-        }
-
-        public static List<Table> GetTableLayout()
-        {
-            SqlConnection oConnection = RestaurantConnection.GetConnection();
-            List<Table> oTables = new List<Table>();
-            SqlCommand oCommand = new SqlCommand();
-            SqlDataReader oReader = null;
-
-            oCommand.CommandText = "Select * FROM Table";
-            oCommand.CommandType = CommandType.Text;
-            oCommand.Connection = oConnection;
-
-            try
-            {
-                oConnection.Open();
-                oReader = oCommand.ExecuteReader();
-
-                while (oReader.Read())
-                {
-                    Table oTable = new Table();
-                    oTable.NumberOfSeats = (int)oReader["numberOfSeats"];
-                    oTable.TableNumber = (int)oReader["tableNumber"];
-                    oTable.TablePositionX = (int)oReader["tablePositionX"];
-                    oTable.TablePositionY = (int)oReader["tablePositionY"];
-                    oTables.Add(oTable);
-                }
-
-                return oTables;
 
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
+            catch (SqlException ex) {
+
                 MessageBox.Show(ex.Message);
 
             }
+            finally {
 
-            finally
-            {
-                oConnection.Close();
+                connection.Close();
+
             }
-            return oTables;
         }
 
+        public static List<Table> GetTableLayout() {
+               
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            List<Table> tables = new List<Table>();
+            string selectStatement = "SELECT * FROM tables";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+
+            connection.Open();
+
+            try {
+
+                while (reader.Read()) {
+
+                    Table table = new Table();
+                    table.NumberOfSeats = (int)reader["numberOfSeats"];
+                    table.TableNumber = (int)reader["tableNumber"];
+                    table.TablePositionX = (int)reader["tablePositionX"];
+                    table.TablePositionY = (int)reader["tablePositionY"];
+                    tables.Add(table);
+
+                }
+
+                //return tables;
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally {
+
+                connection.Close();
+
+            }
+
+            return tables;
+
+        }
     }
 }
