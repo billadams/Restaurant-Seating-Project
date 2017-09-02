@@ -48,5 +48,12 @@ namespace RestaurantSeatingProject {
             frmManageServers.MdiParent = this;
             frmManageServers.Show();
         }
+
+        private void mnuReservationList_Click(object sender, EventArgs e)
+        {
+            Form frmReservationList = new frmReservationList();
+            frmReservationList.MdiParent = this;
+            frmReservationList.Show();
+        }
     }
 }
