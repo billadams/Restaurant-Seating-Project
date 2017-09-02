@@ -53,29 +53,30 @@ namespace RestaurantSeatingProject {
         }
 
         public static List<Table> GetTableLayout() {
-               
+
             SqlConnection connection = RestaurantConnection.GetConnection();
             List<Table> tables = new List<Table>();
-            string selectStatement = "SELECT * FROM tables";
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataReader oReader = null;
 
-            connection.Open();
+            oCommand.CommandText = "Select * FROM tables";
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = connection;
 
             try {
+                connection.Open();
+                oReader = oCommand.ExecuteReader();
 
-                while (reader.Read()) {
+                while (oReader.Read()) {
 
                     Table table = new Table();
-                    table.NumberOfSeats = (int)reader["numberOfSeats"];
-                    table.TableNumber = (int)reader["tableNumber"];
-                    table.TablePositionX = (int)reader["tablePositionX"];
-                    table.TablePositionY = (int)reader["tablePositionY"];
+                    table.NumberOfSeats = (int)oReader["numberOfSeats"];
+                    table.TableNumber = (int)oReader["tableNumber"];
+                    table.TablePositionX = (int)oReader["tablePositionX"];
+                    table.TablePositionY = (int)oReader["tablePositionY"];
                     tables.Add(table);
 
                 }
-
-                //return tables;
 
             }
             catch (SqlException ex) {
@@ -97,6 +98,35 @@ namespace RestaurantSeatingProject {
 
             return tables;
 
+        }
+
+        public static int DeleteLayout(){
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+            oCommand.CommandText = "DELETE FROM tables DBCC CHECKIDENT ('tables',RESEED,0)";
+            //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+                //MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+
+                //MessageBox.Show(ex.Message);
+
+            }
+
+            return nSuccess;           
         }
     }
 }

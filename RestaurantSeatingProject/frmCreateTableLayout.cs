@@ -127,5 +127,37 @@ namespace RestaurantSeatingProject {
             lblMessage.Text = "Table layout saved.";
 
         }
+
+        private void mnuDeleteTable_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void btnDeleteLayout_Click(object sender, EventArgs e)
+        {
+            List<Table> oTables = TableDA.GetTableLayout();
+            if (Utility.IsNullOrEmpty(oTables))
+            {
+                MessageBox.Show("Error: Layout was not Successfully Deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                TableDA.DeleteLayout();
+                MessageBox.Show("Table Layout was Successfully Deleted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetLayout();
+                
+            }
+        }
+
+        private void ResetLayout(){
+            //Resets the table layout as if none was created
+            Table.TotalTables = 1;
+            tables = new List<Table>();
+            txtTableNumber.Text = "1";
+            pnlRoom.Controls.Clear();
+        }
+
+        
     }
 }
