@@ -71,10 +71,16 @@ namespace RestaurantSeatingProject
                 oRestaurant.Zip = sZip;
 
                 //db logic here to insert into database
-
-                //Success              
-
+                RestaurantDA.AddRestaurant(oRestaurant);
+                //Success                             
                 MessageBox.Show(oRestaurant.RestaurantName + " Has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //Deletes Table Layout because new restaurant
+                TableDA.DeleteLayout();
+                //Possibly try to find another way to refresh the main form to re run the code to check if restraunt is initialized
+                Application.Restart();
+                
+                
             }
             else
             {

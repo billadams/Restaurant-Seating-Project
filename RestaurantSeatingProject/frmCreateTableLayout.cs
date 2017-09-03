@@ -20,6 +20,7 @@ namespace RestaurantSeatingProject {
         public frmCreateTableLayout() {
 
             InitializeComponent();
+            LoadTables();
 
         }
 
@@ -125,7 +126,62 @@ namespace RestaurantSeatingProject {
 
             TableDA.AddTableLayout(tables);
             lblMessage.Text = "Table layout saved.";
+            btnSaveLayout.Enabled = false;
 
         }
+
+        private void mnuDeleteTable_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void btnDeleteLayout_Click(object sender, EventArgs e)
+        {
+            List<Table> oTables = TableDA.GetTableLayout();
+            if (Utility.IsNullOrEmpty(oTables))
+            {
+                MessageBox.Show("Error: Layout was not Successfully Deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                TableDA.DeleteLayout();
+                MessageBox.Show("Table Layout was Successfully Deleted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+            }
+            ResetLayout();
+            btnSaveLayout.Enabled = true;
+        }
+
+        private void ResetLayout(){
+            //Resets the table layout as if none was created
+            Table.TotalTables = 1;
+            tables = new List<Table>();
+            txtTableNumber.Text = "1";
+            pnlRoom.Controls.Clear();
+        }
+
+        public void LoadTables()
+        {
+            List<Table> oTables = TableDA.GetTableLayout();
+            if (!(Utility.IsNullOrEmpty(oTables)))
+            {
+                foreach (Table oTable in oTables)
+                {
+                    Button button = new Button();
+                    button.Height = 50;
+                    button.Text = "Table " + Convert.ToString(oTable.TableNumber)
+                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
+                    pnlRoom.Controls.Add(button);
+                    btnSaveLayout.Enabled = false;
+                }
+            }
+            else
+            {
+                btnSaveLayout.Enabled = true;
+            }
+        }
+
+        
     }
 }

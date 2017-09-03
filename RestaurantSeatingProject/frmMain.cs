@@ -12,6 +12,19 @@ namespace RestaurantSeatingProject {
     public partial class frmMain : Form {
         public frmMain() {
             InitializeComponent();
+           Restaurant oRestaurant =  RestaurantDA.GetRestaurantInfo();
+           if (oRestaurant.RestaurantID != 0)
+           {
+               //restaurant has been set
+               CurrentRestaurant();
+               mnuAbout.Text = "About " + oRestaurant.RestaurantName;
+           }
+           else
+           {
+               //restaurant hasnt been set
+               NoCurrentRestaurant();
+               
+           }
         }
 
         private void mnuCreateSeatingLayout_Click(object sender, EventArgs e) {
@@ -36,10 +49,13 @@ namespace RestaurantSeatingProject {
             Form frmRegister = new frmRegister();
             frmRegister.MdiParent = this;
             frmRegister.Show();
+
         }
 
         private void mnuEditSeatingLayout_Click(object sender, EventArgs e) {
-
+            Form frmEdit = new frmEditTableLayout();
+            frmEdit.MdiParent = this;
+            frmEdit.Show();
         }
 
         private void mnuManageServers_Click(object sender, EventArgs e)
@@ -54,6 +70,30 @@ namespace RestaurantSeatingProject {
             Form frmReservationList = new frmReservationList();
             frmReservationList.MdiParent = this;
             frmReservationList.Show();
+        }
+
+        private void NoCurrentRestaurant()
+        {
+            
+            mnuAddServer.Enabled = false;
+            mnuAbout.Enabled = false;
+            mnuCreateSeatingLayout.Enabled = false;
+            mnuEditSeatingLayout.Enabled = false;
+            mnuManageServers.Enabled = false;
+            mnuSeatingLayout.Enabled = false;
+            mnuReservationList.Enabled = false;
+        }
+
+        private void CurrentRestaurant()
+        {
+            mnuRegisterRestaurant.Enabled = false;
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            frmAbout oFrmAbout = new frmAbout();
+            oFrmAbout.MdiParent = this;
+            oFrmAbout.Show();
         }
     }
 }
