@@ -36,9 +36,9 @@
             this.mnuManageServers = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHost = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReservationList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuReservationList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,6 +148,13 @@
             this.mnuSeatingLayout.Size = new System.Drawing.Size(156, 22);
             this.mnuSeatingLayout.Text = "&Seating Layout";
             // 
+            // mnuReservationList
+            // 
+            this.mnuReservationList.Name = "mnuReservationList";
+            this.mnuReservationList.Size = new System.Drawing.Size(156, 22);
+            this.mnuReservationList.Text = "Reservation List";
+            this.mnuReservationList.Click += new System.EventHandler(this.mnuReservationList_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -159,15 +166,9 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(208, 22);
-            this.mnuAbout.Text = "About Restaurant Seating";
-            // 
-            // mnuReservationList
-            // 
-            this.mnuReservationList.Name = "mnuReservationList";
-            this.mnuReservationList.Size = new System.Drawing.Size(156, 22);
-            this.mnuReservationList.Text = "Reservation List";
-            this.mnuReservationList.Click += new System.EventHandler(this.mnuReservationList_Click);
+            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
+            this.mnuAbout.Text = "About Us";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // frmMain
             // 

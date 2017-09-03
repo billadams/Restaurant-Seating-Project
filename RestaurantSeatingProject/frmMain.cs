@@ -17,11 +17,13 @@ namespace RestaurantSeatingProject {
            {
                //restaurant has been set
                CurrentRestaurant();
+               mnuAbout.Text = "About " + oRestaurant.RestaurantName;
            }
            else
            {
                //restaurant hasnt been set
-               NoCurrentRestaurant();               
+               NoCurrentRestaurant();
+               
            }
         }
 
@@ -85,6 +87,13 @@ namespace RestaurantSeatingProject {
         private void CurrentRestaurant()
         {
             mnuRegisterRestaurant.Enabled = false;
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            frmAbout oFrmAbout = new frmAbout();
+            oFrmAbout.MdiParent = this;
+            oFrmAbout.Show();
         }
     }
 }
