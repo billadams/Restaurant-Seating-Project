@@ -25,7 +25,9 @@ namespace RestaurantSeatingProject
 
         private void ViewCompanyInfo()
         {
-            Restaurant oRestaurant = RestaurantDA.GetRestaurantInfo();
+            List<Restaurant> restaurantList = new List<Restaurant>();
+            restaurantList = RestaurantDA.GetRestaurantInfo();
+            Restaurant oRestaurant = restaurantList[0];
             lblCompanyName.Text = oRestaurant.RestaurantName;
             lblAddress.Text = oRestaurant.Address;
             lblCity.Text = oRestaurant.City;

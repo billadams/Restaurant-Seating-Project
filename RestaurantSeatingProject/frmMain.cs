@@ -12,7 +12,9 @@ namespace RestaurantSeatingProject {
     public partial class frmMain : Form {
         public frmMain() {
             InitializeComponent();
-           Restaurant oRestaurant =  RestaurantDA.GetRestaurantInfo();
+            List<Restaurant> restaurantList = new List<Restaurant>();
+            restaurantList = RestaurantDA.GetRestaurantInfo();
+            Restaurant oRestaurant = restaurantList[0];
            if (oRestaurant.RestaurantID != 0)
            {
                //restaurant has been set
