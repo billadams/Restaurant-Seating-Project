@@ -140,7 +140,6 @@ namespace RestaurantSeatingProject {
                     oTable.TablePositionX = (int)oReader["tablePositionX"];
                     oTable.TablePositionY = (int)oReader["tablePositionY"];
                     oTable.TableState = (string)oReader["tableState"];
-                    oTable.TableState = (string)oReader["tableState"];
                     
                 }
 
