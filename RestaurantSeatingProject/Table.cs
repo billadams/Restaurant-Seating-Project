@@ -13,7 +13,7 @@ namespace RestaurantSeatingProject {
         public int TablePositionX { get; set; }
 
         public int TablePositionY { get; set; }
-
+        public string TableState { get; set; }
         private static int totalTables = 1;
 
         public Table() {
@@ -22,16 +22,18 @@ namespace RestaurantSeatingProject {
             this.TableNumber = 0;
             this.TablePositionX = 0;
             this.TablePositionY = 0;
+            this.TableState = "Empty";
             TotalTables++;
 
         }
 
-        public Table(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY) {
+        public Table(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY, string tableState) {
 
             this.NumberOfSeats = numberOfSeats;
             this.TableNumber = tableNumber;
             this.TablePositionX = tablePositionX;
             this.TablePositionY = tablePositionY;
+            this.TableState = tableState;
             TotalTables++;
 
         }

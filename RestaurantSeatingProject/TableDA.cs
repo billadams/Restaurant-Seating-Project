@@ -20,15 +20,16 @@ namespace RestaurantSeatingProject {
                                    //+ "(tableNum, numSeat, xposition, yposition) "
 
                                    //uncomment for sqldb
-                                   + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY) "
+                                   + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY, tableState) "
 
-                                   + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY)";
+                                   + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY, @tableState)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
             insertCommand.Parameters.AddWithValue("@tableNumber", SqlDbType.Int);
             insertCommand.Parameters.AddWithValue("@numberOfSeats", SqlDbType.Int);
             insertCommand.Parameters.AddWithValue("@tablePositionX", SqlDbType.Int);
             insertCommand.Parameters.AddWithValue("@tablePositionY", SqlDbType.Int);
+            insertCommand.Parameters.AddWithValue("@tableState", SqlDbType.VarChar);
 
             connection.Open();
 
@@ -40,6 +41,7 @@ namespace RestaurantSeatingProject {
                     insertCommand.Parameters["@numberOfSeats"].Value = table.NumberOfSeats;
                     insertCommand.Parameters["@tablePositionX"].Value = table.TablePositionX;
                     insertCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
+                    insertCommand.Parameters["@tableState"].Value = table.TableState;
 
                     insertCommand.ExecuteNonQuery();
 
@@ -82,6 +84,7 @@ namespace RestaurantSeatingProject {
                     table.TableNumber = (int)oReader["tableNumber"];
                     table.TablePositionX = (int)oReader["tablePositionX"];
                     table.TablePositionY = (int)oReader["tablePositionY"];
+                    table.TableState = (string)oReader["tableState"];
 
                     //uncomment for localdb
                     //table.NumberOfSeats = (int)oReader["numSeat"];
@@ -112,6 +115,85 @@ namespace RestaurantSeatingProject {
 
             return tables;
 
+        }
+
+        public static Table GetTableByID(string sID)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            Table oTable = new Table();
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM tables " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    oTable.NumberOfSeats = (int)oReader["numberOfSeats"];
+                    oTable.TableNumber = (int)oReader["tableNumber"];
+                    oTable.TablePositionX = (int)oReader["tablePositionX"];
+                    oTable.TablePositionY = (int)oReader["tablePositionY"];
+                    oTable.TableState = (string)oReader["tableState"];
+                    oTable.TableState = (string)oReader["tableState"];
+                    
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oTable;
+        }
+
+        public static void UpdateTableState(string sID, string sTableState)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            //int nSuccess = 0;
+            oCommand.CommandText = "UPDATE tables set tableState =@tableState" + " WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sID);
+            oCommand.Parameters.AddWithValue("@tableState", sTableState);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                oCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+           // return nSuccess;
         }
 
         public static int DeleteLayout(){

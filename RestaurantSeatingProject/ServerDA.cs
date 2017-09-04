@@ -93,7 +93,6 @@ namespace RestaurantSeatingProject
         public static int DeleteServer(string sID)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
-            List<Server> oServers = new List<Server>();
             SqlCommand oCommand = new SqlCommand();
             int nSuccess = 0;
 
