@@ -15,7 +15,13 @@ namespace RestaurantSeatingProject {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
             string insertStatement = "INSERT INTO tables "
-                                   + "(tableNum, numSeat, xposition, yposition) "
+
+                                    //uncomment for localdb
+                                   //+ "(tableNum, numSeat, xposition, yposition) "
+
+                                   //uncomment for sqldb
+                                   + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY) "
+
                                    + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
@@ -70,10 +76,18 @@ namespace RestaurantSeatingProject {
                 while (oReader.Read()) {
 
                     Table table = new Table();
-                    table.NumberOfSeats = (int)oReader["numSeat"];
-                    table.TableNumber = (int)oReader["tableNum"];
-                    table.TablePositionX = (int)oReader["xposition"];
-                    table.TablePositionY = (int)oReader["yposition"];
+
+                    //uncomment for sqldb
+                    table.NumberOfSeats = (int)oReader["numberOfSeats"];
+                    table.TableNumber = (int)oReader["tableNumber"];
+                    table.TablePositionX = (int)oReader["tablePositionX"];
+                    table.TablePositionY = (int)oReader["tablePositionY"];
+
+                    //uncomment for localdb
+                    //table.NumberOfSeats = (int)oReader["numSeat"];
+                    //table.TableNumber = (int)oReader["tableNum"];
+                    //table.TablePositionX = (int)oReader["xposition"];
+                    //table.TablePositionY = (int)oReader["yposition"];
                     tables.Add(table);
 
                 }

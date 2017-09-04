@@ -12,6 +12,7 @@ namespace RestaurantSeatingProject {
     public partial class frmMain : Form {
         public frmMain() {
             InitializeComponent();
+            //RestaurantDA.DeleteRestaurant();
             Restaurant oRestaurant = RestaurantDA.GetRestaurantInfo();
            if (oRestaurant.RestaurantID != 0)
            {
@@ -21,6 +22,7 @@ namespace RestaurantSeatingProject {
            }
            else
            {
+               //if you want to force a delete of restraunt call RestaurantDA.DeleteRestaurant();
                //restaurant hasnt been set
                NoCurrentRestaurant();
                
@@ -94,6 +96,13 @@ namespace RestaurantSeatingProject {
             frmAbout oFrmAbout = new frmAbout();
             oFrmAbout.MdiParent = this;
             oFrmAbout.Show();
+        }
+
+        private void mnuSeatingLayout_Click(object sender, EventArgs e)
+        {
+            frmSeatingLayout oFrmSeatingLayout = new frmSeatingLayout();
+            oFrmSeatingLayout.MdiParent = this;
+            oFrmSeatingLayout.Show();
         }
     }
 }

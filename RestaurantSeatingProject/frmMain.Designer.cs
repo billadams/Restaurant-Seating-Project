@@ -147,6 +147,7 @@
             this.mnuSeatingLayout.Name = "mnuSeatingLayout";
             this.mnuSeatingLayout.Size = new System.Drawing.Size(156, 22);
             this.mnuSeatingLayout.Text = "&Seating Layout";
+            this.mnuSeatingLayout.Click += new System.EventHandler(this.mnuSeatingLayout_Click);
             // 
             // mnuReservationList
             // 
@@ -166,7 +167,7 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(152, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(123, 22);
             this.mnuAbout.Text = "About Us";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
