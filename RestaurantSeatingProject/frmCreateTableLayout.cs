@@ -13,10 +13,12 @@ namespace RestaurantSeatingProject {
     public partial class frmCreateTableLayout : Form {
 
         private List<Table> tables = new List<Table>();
+        private List<AssignedTable> oAssignedList = new List<AssignedTable>();
+        AssignedTable oAssigned = null;
         Table table;
         private int xPos;
         private int yPos;
-
+        private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
         public frmCreateTableLayout() {
 
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace RestaurantSeatingProject {
         private void btnAddTable_Click(object sender, EventArgs e) {
 
             table = new Table();
+            oAssigned = new AssignedTable();
             int startLeft = pnlRoom.Left;
             int startTop = pnlRoom.Top; 
 
@@ -41,9 +44,21 @@ namespace RestaurantSeatingProject {
             bool bIsValid = true;
 
             try {
-
+                
                 table.TableNumber = Convert.ToInt32(txtTableNumber.Text);
-
+                oAssigned.TableNumber = table.TableNumber;
+                if (rdoSection1.Checked)
+                {
+                    oAssigned.SectionNum = (int)AvailableSections.Section1;
+                }
+                else if (rdoSection2.Checked)
+                {
+                    oAssigned.SectionNum = (int)AvailableSections.Section2;
+                }
+                else if (rdoSection3.Checked)
+                {
+                    oAssigned.SectionNum = (int)AvailableSections.Section3;
+                }
             }
             catch (Exception)  {
 
@@ -69,7 +84,7 @@ namespace RestaurantSeatingProject {
                 table.TablePositionX = startLeft;
                 table.TablePositionY = startTop;
                 tables.Add(table);
-
+                oAssignedList.Add(oAssigned);
                 Button button = new Button();
                 button.Height = 50;
                 button.Text = "Table " + Convert.ToString(table.TableNumber)
@@ -125,6 +140,7 @@ namespace RestaurantSeatingProject {
         private void btnSaveLayout_Click(object sender, EventArgs e) {
 
             TableDA.AddTableLayout(tables);
+            SectionDA.AssignTableToSection(oAssignedList);
             lblMessage.Text = "Table layout saved.";
             btnSaveLayout.Enabled = false;
 
