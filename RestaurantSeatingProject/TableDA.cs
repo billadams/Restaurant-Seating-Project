@@ -210,15 +210,11 @@ namespace RestaurantSeatingProject {
             }
             catch (SqlException ex)
             {
-
-                //MessageBox.Show(ex.Message);
-
+               // /MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
-
                 //MessageBox.Show(ex.Message);
-
             }
 
             return nSuccess;           

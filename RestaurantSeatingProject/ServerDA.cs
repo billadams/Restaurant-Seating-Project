@@ -44,7 +44,39 @@ namespace RestaurantSeatingProject
                 oConnection.Close();
             }
         }
+        public static bool AssignServerToTable(string sTableNumber, string sServerID, string sSectionNum)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
 
+            string insertString = "INSERT into assignTable (tableNumber, serverID, sectionNum) values (@tableNumber, @serverID, @sectionNum)";
+
+            SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
+
+            insertCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
+            insertCommand.Parameters.AddWithValue("@serverID", sServerID);
+            insertCommand.Parameters.AddWithValue("@sectionNum", sSectionNum);
+            try
+            {
+                oConnection.Open();
+                insertCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+        }
         public static List<Server> GetAllServers()
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();

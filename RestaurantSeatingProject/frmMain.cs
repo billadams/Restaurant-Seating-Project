@@ -15,6 +15,8 @@ namespace RestaurantSeatingProject {
 
             //SectionDA.AddStaticSections();            
             //RestaurantDA.DeleteRestaurant();
+            //SectionDA.DeleteSectionAssignments();
+            //DeleteSectionAssignments();
             Restaurant oRestaurant = RestaurantDA.GetRestaurantInfo();
            if (oRestaurant.RestaurantID != 0)
            {

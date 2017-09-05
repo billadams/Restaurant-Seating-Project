@@ -14,7 +14,7 @@ namespace RestaurantSeatingProject
         {
 
         }
-        public AssignedTable(int tableNumber, int sectionNum)
+        public AssignedTable(int tableNumber, int sectionNum, int assignID)
         {
             this.TableNumber = tableNumber;
             this.SectionNum = sectionNum;

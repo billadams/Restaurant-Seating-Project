@@ -71,6 +71,122 @@ namespace RestaurantSeatingProject
                 connection.Close();
             }
         }
+
+        //public static List<AssignedTable> GetAssignedTables()
+        //{
+        //    SqlConnection connection = RestaurantConnection.GetConnection();
+        //    List<AssignedTable> oAssignedList = new List<AssignedTable>();
+        //    SqlCommand oCommand = new SqlCommand();
+        //    SqlDataReader oReader = null;
+
+        //    oCommand.CommandText = "Select * FROM assignTable";
+        //    oCommand.CommandType = CommandType.Text;
+        //    oCommand.Connection = connection;
+
+        //    try
+        //    {
+        //        connection.Open();
+        //        oReader = oCommand.ExecuteReader();
+
+        //        while (oReader.Read())
+        //        {
+        //            AssignedTable oAssigned = new AssignedTable();
+        //            oAssigned.SectionNum = (int)oReader["sectionNum"];
+        //            oAssigned.TableNumber = (int)oReader["tableNumber"];
+        //            oAssignedList.Add(oAssigned);
+        //        }
+
+        //    }
+        //    catch (SqlException ex)
+        //    {
+
+        //        MessageBox.Show(ex.Message);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show(ex.Message);
+
+        //    }
+
+        //    finally
+        //    {
+
+        //        connection.Close();
+
+        //    }
+
+        //    return oAssignedList;
+
+        //}
+        public static int DeleteSectionAssignments()
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+            oCommand.CommandText = "DELETE FROM assignSection DBCC CHECKIDENT ('assignSection',RESEED,0)";
+            //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+              //  MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+
+               // MessageBox.Show(ex.Message);
+
+            }
+
+            return nSuccess;
+        }
+        public static int GetAssignedSection(string sTableNumber)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            int tableSection = 0;
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    tableSection = (int)oReader["sectionNum"];
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return tableSection;
+        }
+
         public static void AddStaticSections()
         {
             //this method generates our three static sections run this if the sections haven't been created can call it from anywhere

@@ -17,7 +17,7 @@ namespace RestaurantSeatingProject
             InitializeComponent();
             LoadTables();
             DisplayListBoxData();
-
+           // List<AssignedTable> oAssigned = SectionDA.GetAssignedTables();
         }
        private enum TableState { Empty, Occupied, Bussable };
         private void btnClose_Click(object sender, EventArgs e)
@@ -33,9 +33,10 @@ namespace RestaurantSeatingProject
             bool bIsValid = true;
             //get table by id to check/update state
             Table oSpecificTable = TableDA.GetTableByID(sTableNumber);
-            //TODO comeback and check to make sure a server is selected in the listbox
+            int nSectionNumber = SectionDA.GetAssignedSection(sTableNumber);
             if (!(lstServers.SelectedIndex == -1))
             {
+                //makes sure a server is selected in the list box
                 if (rdoAssignTable.Checked)
                 {
                     if (oSpecificTable.NumberOfSeats >= Convert.ToInt16(txtNumCustomers.Text))
@@ -97,7 +98,12 @@ namespace RestaurantSeatingProject
                 if (sUpdatedState.ToLower() == TableState.Empty.ToString().ToLower())
                 {
                     //assign server here
-                    string sID = (lstServers.SelectedItem as DisplayData).Value;
+                    AssignedTable oAssignedTable = new AssignedTable();
+                    oAssignedTable.TableNumber = Convert.ToInt16(sTableNumber);
+                    oAssignedTable.SectionNum = nSectionNumber;
+                    string sServerID = (lstServers.SelectedItem as DisplayData).Value;
+                    ServerDA.AssignServerToTable(sTableNumber,sServerID,nSectionNumber.ToString());
+                    
 
                     sUpdatedState = TableState.Occupied.ToString();
                 }
@@ -120,8 +126,6 @@ namespace RestaurantSeatingProject
             {
                 MessageBox.Show(sErrorMess, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-
 
         }
 
