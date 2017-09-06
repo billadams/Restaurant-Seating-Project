@@ -9,15 +9,16 @@ namespace RestaurantSeatingProject
     class AssignedTable
     {
         public int TableNumber { get; set; }
-        public int SectionNum { get; set; }
-        public AssignedTable()
-        {
 
-        }
-        public AssignedTable(int tableNumber, int sectionNum)
-        {
+        public int SectionNum { get; set; }
+
+        public AssignedTable() { }
+
+        public AssignedTable(int tableNumber, int sectionNum) {
+
             this.TableNumber = tableNumber;
             this.SectionNum = sectionNum;
+
         }
     }
 }

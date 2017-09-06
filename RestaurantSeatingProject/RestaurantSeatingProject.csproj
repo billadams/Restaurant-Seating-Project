@@ -77,17 +77,11 @@
     <Compile Include="frmAddServer.Designer.cs">
       <DependentUpon>frmAddServer.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCreateTableLayout.cs">
+    <Compile Include="frmManageSeatingLayout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateTableLayout.Designer.cs">
-      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmEditTableLayout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEditTableLayout.Designer.cs">
-      <DependentUpon>frmEditTableLayout.cs</DependentUpon>
+    <Compile Include="frmManageSeatingLayout.Designer.cs">
+      <DependentUpon>frmManageSeatingLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -145,11 +139,8 @@
     <EmbeddedResource Include="frmAddServer.resx">
       <DependentUpon>frmAddServer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateTableLayout.resx">
-      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmEditTableLayout.resx">
-      <DependentUpon>frmEditTableLayout.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageSeatingLayout.resx">
+      <DependentUpon>frmManageSeatingLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

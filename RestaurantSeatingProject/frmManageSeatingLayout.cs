@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
-    public partial class frmCreateTableLayout : Form {
+    public partial class frmManageSeatingLayout : Form {
 
         private List<Table> tables = new List<Table>();
         private List<AssignedTable> oAssignedList = new List<AssignedTable>();
@@ -19,7 +19,8 @@ namespace RestaurantSeatingProject {
         private int xPos;
         private int yPos;
         private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
-        public frmCreateTableLayout() {
+
+        public frmManageSeatingLayout() {
 
             InitializeComponent();
             LoadTables();
@@ -47,17 +48,21 @@ namespace RestaurantSeatingProject {
                 
                 table.TableNumber = Convert.ToInt32(txtTableNumber.Text);
                 oAssigned.TableNumber = table.TableNumber;
-                if (rdoSection1.Checked)
-                {
+
+                if (rdoSection1.Checked) {
+
                     oAssigned.SectionNum = (int)AvailableSections.Section1;
+
                 }
-                else if (rdoSection2.Checked)
-                {
+                else if (rdoSection2.Checked) {
+
                     oAssigned.SectionNum = (int)AvailableSections.Section2;
+
                 }
-                else if (rdoSection3.Checked)
-                {
+                else if (rdoSection3.Checked) {
+
                     oAssigned.SectionNum = (int)AvailableSections.Section3;
+
                 }
             }
             catch (Exception)  {
@@ -146,43 +151,44 @@ namespace RestaurantSeatingProject {
 
         }
 
-        private void mnuDeleteTable_Click(object sender, EventArgs e)
-        {
-           
+        private void btnDeleteLayout_Click(object sender, EventArgs e) {
 
-        }
+            List<Table> tables = TableDA.GetTableLayout();
 
-        private void btnDeleteLayout_Click(object sender, EventArgs e)
-        {
-            List<Table> oTables = TableDA.GetTableLayout();
-            if (Utility.IsNullOrEmpty(oTables))
-            {
+            if (Utility.IsNullOrEmpty(tables)) {
+
                 MessageBox.Show("Error: Layout was not Successfully Deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
-            else
-            {
+            else {
+
                 TableDA.DeleteLayout();
                 MessageBox.Show("Table Layout was Successfully Deleted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                
             }
+
             ResetLayout();
             btnSaveLayout.Enabled = true;
         }
 
-        private void ResetLayout(){
+        private void ResetLayout() {
+
             //Resets the table layout as if none was created
             Table.TotalTables = 1;
             tables = new List<Table>();
             txtTableNumber.Text = "1";
+
             pnlRoom.Controls.Clear();
+
         }
 
-        public void LoadTables()
-        {
+        public void LoadTables() {
+
             List<Table> oTables = TableDA.GetTableLayout();
-            if (!(Utility.IsNullOrEmpty(oTables)))
-            {
-                foreach (Table oTable in oTables)
-                {
+
+            if (!(Utility.IsNullOrEmpty(oTables))) {
+
+                foreach (Table oTable in oTables) {
+
                     Button button = new Button();
                     button.Height = 50;
                     button.Text = "Table " + Convert.ToString(oTable.TableNumber)
@@ -190,14 +196,14 @@ namespace RestaurantSeatingProject {
                     button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     pnlRoom.Controls.Add(button);
                     btnSaveLayout.Enabled = false;
+
                 }
             }
-            else
-            {
-                btnSaveLayout.Enabled = true;
-            }
-        }
+            else {
 
-        
+                btnSaveLayout.Enabled = true;
+
+            }
+        }  
     }
 }

@@ -13,7 +13,9 @@ namespace RestaurantSeatingProject {
         public int TablePositionX { get; set; }
 
         public int TablePositionY { get; set; }
+
         public string TableState { get; set; }
+
         private static int totalTables = 1;
 
         public Table() {
@@ -42,6 +44,7 @@ namespace RestaurantSeatingProject {
 
             get { return totalTables; }
             set { totalTables = value;  }
+
         }
     }
 }

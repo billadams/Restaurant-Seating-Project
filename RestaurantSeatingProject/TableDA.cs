@@ -14,14 +14,14 @@ namespace RestaurantSeatingProject {
         public static void AddTableLayout(List<Table> tables) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
-            string insertStatement = "INSERT INTO tables "
-
-                                    //uncomment for localdb
+            // Local DB
+            //string insertStatement = "INSERT INTO tables "
+                                   //uncomment for localdb
                                    //+ "(tableNum, numSeat, xposition, yposition) "
 
-                                   //uncomment for sqldb
+            // SQL DB
+            string insertStatement = "INSERT INTO tables "
                                    + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY, tableState) "
-
                                    + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY, @tableState)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
@@ -64,33 +64,33 @@ namespace RestaurantSeatingProject {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
             List<Table> tables = new List<Table>();
-            SqlCommand oCommand = new SqlCommand();
-            SqlDataReader oReader = null;
+            SqlCommand command = new SqlCommand();
+            SqlDataReader reader = null;
 
-            oCommand.CommandText = "Select * FROM tables";
-            oCommand.CommandType = CommandType.Text;
-            oCommand.Connection = connection;
+            command.CommandText = "Select * FROM tables";
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
 
             try {
                 connection.Open();
-                oReader = oCommand.ExecuteReader();
+                reader = command.ExecuteReader();
 
-                while (oReader.Read()) {
+                while (reader.Read()) {
 
                     Table table = new Table();
 
                     //uncomment for sqldb
-                    table.NumberOfSeats = (int)oReader["numberOfSeats"];
-                    table.TableNumber = (int)oReader["tableNumber"];
-                    table.TablePositionX = (int)oReader["tablePositionX"];
-                    table.TablePositionY = (int)oReader["tablePositionY"];
-                    table.TableState = (string)oReader["tableState"];
+                    table.NumberOfSeats  = (int)reader["numberOfSeats"];
+                    table.TableNumber    = (int)reader["tableNumber"];
+                    table.TablePositionX = (int)reader["tablePositionX"];
+                    table.TablePositionY = (int)reader["tablePositionY"];
+                    table.TableState     = (string)reader["tableState"];
 
                     //uncomment for localdb
-                    //table.NumberOfSeats = (int)oReader["numSeat"];
-                    //table.TableNumber = (int)oReader["tableNum"];
-                    //table.TablePositionX = (int)oReader["xposition"];
-                    //table.TablePositionY = (int)oReader["yposition"];
+                    //table.NumberOfSeats  = (int)Reader["numSeat"];
+                    //table.TableNumber    = (int)Reader["tableNum"];
+                    //table.TablePositionX = (int)Reader["xposition"];
+                    //table.TablePositionY = (int)Reader["yposition"];
                     tables.Add(table);
 
                 }
@@ -117,107 +117,120 @@ namespace RestaurantSeatingProject {
 
         }
 
-        public static Table GetTableByID(string sID)
-        {
-            SqlConnection oConnection = RestaurantConnection.GetConnection();
-            Table oTable = new Table();
-            SqlDataReader oReader = null;
-            SqlCommand oCommand = new SqlCommand();
+        public static Table GetTableByID(string id) {
 
-            oCommand.CommandText = "Select * FROM tables " + "WHERE tableNumber=@tableNumber";
-            oCommand.Parameters.AddWithValue("@tableNumber", sID);
-            oCommand.CommandType = CommandType.Text;
-            oCommand.Connection = oConnection;
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            Table table = new Table();
+            SqlDataReader reader = null;
+            SqlCommand command = new SqlCommand();
 
-            try
-            {
-                oConnection.Open();
-                oReader = oCommand.ExecuteReader();
-                while (oReader.Read())
-                {
-                    oTable.NumberOfSeats = (int)oReader["numberOfSeats"];
-                    oTable.TableNumber = (int)oReader["tableNumber"];
-                    oTable.TablePositionX = (int)oReader["tablePositionX"];
-                    oTable.TablePositionY = (int)oReader["tablePositionY"];
-                    oTable.TableState = (string)oReader["tableState"];
+            command.CommandText = "Select * FROM tables " 
+                                + "WHERE tableNumber = @tableNumber";
+            command.Parameters.AddWithValue("@tableNumber", id);
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read()) {
+
+                    table.NumberOfSeats  = (int)reader["numberOfSeats"];
+                    table.TableNumber    = (int)reader["tableNumber"];
+                    table.TablePositionX = (int)reader["tablePositionX"];
+                    table.TablePositionY = (int)reader["tablePositionY"];
+                    table.TableState     = (string)reader["tableState"];
                     
                 }
 
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
+            catch (SqlException ex) {
+
                 MessageBox.Show(ex.Message);
 
             }
+            catch (Exception ex) {
 
-            finally
-            {
-                oConnection.Close();
+                MessageBox.Show(ex.Message);
+
             }
-            return oTable;
+            finally {
+
+                connection.Close();
+
+            }
+
+            return table;
+
         }
 
-        public static void UpdateTableState(string sID, string sTableState)
-        {
-            SqlConnection oConnection = RestaurantConnection.GetConnection();
-            SqlCommand oCommand = new SqlCommand();
-            //int nSuccess = 0;
-            oCommand.CommandText = "UPDATE tables set tableState =@tableState" + " WHERE tableNumber=@tableNumber";
-            oCommand.Parameters.AddWithValue("@tableNumber", sID);
-            oCommand.Parameters.AddWithValue("@tableState", sTableState);
-            oCommand.CommandType = CommandType.Text;
-            oCommand.Connection = oConnection;
+        public static void UpdateTableState(string id, string tableState) {
 
-            try
-            {
-                oConnection.Open();
-                oCommand.ExecuteNonQuery();
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            //int success = 0;
+            command.CommandText = "UPDATE tables set tableState = @tableState" 
+                                + " WHERE tableNumber=@tableNumber";
+            command.Parameters.AddWithValue("@tableNumber", id);
+            command.Parameters.AddWithValue("@tableState", tableState);
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                command.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
+            catch (SqlException ex) {
+
                 MessageBox.Show(ex.Message);
 
             }
+            catch (Exception ex) {
 
-            finally
-            {
-                oConnection.Close();
+                MessageBox.Show(ex.Message);
+
             }
-           // return nSuccess;
+            finally {
+
+                connection.Close();
+
+            }
+
+            // return success;
+
         }
 
-        public static int DeleteLayout(){
-            SqlConnection oConnection = RestaurantConnection.GetConnection();
-            SqlCommand oCommand = new SqlCommand();
-            int nSuccess = 0;
-            oCommand.CommandText = "DELETE FROM tables DBCC CHECKIDENT ('tables',RESEED,0)";
+        public static int DeleteLayout() {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;
+            command.CommandText = "DELETE FROM tables DBCC CHECKIDENT ('tables',RESEED,0)";
             //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
-            oCommand.CommandType = CommandType.Text;
-            oCommand.Connection = oConnection;
-            try
-            {
-                oConnection.Open();
-                nSuccess = oCommand.ExecuteNonQuery();
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
             }
-            catch (SqlException ex)
-            {
-               // /MessageBox.Show(ex.Message);
+            catch (SqlException ex)  {
+
+               //MessageBox.Show(ex.Message);
+
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
+                
                 //MessageBox.Show(ex.Message);
             }
 
-            return nSuccess;           
+            return success;           
+
         }
     }
 }

@@ -34,7 +34,7 @@ namespace RestaurantSeatingProject {
         }
 
         private void mnuCreateSeatingLayout_Click(object sender, EventArgs e) {
-            Form createTableLayout = new frmCreateTableLayout();
+            Form createTableLayout = new frmManageSeatingLayout();
             createTableLayout.MdiParent = this;
             createTableLayout.Show();
         }
@@ -58,12 +58,6 @@ namespace RestaurantSeatingProject {
 
         }
 
-        private void mnuEditSeatingLayout_Click(object sender, EventArgs e) {
-            Form frmEdit = new frmEditTableLayout();
-            frmEdit.MdiParent = this;
-            frmEdit.Show();
-        }
-
         private void mnuManageServers_Click(object sender, EventArgs e)
         {
             Form frmManageServers = new frmManageServers();
@@ -84,7 +78,6 @@ namespace RestaurantSeatingProject {
             mnuAddServer.Enabled = false;
             mnuAbout.Enabled = false;
             mnuCreateSeatingLayout.Enabled = false;
-            mnuEditSeatingLayout.Enabled = false;
             mnuManageServers.Enabled = false;
             mnuSeatingLayout.Enabled = false;
             mnuReservationList.Enabled = false;
