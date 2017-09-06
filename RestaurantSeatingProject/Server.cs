@@ -15,9 +15,10 @@ namespace RestaurantSeatingProject
       EmployeeID = "";
     }
 
-    public Server(string employeeID)
-    {
-      this.EmployeeID = employeeID;
+    public Server(int id, string firstName, string lastName, string employeeID)
+      : base(id, firstName, lastName)
+    {                    
+      this.EmployeeID = employeeID; 
     }
 
     public string EmployeeID
