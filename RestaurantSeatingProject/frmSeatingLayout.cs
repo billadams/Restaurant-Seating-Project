@@ -98,9 +98,6 @@ namespace RestaurantSeatingProject
                 if (sUpdatedState.ToLower() == TableState.Empty.ToString().ToLower())
                 {
                     //assign server here
-                    AssignedTable oAssignedTable = new AssignedTable();
-                    oAssignedTable.TableNumber = Convert.ToInt16(sTableNumber);
-                    oAssignedTable.SectionNum = nSectionNumber;
                     string sServerID = (lstServers.SelectedItem as DisplayData).Value;
                     ServerDA.AssignServerToTable(sTableNumber,sServerID,nSectionNumber.ToString());
                     
@@ -109,7 +106,7 @@ namespace RestaurantSeatingProject
                 }
                 else if (sUpdatedState.ToLower() == TableState.Occupied.ToString().ToLower())
                 {
-                    //call db to remove server id from table
+                    ServerDA.FreeTable(sTableNumber);
                     sUpdatedState = TableState.Bussable.ToString();
                 }
                 else if (sUpdatedState.ToLower() == TableState.Bussable.ToString().ToLower())
@@ -138,8 +135,21 @@ namespace RestaurantSeatingProject
                 {
                     Button button = new Button();
                     button.Height = 50;
-                    button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
-                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    int nServerCheck = ServerDA.GetTableAssignment(oTable.TableNumber.ToString());
+                    if (nServerCheck == 0)
+                    {
+                        //if no server is assigned
+                        button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
+                            + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    }
+                    else{
+                        //if server is assigned
+                        Server oServer = ServerDA.GetServerbyID(nServerCheck.ToString());
+                        button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
+                             + "\nServer: " +oServer.FirstName;
+                    }
+
+
                     button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     button.Click += new EventHandler(btnSeatClick);
                     button.Tag = oTable.TableNumber;                   

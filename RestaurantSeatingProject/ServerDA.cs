@@ -44,6 +44,86 @@ namespace RestaurantSeatingProject
                 oConnection.Close();
             }
         }
+
+        public static Server GetServerbyID(string sServerID)
+        {
+            //checks to see if a current table is assigned
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            Server oServer = new Server();
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM server " + "WHERE serverID=@serverID";
+            oCommand.Parameters.AddWithValue("@serverID", sServerID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    oServer.FirstName = (string)oReader["firstName"];
+                    oServer.LastName = (string)oReader["lastName"];
+
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oServer;
+        }
+        public static int GetTableAssignment(string sTableNumber)
+        {
+            //checks to see if a current table is assigned
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            int nServerCheck = 0;
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    nServerCheck = (int)oReader["serverID"];
+
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return nServerCheck;
+        }
         public static bool AssignServerToTable(string sTableNumber, string sServerID, string sSectionNum)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
@@ -76,6 +156,43 @@ namespace RestaurantSeatingProject
             {
                 oConnection.Close();
             }
+        }
+
+        public static int FreeTable(string sID)
+        {
+            //this frees the table from the current server that it's assigned too
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+
+            oCommand.CommandText = "Delete FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+
+                return nSuccess;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return nSuccess;
         }
         public static List<Server> GetAllServers()
         {

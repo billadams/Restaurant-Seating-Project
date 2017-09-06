@@ -120,6 +120,8 @@ namespace RestaurantSeatingProject
         //    return oAssignedList;
 
         //}
+       
+
         public static int DeleteSectionAssignments()
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
@@ -156,7 +158,7 @@ namespace RestaurantSeatingProject
             SqlDataReader oReader = null;
             SqlCommand oCommand = new SqlCommand();
 
-            oCommand.CommandText = "Select * FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.CommandText = "Select * FROM assignSection " + "WHERE tableNumber=@tableNumber";
             oCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
             oCommand.CommandType = CommandType.Text;
             oCommand.Connection = oConnection;
