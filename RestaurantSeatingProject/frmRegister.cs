@@ -25,7 +25,10 @@ namespace RestaurantSeatingProject
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string sRestaurantName = txtRName.Text.Trim();
-            string sUserName = txtUserName.Text.Trim();
+            string sAddress = txtAddress.Text.Trim();
+            string sCity = txtCity.Text.Trim();
+            string sState = txtState.Text.Trim();
+            string sZip = txtZip.Text.Trim();
             string sErrorMess = "";
             Restaurant oRestaurant = new Restaurant();
             bool bIsValid = true;
@@ -36,32 +39,58 @@ namespace RestaurantSeatingProject
                 bIsValid = false;
                 sErrorMess += "Please enter a Restaurant Name";
             }
-            if (String.IsNullOrEmpty(sUserName))
+            if (String.IsNullOrEmpty(sAddress))
             {
                 bIsValid = false;
-                sErrorMess += "\nPlease enter a Username to reference this restaurant";
+                sErrorMess += "\nPlease enter an address";
             }
-
-            //DB call to check if username is taken
-            //if taken bIsValid = false and append to errormessage \nThat UserName is taken Please pick another one
+            if (String.IsNullOrEmpty(sCity))
+            {
+                bIsValid = false;
+                sErrorMess += "\nPlease enter a city";
+            }
+            if (String.IsNullOrEmpty(sState))
+            {
+                bIsValid = false;
+                sErrorMess += "\nPlease enter a state";
+            }
+            if (String.IsNullOrEmpty(sZip))
+            {
+                bIsValid = false;
+                sErrorMess += "\nPlease enter a zip code";
+            }
            
             //valid input
             if (bIsValid)
             {
                 //add Restaurant to database
                 oRestaurant.RestaurantName = sRestaurantName;
-                oRestaurant.UserName = sUserName;
+                oRestaurant.Address = sAddress;
+                oRestaurant.City = sCity;
+                oRestaurant.State = sState;
+                oRestaurant.Zip = sZip;
 
                 //db logic here to insert into database
+                RestaurantDA.AddRestaurant(oRestaurant);
+                //Success                             
+                MessageBox.Show(oRestaurant.RestaurantName + " Has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //Success
-                MessageBox.Show(oRestaurant.RestaurantName + "Has been Added!" + "\nYour username is : " + oRestaurant.UserName, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                //Deletes Table Layout because new restaurant
+                TableDA.DeleteLayout();
+                //Possibly try to find another way to refresh the main form to re run the code to check if restraunt is initialized
+                Application.Restart();
+                
+                
             }
             else
             {
                 MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void frmRegister_Load(object sender, EventArgs e)
+        {
+            txtRName.Focus();
         }
     }
 }

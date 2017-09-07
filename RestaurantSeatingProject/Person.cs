@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantSeatingProject
 {
-  class Person
+  public class Person
   {
     private int    id;
     private string firstName;
@@ -14,16 +14,16 @@ namespace RestaurantSeatingProject
 
     public Person()
     {
-      id =         0;
-      firstName = "";
-      lastName =  "";
+      Id =         0;
+      FirstName = "";
+      LastName =  "";
     }
 
     public Person(int id, string firstName, string lastName)
     {
-       this.id =        id;
-       this.firstName = firstName;
-       this.lastName =  lastName;
+       this.Id =        id;
+       this.FirstName = firstName;
+       this.LastName =  lastName;
     }
 
     public int Id

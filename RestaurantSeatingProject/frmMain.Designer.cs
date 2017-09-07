@@ -30,13 +30,14 @@
             this.mnuRegisterRestaurant = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuManager = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCreateSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAddServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuManageServers = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHost = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSeatingLayout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuReservationList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(181, 26);
+            this.mnuExit.Size = new System.Drawing.Size(108, 26);
             this.mnuExit.Text = "E&xit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -76,7 +77,7 @@
             this.mnuRegister.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuRegisterRestaurant});
             this.mnuRegister.Name = "mnuRegister";
-            this.mnuRegister.Size = new System.Drawing.Size(12, 24);
+            this.mnuRegister.Size = new System.Drawing.Size(75, 24);
             this.mnuRegister.Text = "&Register";
             // 
             // mnuRegisterRestaurant
@@ -90,9 +91,9 @@
             // 
             this.mnuManager.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCreateSeatingLayout,
-            this.mnuEditSeatingLayout,
             this.toolStripSeparator1,
-            this.mnuAddServer});
+            this.mnuAddServer,
+            this.mnuManageServers});
             this.mnuManager.Name = "mnuManager";
             this.mnuManager.Size = new System.Drawing.Size(80, 24);
             this.mnuManager.Text = "&Manager";
@@ -100,27 +101,34 @@
             // mnuCreateSeatingLayout
             // 
             this.mnuCreateSeatingLayout.Name = "mnuCreateSeatingLayout";
-            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(229, 26);
-            this.mnuCreateSeatingLayout.Text = "&Create Seating Layout";
+            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(212, 26);
+            this.mnuCreateSeatingLayout.Text = "&Seating Layout";
             this.mnuCreateSeatingLayout.Click += new System.EventHandler(this.mnuCreateSeatingLayout_Click);
             // 
-            // mnuEditSeatingLayout
+            // toolStripSeparator1
             // 
-            this.mnuEditSeatingLayout.Name = "mnuEditSeatingLayout";
-            this.mnuEditSeatingLayout.Size = new System.Drawing.Size(229, 26);
-            this.mnuEditSeatingLayout.Text = "Edit Seating Layout";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
             // 
             // mnuAddServer
             // 
             this.mnuAddServer.Name = "mnuAddServer";
-            this.mnuAddServer.Size = new System.Drawing.Size(229, 26);
+            this.mnuAddServer.Size = new System.Drawing.Size(212, 26);
             this.mnuAddServer.Text = "Add a Server";
             this.mnuAddServer.Click += new System.EventHandler(this.mnuAddServer_Click);
+            // 
+            // mnuManageServers
+            // 
+            this.mnuManageServers.Name = "mnuManageServers";
+            this.mnuManageServers.Size = new System.Drawing.Size(212, 26);
+            this.mnuManageServers.Text = "Manage Servers";
+            this.mnuManageServers.Click += new System.EventHandler(this.mnuManageServers_Click);
             // 
             // mnuHost
             // 
             this.mnuHost.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSeatingLayout});
+            this.mnuSeatingLayout,
+            this.mnuReservationList});
             this.mnuHost.Name = "mnuHost";
             this.mnuHost.Size = new System.Drawing.Size(52, 24);
             this.mnuHost.Text = "H&ost";
@@ -128,8 +136,16 @@
             // mnuSeatingLayout
             // 
             this.mnuSeatingLayout.Name = "mnuSeatingLayout";
-            this.mnuSeatingLayout.Size = new System.Drawing.Size(182, 26);
+            this.mnuSeatingLayout.Size = new System.Drawing.Size(187, 26);
             this.mnuSeatingLayout.Text = "&Seating Layout";
+            this.mnuSeatingLayout.Click += new System.EventHandler(this.mnuSeatingLayout_Click);
+            // 
+            // mnuReservationList
+            // 
+            this.mnuReservationList.Name = "mnuReservationList";
+            this.mnuReservationList.Size = new System.Drawing.Size(187, 26);
+            this.mnuReservationList.Text = "Reservation List";
+            this.mnuReservationList.Click += new System.EventHandler(this.mnuReservationList_Click);
             // 
             // mnuHelp
             // 
@@ -142,13 +158,9 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(253, 26);
-            this.mnuAbout.Text = "About Restaurant Seating";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
+            this.mnuAbout.Size = new System.Drawing.Size(145, 26);
+            this.mnuAbout.Text = "About Us";
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // frmMain
             // 
@@ -179,11 +191,12 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSeatingLayout;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditSeatingLayout;
         private System.Windows.Forms.ToolStripMenuItem mnuAddServer;
         private System.Windows.Forms.ToolStripMenuItem mnuRegister;
         private System.Windows.Forms.ToolStripMenuItem mnuRegisterRestaurant;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuManageServers;
+        private System.Windows.Forms.ToolStripMenuItem mnuReservationList;
     }
 }
 

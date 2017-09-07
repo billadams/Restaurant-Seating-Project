@@ -13,10 +13,10 @@ namespace RestaurantSeatingProject
     class ServerDA
     {
 
-        public static void AddServer(Server oServer)
+        public static bool AddServer(Server oServer)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
-            string insertString = "INSERT into servers (FirstName, LastName) values (@FirstName, @LastName)";
+            string insertString = "INSERT into server (firstName, lastName) values (@FirstName, @LastName)";
 
             SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
 
@@ -26,14 +26,17 @@ namespace RestaurantSeatingProject
             {
                 oConnection.Open();
                 insertCommand.ExecuteNonQuery();
+                return true;
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
 
             finally
@@ -42,6 +45,155 @@ namespace RestaurantSeatingProject
             }
         }
 
+        public static Server GetServerbyID(string sServerID)
+        {
+            //checks to see if a current table is assigned
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            Server oServer = new Server();
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM server " + "WHERE serverID=@serverID";
+            oCommand.Parameters.AddWithValue("@serverID", sServerID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    oServer.FirstName = (string)oReader["firstName"];
+                    oServer.LastName = (string)oReader["lastName"];
+
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oServer;
+        }
+        public static int GetTableAssignment(string sTableNumber)
+        {
+            //checks to see if a current table is assigned
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            int nServerCheck = 0;
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    nServerCheck = (int)oReader["serverID"];
+
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return nServerCheck;
+        }
+        public static bool AssignServerToTable(string sTableNumber, string sServerID, string sSectionNum)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+
+            string insertString = "INSERT into assignTable (tableNumber, serverID, sectionNum) values (@tableNumber, @serverID, @sectionNum)";
+
+            SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
+
+            insertCommand.Parameters.AddWithValue("@tableNumber", sTableNumber);
+            insertCommand.Parameters.AddWithValue("@serverID", sServerID);
+            insertCommand.Parameters.AddWithValue("@sectionNum", sSectionNum);
+            try
+            {
+                oConnection.Open();
+                insertCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+        }
+
+        public static int FreeTable(string sID)
+        {
+            //this frees the table from the current server that it's assigned too
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+
+            oCommand.CommandText = "Delete FROM assignTable " + "WHERE tableNumber=@tableNumber";
+            oCommand.Parameters.AddWithValue("@tableNumber", sID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try
+            {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+
+                return nSuccess;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return nSuccess;
+        }
         public static List<Server> GetAllServers()
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
@@ -49,7 +201,7 @@ namespace RestaurantSeatingProject
             SqlCommand oCommand = new SqlCommand();
             SqlDataReader oReader = null;
 
-            oCommand.CommandText = "Select * FROM servers";
+            oCommand.CommandText = "Select * FROM server";
             oCommand.CommandType = CommandType.Text;
             oCommand.Connection = oConnection;
 
@@ -62,7 +214,8 @@ namespace RestaurantSeatingProject
                 {
                     Server oServer = new Server();
                     oServer.FirstName = (string)oReader["firstName"];
-                    oServer.FirstName = (string)oReader["lastName"];
+                    oServer.LastName = (string)oReader["lastName"];
+                    oServer.Id = (int)oReader["serverID"];
                     oServers.Add(oServer);
                 }
 
@@ -89,12 +242,11 @@ namespace RestaurantSeatingProject
         public static int DeleteServer(string sID)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
-            List<Server> oServers = new List<Server>();
             SqlCommand oCommand = new SqlCommand();
             int nSuccess = 0;
 
-            oCommand.CommandText = "Delete FROM servers " + "WHERE ID=@Id";
-            oCommand.Parameters.AddWithValue("@Id", sID);
+            oCommand.CommandText = "Delete FROM server " + "WHERE serverID=@serverID";
+            oCommand.Parameters.AddWithValue("@serverID", sID);
             oCommand.CommandType = CommandType.Text;
             oCommand.Connection = oConnection;
 

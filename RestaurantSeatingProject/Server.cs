@@ -6,19 +6,32 @@ using System.Threading.Tasks;
 
 namespace RestaurantSeatingProject
 {
-    class Server
+  public class Server : Person
+  {
+    private string employeeID;
+
+    public Server()
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Server()
-        {
-
-        }
-
-        public Server(string sFirstName, string sLastName)
-        {
-            this.FirstName = sFirstName;
-            this.LastName = sLastName;
-        }
+      EmployeeID = "";
     }
+
+    public Server(int id, string firstName, string lastName, string employeeID)
+      : base(id, firstName, lastName)
+    {                    
+      this.EmployeeID = employeeID; 
+    }
+
+    public string EmployeeID
+    {
+      get
+      {
+        return employeeID;
+      }
+
+      set
+      {
+        employeeID = value;
+      }
+    }
+  }
 }

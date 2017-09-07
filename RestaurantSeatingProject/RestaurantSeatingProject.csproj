@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,25 +61,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignSection.cs" />
+    <Compile Include="AssignedTable.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="DisplayData.cs" />
     <Compile Include="FormValidation.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddServer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddServer.Designer.cs">
       <DependentUpon>frmAddServer.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCreateTableLayout.cs">
+    <Compile Include="frmManageSeatingLayout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateTableLayout.Designer.cs">
-      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
+    <Compile Include="frmManageSeatingLayout.Designer.cs">
+      <DependentUpon>frmManageSeatingLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmManageServers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageServers.Designer.cs">
+      <DependentUpon>frmManageServers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReservationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReservationList.Designer.cs">
+      <DependentUpon>frmReservationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeatingLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeatingLayout.Designer.cs">
+      <DependentUpon>frmSeatingLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
@@ -75,6 +116,7 @@
     <Compile Include="frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReservationDA.cs" />
     <Compile Include="Restaurant.cs" />
     <Compile Include="RestaurantConnection.cs" />
     <Compile Include="RestaurantDA.cs" />
@@ -85,19 +127,32 @@
     <Compile Include="Table.cs" />
     <Compile Include="TableDA.cs" />
     <Compile Include="TableLayout.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Yorkie1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Yorkie1DataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddServer.resx">
       <DependentUpon>frmAddServer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateTableLayout.resx">
-      <DependentUpon>frmCreateTableLayout.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageSeatingLayout.resx">
+      <DependentUpon>frmManageSeatingLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageServers.resx">
+      <DependentUpon>frmManageServers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReservationList.resx">
+      <DependentUpon>frmReservationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeatingLayout.resx">
+      <DependentUpon>frmSeatingLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -134,6 +189,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

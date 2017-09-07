@@ -12,10 +12,29 @@ namespace RestaurantSeatingProject {
     public partial class frmMain : Form {
         public frmMain() {
             InitializeComponent();
+
+            //SectionDA.AddStaticSections();            
+            //RestaurantDA.DeleteRestaurant();
+            //SectionDA.DeleteSectionAssignments();
+            //DeleteSectionAssignments();
+            Restaurant oRestaurant = RestaurantDA.GetRestaurantInfo();
+           if (oRestaurant.RestaurantID != 0)
+           {
+               //restaurant has been set
+               CurrentRestaurant();
+               mnuAbout.Text = "About " + oRestaurant.RestaurantName;
+           }
+           else
+           {
+               //if you want to force a delete of restraunt call RestaurantDA.DeleteRestaurant();
+               //restaurant hasnt been set
+               NoCurrentRestaurant();
+               
+           }
         }
 
         private void mnuCreateSeatingLayout_Click(object sender, EventArgs e) {
-            Form createTableLayout = new frmCreateTableLayout();
+            Form createTableLayout = new frmManageSeatingLayout();
             createTableLayout.MdiParent = this;
             createTableLayout.Show();
         }
@@ -36,6 +55,51 @@ namespace RestaurantSeatingProject {
             Form frmRegister = new frmRegister();
             frmRegister.MdiParent = this;
             frmRegister.Show();
+
+        }
+
+        private void mnuManageServers_Click(object sender, EventArgs e)
+        {
+            Form frmManageServers = new frmManageServers();
+            frmManageServers.MdiParent = this;
+            frmManageServers.Show();
+        }
+
+        private void mnuReservationList_Click(object sender, EventArgs e)
+        {
+            Form frmReservationList = new frmReservationList();
+            frmReservationList.MdiParent = this;
+            frmReservationList.Show();
+        }
+
+        private void NoCurrentRestaurant()
+        {
+            
+            mnuAddServer.Enabled = false;
+            mnuAbout.Enabled = false;
+            mnuCreateSeatingLayout.Enabled = false;
+            mnuManageServers.Enabled = false;
+            mnuSeatingLayout.Enabled = false;
+            mnuReservationList.Enabled = false;
+        }
+
+        private void CurrentRestaurant()
+        {
+            mnuRegisterRestaurant.Enabled = false;
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            frmAbout oFrmAbout = new frmAbout();
+            oFrmAbout.MdiParent = this;
+            oFrmAbout.Show();
+        }
+
+        private void mnuSeatingLayout_Click(object sender, EventArgs e)
+        {
+            frmSeatingLayout oFrmSeatingLayout = new frmSeatingLayout();
+            oFrmSeatingLayout.MdiParent = this;
+            oFrmSeatingLayout.Show();
         }
     }
 }
