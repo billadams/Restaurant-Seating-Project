@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignSection.cs" />
     <Compile Include="FormValidation.cs" />
     <Compile Include="frmAddServer.cs">
       <SubType>Form</SubType>
