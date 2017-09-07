@@ -8,7 +8,7 @@ namespace RestaurantSeatingProject {
 
         public int TableNumber { get; set; }
 
-        public int NumberOfSeats { get; set; }
+        public virtual int NumberOfSeats { get; set; }
 
         public int TablePositionX { get; set; }
 
