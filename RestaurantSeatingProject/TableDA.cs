@@ -171,7 +171,7 @@ namespace RestaurantSeatingProject {
             SqlCommand command = new SqlCommand();
             //int success = 0;
             command.CommandText = "UPDATE tables set tableState = @tableState " 
-                                + "sWHERE tableNumber=@tableNumber";
+                                + "WHERE tableNumber=@tableNumber";
             command.Parameters.AddWithValue("@tableNumber", id);
             command.Parameters.AddWithValue("@tableState", tableState);
             command.CommandType = CommandType.Text;
