@@ -170,8 +170,8 @@ namespace RestaurantSeatingProject {
             SqlConnection connection = RestaurantConnection.GetConnection();
             SqlCommand command = new SqlCommand();
             //int success = 0;
-            command.CommandText = "UPDATE tables set tableState = @tableState" 
-                                + " WHERE tableNumber=@tableNumber";
+            command.CommandText = "UPDATE tables set tableState = @tableState " 
+                                + "sWHERE tableNumber=@tableNumber";
             command.Parameters.AddWithValue("@tableNumber", id);
             command.Parameters.AddWithValue("@tableState", tableState);
             command.CommandType = CommandType.Text;
@@ -208,7 +208,8 @@ namespace RestaurantSeatingProject {
             SqlConnection connection = RestaurantConnection.GetConnection();
             SqlCommand command = new SqlCommand();
             int success = 0;
-            command.CommandText = "DELETE FROM tables DBCC CHECKIDENT ('tables',RESEED,0)";
+            command.CommandText = "DELETE FROM tables"; 
+                                //+ "DBCC CHECKIDENT ('tables', RESEED, 0)";
             //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
             command.CommandType = CommandType.Text;
             command.Connection = connection;
@@ -221,12 +222,12 @@ namespace RestaurantSeatingProject {
             }
             catch (SqlException ex)  {
 
-               //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
 
             }
             catch (Exception ex) {
-                
-                //MessageBox.Show(ex.Message);
+
+                MessageBox.Show(ex.Message);
             }
 
             return success;           

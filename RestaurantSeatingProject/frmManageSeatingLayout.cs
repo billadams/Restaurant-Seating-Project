@@ -24,6 +24,7 @@ namespace RestaurantSeatingProject {
 
             InitializeComponent();
             LoadTables();
+            lblMessage.Text = "";
 
         }
 
@@ -183,21 +184,33 @@ namespace RestaurantSeatingProject {
 
         public void LoadTables() {
 
-            List<Table> oTables = TableDA.GetTableLayout();
+            List<Table> tables = TableDA.GetTableLayout();
+            // Set the total number of tables on the form based on the count of the tables array returned.
+            //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
-            if (!(Utility.IsNullOrEmpty(oTables))) {
+            if (!(Utility.IsNullOrEmpty(tables))) {
 
-                foreach (Table oTable in oTables) {
+                foreach (Table eachTable in tables) {
+
+                    table = eachTable;
 
                     Button button = new Button();
                     button.Height = 50;
-                    button.Text = "Table " + Convert.ToString(oTable.TableNumber)
-                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
-                    button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
+                    button.Text = "Table " + Convert.ToString(table.TableNumber)
+                        + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
+                    button.Location = new Point(table.TablePositionX, table.TablePositionY);
                     pnlRoom.Controls.Add(button);
+
+                    button.MouseDown += button_MouseDown;
+                    button.MouseUp += button_MouseUp;
+                    button.MouseMove += button_MouseMove;
+
                     btnSaveLayout.Enabled = false;
 
                 }
+
+                txtTableNumber.Text = Convert.ToString(Table.TotalTables);
+
             }
             else {
 
