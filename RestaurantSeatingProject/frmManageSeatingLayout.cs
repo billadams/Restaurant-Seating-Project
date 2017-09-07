@@ -13,8 +13,8 @@ namespace RestaurantSeatingProject {
     public partial class frmManageSeatingLayout : Form {
 
         private List<Table> tables = new List<Table>();
-        private List<AssignedTable> oAssignedList = new List<AssignedTable>();
-        AssignedTable oAssigned = null;
+        private List<AssignedTable> assignedList = new List<AssignedTable>();
+        AssignedTable assigned = null;
         Table table;
         private int xPos;
         private int yPos;
@@ -38,7 +38,7 @@ namespace RestaurantSeatingProject {
         private void btnAddTable_Click(object sender, EventArgs e) {
 
             table = new Table();
-            oAssigned = new AssignedTable();
+            assigned = new AssignedTable();
             int startLeft = pnlRoom.Left;
             int startTop = pnlRoom.Top; 
 
@@ -48,21 +48,21 @@ namespace RestaurantSeatingProject {
             try {
                 
                 table.TableNumber = Convert.ToInt32(txtTableNumber.Text);
-                oAssigned.TableNumber = table.TableNumber;
+                assigned.TableNumber = table.TableNumber;
 
                 if (rdoSection1.Checked) {
 
-                    oAssigned.SectionNum = (int)AvailableSections.Section1;
+                    assigned.SectionNum = (int)AvailableSections.Section1;
 
                 }
                 else if (rdoSection2.Checked) {
 
-                    oAssigned.SectionNum = (int)AvailableSections.Section2;
+                    assigned.SectionNum = (int)AvailableSections.Section2;
 
                 }
                 else if (rdoSection3.Checked) {
 
-                    oAssigned.SectionNum = (int)AvailableSections.Section3;
+                    assigned.SectionNum = (int)AvailableSections.Section3;
 
                 }
             }
@@ -90,7 +90,7 @@ namespace RestaurantSeatingProject {
                 table.TablePositionX = startLeft;
                 table.TablePositionY = startTop;
                 tables.Add(table);
-                oAssignedList.Add(oAssigned);
+                assignedList.Add(assigned);
                 Button button = new Button();
                 button.Height = 50;
                 button.Text = "Table " + Convert.ToString(table.TableNumber)
@@ -146,7 +146,7 @@ namespace RestaurantSeatingProject {
         private void btnSaveLayout_Click(object sender, EventArgs e) {
 
             TableDA.AddTableLayout(tables);
-            SectionDA.AssignTableToSection(oAssignedList);
+            SectionDA.AssignTableToSection(assignedList);
             lblMessage.Text = "Table layout saved.";
             btnSaveLayout.Enabled = false;
 
@@ -173,7 +173,7 @@ namespace RestaurantSeatingProject {
 
         private void ResetLayout() {
 
-            //Resets the table layout as if none was created
+            // Resets the table layout as if none was created
             Table.TotalTables = 1;
             tables = new List<Table>();
             txtTableNumber.Text = "1";
@@ -185,8 +185,6 @@ namespace RestaurantSeatingProject {
         public void LoadTables() {
 
             List<Table> tables = TableDA.GetTableLayout();
-            // Set the total number of tables on the form based on the count of the tables array returned.
-            //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
             if (!(Utility.IsNullOrEmpty(tables))) {
 

@@ -34,7 +34,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddBarSeat = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTableManager = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -43,22 +43,19 @@
             this.rdoSection3 = new System.Windows.Forms.RadioButton();
             this.rdoSection2 = new System.Windows.Forms.RadioButton();
             this.rdoSection1 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabBarManager = new System.Windows.Forms.TabPage();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnDeleteLayout = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnAddBar = new System.Windows.Forms.Button();
+            this.btnDeleteBar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabTableManager.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.tabBarManager.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSaveLayout
@@ -145,12 +142,12 @@
             // 
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Location = new System.Drawing.Point(5, 71);
+            this.groupBox2.Controls.Add(this.btnAddBarSeat);
+            this.groupBox2.Location = new System.Drawing.Point(5, 4);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(555, 127);
+            this.groupBox2.Size = new System.Drawing.Size(283, 269);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add New Barseat";
@@ -158,7 +155,7 @@
             // textBox2
             // 
             this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(296, 28);
+            this.textBox2.Location = new System.Drawing.Point(167, 90);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(39, 22);
@@ -168,21 +165,21 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(188, 31);
+            this.label4.Location = new System.Drawing.Point(73, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Bar Number:";
             // 
-            // button1
+            // btnAddBarSeat
             // 
-            this.button1.Location = new System.Drawing.Point(192, 62);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 46);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "&Add New Barseat";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddBarSeat.Location = new System.Drawing.Point(77, 124);
+            this.btnAddBarSeat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddBarSeat.Name = "btnAddBarSeat";
+            this.btnAddBarSeat.Size = new System.Drawing.Size(131, 46);
+            this.btnAddBarSeat.TabIndex = 2;
+            this.btnAddBarSeat.Text = "&Add Barseat";
+            this.btnAddBarSeat.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -211,11 +208,11 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.mnuDeleteTable);
-            this.groupBox4.Location = new System.Drawing.Point(277, 6);
+            this.groupBox4.Location = new System.Drawing.Point(289, 2);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(283, 265);
+            this.groupBox4.Size = new System.Drawing.Size(271, 269);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Remove Tables";
@@ -235,17 +232,16 @@
             this.groupBox1.Controls.Add(this.rdoSection3);
             this.groupBox1.Controls.Add(this.rdoSection2);
             this.groupBox1.Controls.Add(this.rdoSection1);
-            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtNumberOfSeats);
             this.groupBox1.Controls.Add(this.txtTableNumber);
             this.groupBox1.Controls.Add(this.btnAddTable);
-            this.groupBox1.Location = new System.Drawing.Point(5, 6);
+            this.groupBox1.Location = new System.Drawing.Point(5, 2);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(259, 265);
+            this.groupBox1.Size = new System.Drawing.Size(278, 269);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Tables";
@@ -285,71 +281,9 @@
             this.rdoSection1.Text = "Section 1";
             this.rdoSection1.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Location = new System.Drawing.Point(265, 0);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(289, 265);
-            this.groupBox3.TabIndex = 8;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Add New Tables";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Table Number:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Number of Seats:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(179, 105);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(39, 22);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "4";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(179, 76);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(39, 22);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "1";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(75, 138);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 46);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "&Add Table";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // tabBarManager
             // 
+            this.tabBarManager.Controls.Add(this.groupBox5);
             this.tabBarManager.Controls.Add(this.groupBox2);
             this.tabBarManager.Location = new System.Drawing.Point(4, 25);
             this.tabBarManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -380,6 +314,39 @@
             this.btnDeleteLayout.UseVisualStyleBackColor = true;
             this.btnDeleteLayout.Click += new System.EventHandler(this.btnDeleteLayout_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDeleteBar);
+            this.groupBox5.Controls.Add(this.btnAddBar);
+            this.groupBox5.Location = new System.Drawing.Point(294, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(252, 269);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Add New Barseat";
+            // 
+            // btnAddBar
+            // 
+            this.btnAddBar.Location = new System.Drawing.Point(63, 81);
+            this.btnAddBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddBar.Name = "btnAddBar";
+            this.btnAddBar.Size = new System.Drawing.Size(131, 46);
+            this.btnAddBar.TabIndex = 2;
+            this.btnAddBar.Text = "Add Bar";
+            this.btnAddBar.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteBar
+            // 
+            this.btnDeleteBar.Location = new System.Drawing.Point(63, 146);
+            this.btnDeleteBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteBar.Name = "btnDeleteBar";
+            this.btnDeleteBar.Size = new System.Drawing.Size(131, 46);
+            this.btnDeleteBar.TabIndex = 3;
+            this.btnDeleteBar.Text = "Delete Bar";
+            this.btnDeleteBar.UseVisualStyleBackColor = true;
+            // 
             // frmManageSeatingLayout
             // 
             this.AcceptButton = this.btnSaveLayout;
@@ -405,9 +372,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.tabBarManager.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,7 +392,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddBarSeat;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTableManager;
         private System.Windows.Forms.TabPage tabBarManager;
@@ -436,13 +402,10 @@
         private System.Windows.Forms.RadioButton rdoSection3;
         private System.Windows.Forms.RadioButton rdoSection2;
         private System.Windows.Forms.RadioButton rdoSection1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnDeleteLayout;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnDeleteBar;
+        private System.Windows.Forms.Button btnAddBar;
     }
 }
