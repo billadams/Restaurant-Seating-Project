@@ -38,10 +38,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTableManager = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.mnuDeleteTable = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoSection3 = new System.Windows.Forms.RadioButton();
@@ -214,10 +210,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBox6);
-            this.groupBox4.Controls.Add(this.textBox7);
             this.groupBox4.Controls.Add(this.mnuDeleteTable);
             this.groupBox4.Location = new System.Drawing.Point(277, 6);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -226,48 +218,11 @@
             this.groupBox4.Size = new System.Drawing.Size(283, 265);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Add New Tables";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(69, 79);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 17);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Table Number:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(53, 110);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 17);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Number of Seats:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(179, 105);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(39, 22);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.Text = "4";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(179, 76);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(39, 22);
-            this.textBox7.TabIndex = 5;
-            this.textBox7.Text = "1";
+            this.groupBox4.Text = "Remove Tables";
             // 
             // mnuDeleteTable
             // 
-            this.mnuDeleteTable.Location = new System.Drawing.Point(75, 138);
+            this.mnuDeleteTable.Location = new System.Drawing.Point(80, 115);
             this.mnuDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mnuDeleteTable.Name = "mnuDeleteTable";
             this.mnuDeleteTable.Size = new System.Drawing.Size(131, 46);
@@ -293,12 +248,12 @@
             this.groupBox1.Size = new System.Drawing.Size(259, 265);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add New Tables";
+            this.groupBox1.Text = "Add Tables";
             // 
             // rdoSection3
             // 
             this.rdoSection3.AutoSize = true;
-            this.rdoSection3.Location = new System.Drawing.Point(79, 239);
+            this.rdoSection3.Location = new System.Drawing.Point(96, 239);
             this.rdoSection3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection3.Name = "rdoSection3";
             this.rdoSection3.Size = new System.Drawing.Size(88, 21);
@@ -309,7 +264,7 @@
             // rdoSection2
             // 
             this.rdoSection2.AutoSize = true;
-            this.rdoSection2.Location = new System.Drawing.Point(79, 214);
+            this.rdoSection2.Location = new System.Drawing.Point(96, 214);
             this.rdoSection2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection2.Name = "rdoSection2";
             this.rdoSection2.Size = new System.Drawing.Size(88, 21);
@@ -321,7 +276,7 @@
             // 
             this.rdoSection1.AutoSize = true;
             this.rdoSection1.Checked = true;
-            this.rdoSection1.Location = new System.Drawing.Point(79, 188);
+            this.rdoSection1.Location = new System.Drawing.Point(96, 188);
             this.rdoSection1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection1.Name = "rdoSection1";
             this.rdoSection1.Size = new System.Drawing.Size(88, 21);
@@ -448,7 +403,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabTableManager.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -478,10 +432,6 @@
         private System.Windows.Forms.TabPage tabBarManager;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button mnuDeleteTable;
         private System.Windows.Forms.RadioButton rdoSection3;
         private System.Windows.Forms.RadioButton rdoSection2;

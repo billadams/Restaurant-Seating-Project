@@ -24,6 +24,7 @@ namespace RestaurantSeatingProject {
 
             InitializeComponent();
             LoadTables();
+            lblMessage.Text = "";
 
         }
 
@@ -185,13 +186,13 @@ namespace RestaurantSeatingProject {
 
             List<Table> tables = TableDA.GetTableLayout();
             // Set the total number of tables on the form based on the count of the tables array returned.
-            Table.TotalTables = tables.Count + 1;
+            //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
             if (!(Utility.IsNullOrEmpty(tables))) {
 
-                foreach (Table dbTable in tables) {
+                foreach (Table eachTable in tables) {
 
-                    table = new Table(dbTable.TableNumber, dbTable.NumberOfSeats, dbTable.TablePositionX, dbTable.TablePositionY, "Empty");
+                    table = eachTable;
 
                     Button button = new Button();
                     button.Height = 50;
@@ -204,10 +205,12 @@ namespace RestaurantSeatingProject {
                     button.MouseUp += button_MouseUp;
                     button.MouseMove += button_MouseMove;
 
-                    txtTableNumber.Text = Convert.ToString(Table.TotalTables);
                     btnSaveLayout.Enabled = false;
 
                 }
+
+                txtTableNumber.Text = Convert.ToString(Table.TotalTables);
+
             }
             else {
 
