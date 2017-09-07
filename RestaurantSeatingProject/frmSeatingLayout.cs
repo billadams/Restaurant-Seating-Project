@@ -17,6 +17,7 @@ namespace RestaurantSeatingProject
             InitializeComponent();
             LoadTables();
             DisplayListBoxData();
+            DisplayReservationList();
            // List<AssignedTable> oAssigned = SectionDA.GetAssignedTables();
         }
        private enum TableState { Empty, Occupied, Bussable };
@@ -172,6 +173,20 @@ namespace RestaurantSeatingProject
             }
             lstServers.DisplayMember = "Text";
             lstServers.DataSource = oDataDisplay;
+        }
+        private void DisplayReservationList()
+        {
+            List<Customer> oReservationList = ReservationDA.GetReservationList();
+
+
+            List<DisplayData> oDataDisplay = new List<DisplayData>();
+
+            foreach (Customer oCustomer in oReservationList)
+            {
+                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.ReservationTime });
+            }
+            lstReservations.DisplayMember = "Text";
+            lstReservations.DataSource = oDataDisplay;
         }
 
         private void rdoAssignTable_CheckedChanged(object sender, EventArgs e)
