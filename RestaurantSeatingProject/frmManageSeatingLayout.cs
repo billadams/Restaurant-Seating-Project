@@ -19,6 +19,8 @@ namespace RestaurantSeatingProject {
         private int xPos;
         private int yPos;
         private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
+        // Flag for deleting a table
+        bool deleteTable = false;
 
         public frmManageSeatingLayout() {
 
@@ -93,6 +95,7 @@ namespace RestaurantSeatingProject {
                 assignedList.Add(assigned);
                 Button button = new Button();
                 button.Height = 50;
+                button.Tag = table.TableNumber;
                 button.Text = "Table " + Convert.ToString(table.TableNumber)
                     + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                 button.Location = new Point(startLeft, startTop);
@@ -113,12 +116,31 @@ namespace RestaurantSeatingProject {
         }
 
         public void button_MouseDown(object sender, MouseEventArgs e) {
-        
-            if (e.Button == MouseButtons.Left) {
+
+            Button button = (Button)sender;
+
+            if (deleteTable == true) {
+
+                string tableID = Convert.ToString(button.Tag);
+                table = TableDA.GetTableByID(tableID);
+
+                TableDA.DeleteTable(table);
+                UpdateView();
+
+
+                // Set deleteTable back to false so it's ready to be used in another delete.
+                deleteTable = false;
+
+            }
+            else if (e.Button == MouseButtons.Left) {
                 xPos = e.X;
                 yPos = e.Y;
 
             }
+        }
+
+        private void UpdateView() {
+            throw new NotImplementedException();
         }
 
         public void button_MouseMove(object sender, MouseEventArgs e) {
@@ -194,6 +216,7 @@ namespace RestaurantSeatingProject {
 
                     Button button = new Button();
                     button.Height = 50;
+                    button.Tag = table.TableNumber;
                     button.Text = "Table " + Convert.ToString(table.TableNumber)
                         + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                     button.Location = new Point(table.TablePositionX, table.TablePositionY);
@@ -215,6 +238,12 @@ namespace RestaurantSeatingProject {
                 btnSaveLayout.Enabled = true;
 
             }
-        }  
+        }
+
+        private void mnuDeleteTable_Click(object sender, EventArgs e) {
+
+            deleteTable = true;
+
+        }
     }
 }

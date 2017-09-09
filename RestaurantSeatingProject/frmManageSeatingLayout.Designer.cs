@@ -44,11 +44,11 @@
             this.rdoSection2 = new System.Windows.Forms.RadioButton();
             this.rdoSection1 = new System.Windows.Forms.RadioButton();
             this.tabBarManager = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteBar = new System.Windows.Forms.Button();
+            this.btnAddBar = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnDeleteLayout = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnAddBar = new System.Windows.Forms.Button();
-            this.btnDeleteBar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabTableManager.SuspendLayout();
@@ -226,6 +226,7 @@
             this.mnuDeleteTable.TabIndex = 2;
             this.mnuDeleteTable.Text = "&Delete Table";
             this.mnuDeleteTable.UseVisualStyleBackColor = true;
+            this.mnuDeleteTable.Click += new System.EventHandler(this.mnuDeleteTable_Click);
             // 
             // groupBox1
             // 
@@ -294,6 +295,39 @@
             this.tabBarManager.Text = "Bar Manager";
             this.tabBarManager.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDeleteBar);
+            this.groupBox5.Controls.Add(this.btnAddBar);
+            this.groupBox5.Location = new System.Drawing.Point(294, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(252, 269);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Add New Barseat";
+            // 
+            // btnDeleteBar
+            // 
+            this.btnDeleteBar.Location = new System.Drawing.Point(63, 146);
+            this.btnDeleteBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteBar.Name = "btnDeleteBar";
+            this.btnDeleteBar.Size = new System.Drawing.Size(131, 46);
+            this.btnDeleteBar.TabIndex = 3;
+            this.btnDeleteBar.Text = "Delete Bar";
+            this.btnDeleteBar.UseVisualStyleBackColor = true;
+            // 
+            // btnAddBar
+            // 
+            this.btnAddBar.Location = new System.Drawing.Point(63, 81);
+            this.btnAddBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddBar.Name = "btnAddBar";
+            this.btnAddBar.Size = new System.Drawing.Size(131, 46);
+            this.btnAddBar.TabIndex = 2;
+            this.btnAddBar.Text = "Add Bar";
+            this.btnAddBar.UseVisualStyleBackColor = true;
+            // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
@@ -313,39 +347,6 @@
             this.btnDeleteLayout.Text = "&Delete Layout";
             this.btnDeleteLayout.UseVisualStyleBackColor = true;
             this.btnDeleteLayout.Click += new System.EventHandler(this.btnDeleteLayout_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnDeleteBar);
-            this.groupBox5.Controls.Add(this.btnAddBar);
-            this.groupBox5.Location = new System.Drawing.Point(294, 4);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(252, 269);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Add New Barseat";
-            // 
-            // btnAddBar
-            // 
-            this.btnAddBar.Location = new System.Drawing.Point(63, 81);
-            this.btnAddBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddBar.Name = "btnAddBar";
-            this.btnAddBar.Size = new System.Drawing.Size(131, 46);
-            this.btnAddBar.TabIndex = 2;
-            this.btnAddBar.Text = "Add Bar";
-            this.btnAddBar.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteBar
-            // 
-            this.btnDeleteBar.Location = new System.Drawing.Point(63, 146);
-            this.btnDeleteBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteBar.Name = "btnDeleteBar";
-            this.btnDeleteBar.Size = new System.Drawing.Size(131, 46);
-            this.btnDeleteBar.TabIndex = 3;
-            this.btnDeleteBar.Text = "Delete Bar";
-            this.btnDeleteBar.UseVisualStyleBackColor = true;
             // 
             // frmManageSeatingLayout
             // 

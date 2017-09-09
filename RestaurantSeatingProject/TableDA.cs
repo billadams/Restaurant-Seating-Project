@@ -203,6 +203,36 @@ namespace RestaurantSeatingProject {
 
         }
 
+        public static int DeleteTable(Table table) {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;
+            command.CommandText = "DELETE FROM tables";
+            //+ "DBCC CHECKIDENT ('tables', RESEED, 0)";
+            //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
+        }
+
         public static int DeleteLayout() {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
