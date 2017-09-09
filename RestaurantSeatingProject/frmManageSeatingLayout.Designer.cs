@@ -100,7 +100,6 @@
             // 
             // txtTableNumber
             // 
-            this.txtTableNumber.Enabled = false;
             this.txtTableNumber.Location = new System.Drawing.Point(179, 76);
             this.txtTableNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTableNumber.Name = "txtTableNumber";

@@ -127,7 +127,6 @@ namespace RestaurantSeatingProject {
                 TableDA.DeleteTable(table);
                 UpdateView();
 
-
                 // Set deleteTable back to false so it's ready to be used in another delete.
                 deleteTable = false;
 
@@ -140,7 +139,16 @@ namespace RestaurantSeatingProject {
         }
 
         private void UpdateView() {
-            throw new NotImplementedException();
+
+            // Resets the table layout as if none was created
+            //Table.TotalTables = 1;
+            //tables = new List<Table>();
+            //txtTableNumber.Text = "1";
+
+            pnlRoom.Controls.Clear();
+            Table.TotalTables = 1;
+            LoadTables();
+
         }
 
         public void button_MouseMove(object sender, MouseEventArgs e) {
@@ -226,7 +234,7 @@ namespace RestaurantSeatingProject {
                     button.MouseUp += button_MouseUp;
                     button.MouseMove += button_MouseMove;
 
-                    btnSaveLayout.Enabled = false;
+                    //btnSaveLayout.Enabled = false;
 
                 }
 
