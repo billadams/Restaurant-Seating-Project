@@ -124,6 +124,48 @@ namespace RestaurantSeatingProject
             }
             return nServerCheck;
         }
+
+        public static List<Assignments> GetAllTableAssignments()
+        {
+            //checks to see if a current table is assigned
+            SqlConnection oConnection = RestaurantConnection.GetConnection();            
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+            List<Assignments> oAssignments = new List<Assignments>();
+
+            oCommand.CommandText = "Select * FROM assignTable order by sectionNum ASC";            
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    Assignments oAssignment = new Assignments();
+                   oAssignment.ServerID  = (int)oReader["serverID"];
+                   oAssignment.SectionNumber = (int)oReader["sectionNum"];
+                   oAssignment.TableNumber = (int)oReader["tableNumber"];
+                   oAssignments.Add(oAssignment);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return oAssignments;
+        }
         public static bool AssignServerToTable(string sTableNumber, string sServerID, string sSectionNum)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();

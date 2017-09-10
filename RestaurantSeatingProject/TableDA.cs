@@ -239,8 +239,6 @@ namespace RestaurantSeatingProject {
 
             }
 
-            // return success;
-
         }
 
         public static int DeleteTable(Table table) {
@@ -280,8 +278,7 @@ namespace RestaurantSeatingProject {
             SqlCommand command = new SqlCommand();
             int success = 0;
             command.CommandText = "DELETE FROM tables"; 
-                                //+ "DBCC CHECKIDENT ('tables', RESEED, 0)";
-            //Delete works however an sql error is outputted so messageboxes are commented out for now but this will delete the table layout            
+                                //+ "DBCC CHECKIDENT ('tables', RESEED, 0)";                      
             command.CommandType = CommandType.Text;
             command.Connection = connection;
 
