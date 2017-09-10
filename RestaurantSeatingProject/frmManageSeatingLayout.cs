@@ -27,6 +27,7 @@ namespace RestaurantSeatingProject {
             InitializeComponent();
             LoadTables();
             lblMessage.Text = "";
+            btnSaveLayout.Enabled = false;
 
         }
 
@@ -106,6 +107,8 @@ namespace RestaurantSeatingProject {
                 button.MouseMove += button_MouseMove;
 
                 txtTableNumber.Text = Convert.ToString(Table.TotalTables);
+                btnSaveLayout.Enabled = true;
+                lblMessage.Text = "Table " + table.TableNumber + " successfully added.";
 
             }
             else {
@@ -126,24 +129,27 @@ namespace RestaurantSeatingProject {
 
                 TableDA.DeleteTable(table);
                 UpdateView();
+                lblMessage.Text = "Table " + tableID + " successfully deleted.";
 
                 // Set deleteTable back to false so it's ready to be used in another delete.
                 deleteTable = false;
 
             }
             else if (e.Button == MouseButtons.Left) {
+
                 xPos = e.X;
                 yPos = e.Y;
+
+                if (btnSaveLayout.Enabled == false) {
+
+                    btnSaveLayout.Enabled = true;
+
+                }
 
             }
         }
 
         private void UpdateView() {
-
-            // Resets the table layout as if none was created
-            //Table.TotalTables = 1;
-            //tables = new List<Table>();
-            //txtTableNumber.Text = "1";
 
             pnlRoom.Controls.Clear();
             Table.TotalTables = 1;
@@ -175,7 +181,7 @@ namespace RestaurantSeatingProject {
 
         private void btnSaveLayout_Click(object sender, EventArgs e) {
 
-            TableDA.AddTableLayout(tables);
+            TableDA.SaveTableLayout(tables);
             SectionDA.AssignTableToSection(assignedList);
             lblMessage.Text = "Table layout saved.";
             btnSaveLayout.Enabled = false;
@@ -184,7 +190,7 @@ namespace RestaurantSeatingProject {
 
         private void btnDeleteLayout_Click(object sender, EventArgs e) {
 
-            List<Table> tables = TableDA.GetTableLayout();
+            tables = TableDA.GetTableLayout();
 
             if (Utility.IsNullOrEmpty(tables)) {
 
@@ -214,7 +220,7 @@ namespace RestaurantSeatingProject {
 
         public void LoadTables() {
 
-            List<Table> tables = TableDA.GetTableLayout();
+            tables = TableDA.GetTableLayout();
 
             if (!(Utility.IsNullOrEmpty(tables))) {
 
@@ -234,7 +240,7 @@ namespace RestaurantSeatingProject {
                     button.MouseUp += button_MouseUp;
                     button.MouseMove += button_MouseMove;
 
-                    //btnSaveLayout.Enabled = false;
+                    btnSaveLayout.Enabled = false;
 
                 }
 
@@ -243,12 +249,12 @@ namespace RestaurantSeatingProject {
             }
             else {
 
-                btnSaveLayout.Enabled = true;
+                //btnSaveLayout.Enabled = true;
 
             }
         }
 
-        private void mnuDeleteTable_Click(object sender, EventArgs e) {
+        private void btnDeleteTable_Click(object sender, EventArgs e) {
 
             deleteTable = true;
 

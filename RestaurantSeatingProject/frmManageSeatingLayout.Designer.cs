@@ -38,7 +38,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTableManager = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.mnuDeleteTable = new System.Windows.Forms.Button();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdoSection3 = new System.Windows.Forms.RadioButton();
             this.rdoSection2 = new System.Windows.Forms.RadioButton();
@@ -206,7 +206,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.mnuDeleteTable);
+            this.groupBox4.Controls.Add(this.btnDeleteTable);
             this.groupBox4.Location = new System.Drawing.Point(289, 2);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
@@ -216,16 +216,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Remove Tables";
             // 
-            // mnuDeleteTable
+            // btnDeleteTable
             // 
-            this.mnuDeleteTable.Location = new System.Drawing.Point(80, 115);
-            this.mnuDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mnuDeleteTable.Name = "mnuDeleteTable";
-            this.mnuDeleteTable.Size = new System.Drawing.Size(131, 46);
-            this.mnuDeleteTable.TabIndex = 2;
-            this.mnuDeleteTable.Text = "&Delete Table";
-            this.mnuDeleteTable.UseVisualStyleBackColor = true;
-            this.mnuDeleteTable.Click += new System.EventHandler(this.mnuDeleteTable_Click);
+            this.btnDeleteTable.Location = new System.Drawing.Point(80, 115);
+            this.btnDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(131, 46);
+            this.btnDeleteTable.TabIndex = 2;
+            this.btnDeleteTable.Text = "&Delete Table";
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
             // groupBox1
             // 
@@ -330,9 +330,10 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(739, 12);
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(742, 50);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(104, 17);
+            this.lblMessage.Size = new System.Drawing.Size(123, 20);
             this.lblMessage.TabIndex = 9;
             this.lblMessage.Text = "Message Label";
             // 
@@ -398,7 +399,7 @@
         private System.Windows.Forms.TabPage tabBarManager;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button mnuDeleteTable;
+        private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.RadioButton rdoSection3;
         private System.Windows.Forms.RadioButton rdoSection2;
         private System.Windows.Forms.RadioButton rdoSection1;

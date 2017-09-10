@@ -11,15 +11,18 @@ using System.Windows.Forms;
 namespace RestaurantSeatingProject {
     class TableDA {
 
-        public static void AddTableLayout(List<Table> tables) {
+        public static void SaveTableLayout(List<Table> tables) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
-            // Local DB
-            //string insertStatement = "INSERT INTO tables "
-                                   //uncomment for localdb
-                                   //+ "(tableNum, numSeat, xposition, yposition) "
 
-            // SQL DB
+            // Select statement to see if table exists.
+            string selectStatement = "SELECT COUNT(*) "
+                                 + "FROM tables "
+                                 + "WHERE tableNumber = @tableNumber";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@tableNumber", SqlDbType.Int);
+
+            // Insert Statement.
             string insertStatement = "INSERT INTO tables "
                                    + "(tableNumber, numberOfSeats, tablePositionX, tablePositionY, tableState) "
                                    + "VALUES (@tableNumber, @numberOfSeats, @tablePositionX, @tablePositionY, @tableState)";
@@ -31,19 +34,56 @@ namespace RestaurantSeatingProject {
             insertCommand.Parameters.AddWithValue("@tablePositionY", SqlDbType.Int);
             insertCommand.Parameters.AddWithValue("@tableState", SqlDbType.VarChar);
 
+            // Update Statement.
+            string updateStatement = "UPDATE tables "
+                                   //+ "SET tableNumber = @tableNumber, "
+                                   //+ "numberofSeats = @numberOfSeats, "
+                                   + "SET tablePositionX = @tablePositionX, "
+                                   + "tablePositionY = @tablePositionY "
+                                   + "WHERE tableNumber = @tableNumber";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@tableNumber", SqlDbType.Int);
+            //updateCommand.Parameters.AddWithValue("@numberOfSeats", SqlDbType.Int);
+            updateCommand.Parameters.AddWithValue("@tablePositionX", SqlDbType.Int);
+            updateCommand.Parameters.AddWithValue("@tablePositionY", SqlDbType.Int);
+            //updateCommand.Parameters.AddWithValue("@movedTableNumber", SqlDbType.Int);
+
             connection.Open();
 
             try {
 
                 foreach (Table table in tables) {
 
-                    insertCommand.Parameters["@tableNumber"].Value = table.TableNumber;
-                    insertCommand.Parameters["@numberOfSeats"].Value = table.NumberOfSeats;
-                    insertCommand.Parameters["@tablePositionX"].Value = table.TablePositionX;
-                    insertCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
-                    insertCommand.Parameters["@tableState"].Value = table.TableState;
+                    // Execute the select statement to see if the row exists.
+                    selectCommand.Parameters["@tableNumber"].Value = table.TableNumber;
+                    int rowCount = (int)selectCommand.ExecuteScalar();
 
-                    insertCommand.ExecuteNonQuery();
+                    if (rowCount > 0) {
+
+                        // Update the row.
+                        updateCommand.Parameters["@tableNumber"].Value = table.TableNumber;
+                        //updateCommand.Parameters["@numberOfSeats"].Value = table.NumberOfSeats;
+                        updateCommand.Parameters["@tablePositionX"].Value = table.TablePositionX;
+                        updateCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
+                        //updateCommand.Parameters["@movedTableNumber"].Value = table.TableNumber;
+
+
+                        updateCommand.ExecuteNonQuery();
+
+                    }
+                    else {
+
+                        // Insert the row.
+                        insertCommand.Parameters["@tableNumber"].Value = table.TableNumber;
+                        insertCommand.Parameters["@numberOfSeats"].Value = table.NumberOfSeats;
+                        insertCommand.Parameters["@tablePositionX"].Value = table.TablePositionX;
+                        insertCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
+                        insertCommand.Parameters["@tableState"].Value = table.TableState;
+
+                        insertCommand.ExecuteNonQuery();
+
+                    }
 
                 }
 
