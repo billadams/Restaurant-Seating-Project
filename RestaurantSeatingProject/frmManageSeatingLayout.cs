@@ -149,14 +149,6 @@ namespace RestaurantSeatingProject {
             }
         }
 
-        private void UpdateView() {
-
-            pnlRoom.Controls.Clear();
-            Table.TotalTables = 1;
-            LoadTables();
-
-        }
-
         public void button_MouseMove(object sender, MouseEventArgs e) {
 
             Button button = (Button)sender;
@@ -169,6 +161,14 @@ namespace RestaurantSeatingProject {
 
                 }
             }
+        }
+
+        private void UpdateView() {
+
+            pnlRoom.Controls.Clear();
+            Table.TotalTables = 1;
+            LoadTables();
+
         }
 
         public void button_MouseUp(object sender, MouseEventArgs e) {
