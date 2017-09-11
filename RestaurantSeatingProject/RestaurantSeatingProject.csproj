@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssignedTable.cs" />
+    <Compile Include="Assignments.cs" />
     <Compile Include="BarSeat.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DisplayData.cs" />

@@ -89,6 +89,40 @@ namespace RestaurantSeatingProject
             return oReservationList;
         }
 
+        public static int DeleteReservation(string sID)
+        {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;            
+            command.CommandText = "DELETE FROM customer "
+                                + "WHERE custID = @ID";
+            command.Parameters.AddWithValue("@ID", sID);
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try
+            {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
+        }
+
 
 
 
