@@ -68,7 +68,6 @@ namespace RestaurantSeatingProject {
                         updateCommand.Parameters["@tablePositionY"].Value = table.TablePositionY;
                         //updateCommand.Parameters["@movedTableNumber"].Value = table.TableNumber;
 
-
                         updateCommand.ExecuteNonQuery();
 
                     }
