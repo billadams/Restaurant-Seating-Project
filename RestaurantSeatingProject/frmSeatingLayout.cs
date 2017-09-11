@@ -19,7 +19,8 @@ namespace RestaurantSeatingProject
             DisplayListBoxData();
             DisplayReservationList();
             DisplayAssignments();
-            // List<AssignedTable> oAssigned = SectionDA.GetAssignedTables();
+            lstReservations.ClearSelected();
+            lstAssignments.ClearSelected();
         }
         private enum TableState { Empty, Occupied, Bussable };
         private void btnClose_Click(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace RestaurantSeatingProject
                         else if (oSpecificTable.TableState.ToLower() == TableState.Bussable.ToString().ToLower())
                         {
                             bIsValid = false;
-                            sErrorMess = "Error: Table is clean";
+                            sErrorMess = "Error: Table is not clean";
                         }
                     }
                     else
@@ -105,15 +106,15 @@ namespace RestaurantSeatingProject
                     
                     string sServerID = (lstServers.SelectedItem as DisplayData).Value;
                     ServerDA.AssignServerToTable(sTableNumber, sServerID, nSectionNumber.ToString());
-                    DisplayReservationList();
-                    DisplayAssignments();
+                    
                     if (!(lstReservations.SelectedIndex == -1))
                     {
                         bReservationSelected = true;
                     }
                     if (bReservationSelected)
                     {
-                        ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);                       
+                        ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);
+                        lstReservations.ClearSelected();
                     }
                     sUpdatedState = TableState.Occupied.ToString();
                 }
@@ -129,9 +130,16 @@ namespace RestaurantSeatingProject
                 }
 
                 //Updating Table State
-                TableDA.UpdateTableState(oSpecificTable.TableNumber.ToString(), sUpdatedState);
+                TableDA.UpdateTableState(oSpecificTable.TableNumber.ToString(), sUpdatedState);                
                 pnlRoom.Controls.Clear();
                 LoadTables();
+                DisplayReservationList();
+                DisplayAssignments();
+                if (btnUse.Text == "Cancel")
+                {
+                    lstReservations.Enabled = false;
+                    btnUse.Text = "Use Reservation";
+                }
             }
             else
             {
@@ -201,6 +209,8 @@ namespace RestaurantSeatingProject
             }
             lstReservations.DisplayMember = "Text";
             lstReservations.DataSource = oDataDisplay;
+            lstReservations.ClearSelected();
+
         }
 
         private void DisplayAssignments()
@@ -216,7 +226,9 @@ namespace RestaurantSeatingProject
                     oDataDisplay.Add(new DisplayData() { Value = oAssignment.TableNumber.ToString(), Text = "Section: " + oAssignment.SectionNumber + " Table: " + oAssignment.TableNumber +" Server: " + oAssignment.ServerName });
                 }
                 lstAssignments.DisplayMember = "Text";
-                lstAssignments.DataSource = oDataDisplay; 
+                lstAssignments.DataSource = oDataDisplay;
+                lstAssignments.ClearSelected();
+                
         }
 
 
@@ -242,5 +254,48 @@ namespace RestaurantSeatingProject
             lblNumCustomers.Visible = false;
             txtNumCustomers.Text = "1";
         }
+
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            string s = btnUse.Text;
+            if (btnUse.Text == "Use Reservation")
+            {
+                lstReservations.Enabled = true;
+                btnUse.Text = "Cancel";
+            }
+            else
+            {
+                btnUse.Text = "Use Reservation";
+                lstReservations.Enabled = false;
+                lstReservations.ClearSelected();
+            }
+
+            
+        }
+
+        private void lstAssignments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(lstAssignments.SelectedIndex == -1))
+            {
+                btnClearTable.Visible = true;
+            }
+            else
+            {
+                btnClearTable.Visible = false;
+            }
+        }
+
+        private void btnClearTable_Click(object sender, EventArgs e)
+        {
+            //clear table from assigned table list
+            ServerDA.FreeTable((lstAssignments.SelectedItem as DisplayData).Value);
+            TableDA.UpdateTableState((lstAssignments.SelectedItem as DisplayData).Value, TableState.Bussable.ToString());            
+            pnlRoom.Controls.Clear();
+            DisplayAssignments();
+            LoadTables();
+            btnClearTable.Visible = false;
+            lstAssignments.ClearSelected();
+        }
+
     }
 }

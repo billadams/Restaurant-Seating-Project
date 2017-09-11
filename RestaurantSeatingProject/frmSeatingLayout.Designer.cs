@@ -43,6 +43,8 @@
             this.lstAssignments = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnUse = new System.Windows.Forms.Button();
+            this.btnClearTable = new System.Windows.Forms.Button();
             this.grpBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // 
             this.pnlRoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRoom.Location = new System.Drawing.Point(9, 9);
-            this.pnlRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlRoom.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRoom.Name = "pnlRoom";
             this.pnlRoom.Size = new System.Drawing.Size(531, 548);
             this.pnlRoom.TabIndex = 3;
@@ -155,7 +157,7 @@
             // txtNumCustomers
             // 
             this.txtNumCustomers.Location = new System.Drawing.Point(699, 475);
-            this.txtNumCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumCustomers.Name = "txtNumCustomers";
             this.txtNumCustomers.Size = new System.Drawing.Size(30, 20);
             this.txtNumCustomers.TabIndex = 10;
@@ -163,6 +165,7 @@
             // 
             // lstReservations
             // 
+            this.lstReservations.Enabled = false;
             this.lstReservations.FormattingEnabled = true;
             this.lstReservations.Location = new System.Drawing.Point(751, 26);
             this.lstReservations.Name = "lstReservations";
@@ -176,6 +179,7 @@
             this.lstAssignments.Name = "lstAssignments";
             this.lstAssignments.Size = new System.Drawing.Size(327, 212);
             this.lstAssignments.TabIndex = 0;
+            this.lstAssignments.SelectedIndexChanged += new System.EventHandler(this.lstAssignments_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -197,12 +201,35 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Current Assignments";
             // 
+            // btnUse
+            // 
+            this.btnUse.Location = new System.Drawing.Point(772, 231);
+            this.btnUse.Name = "btnUse";
+            this.btnUse.Size = new System.Drawing.Size(104, 23);
+            this.btnUse.TabIndex = 13;
+            this.btnUse.Text = "Use Reservation";
+            this.btnUse.UseVisualStyleBackColor = true;
+            this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
+            // 
+            // btnClearTable
+            // 
+            this.btnClearTable.Location = new System.Drawing.Point(928, 534);
+            this.btnClearTable.Name = "btnClearTable";
+            this.btnClearTable.Size = new System.Drawing.Size(104, 23);
+            this.btnClearTable.TabIndex = 14;
+            this.btnClearTable.Text = "Clear Table";
+            this.btnClearTable.UseVisualStyleBackColor = true;
+            this.btnClearTable.Visible = false;
+            this.btnClearTable.Click += new System.EventHandler(this.btnClearTable_Click);
+            // 
             // frmSeatingLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 702);
             this.ControlBox = false;
+            this.Controls.Add(this.btnClearTable);
+            this.Controls.Add(this.btnUse);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstServers);
@@ -215,7 +242,7 @@
             this.Controls.Add(this.grpBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlRoom);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSeatingLayout";
             this.Text = "Seating Layout";
             this.grpBox1.ResumeLayout(false);
@@ -242,5 +269,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstAssignments;
+        private System.Windows.Forms.Button btnUse;
+        private System.Windows.Forms.Button btnClearTable;
     }
 }
