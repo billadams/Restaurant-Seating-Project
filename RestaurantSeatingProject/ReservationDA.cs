@@ -14,11 +14,12 @@ namespace RestaurantSeatingProject
         public static bool AddReservation(Customer oCustomer)
         {
             SqlConnection oConnection = RestaurantConnection.GetConnection();
-            string insertString = "INSERT into customer (lastName, custTime) values (@LastName, @CustTime)";
+            string insertString = "INSERT into customer (lastName, custTime, groupsize) values (@LastName, @CustTime, @Groupsize)";
 
             SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
 
             insertCommand.Parameters.AddWithValue("@LastName", oCustomer.LastName);
+            insertCommand.Parameters.AddWithValue("@GroupSize", oCustomer.GroupSize);
             insertCommand.Parameters.AddWithValue("@CustTime", oCustomer.ReservationTime);
             try
             {
@@ -64,6 +65,7 @@ namespace RestaurantSeatingProject
                 {
                     Customer oCustomer = new Customer();
                     oCustomer.LastName = (string)oReader["lastName"];
+                    oCustomer.GroupSize = (int)oReader["groupSize"];
                     oCustomer.ReservationTime = ((DateTime)oReader["custTime"]).ToString();
                     oCustomer.Id = (int)oReader["custID"];
                     oReservationList.Add(oCustomer);

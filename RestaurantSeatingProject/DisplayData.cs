@@ -12,5 +12,16 @@ namespace RestaurantSeatingProject
         public string Value { get; set; }
         public string Text { get; set; }
 
+        public DisplayData()
+        {
+          this.Value = "";
+          this.Text = "";
+        }
+
+        public DisplayData(string value, string text)
+        {
+          this.Value = value;
+          this.Text = text;
+        }
     }
 }
