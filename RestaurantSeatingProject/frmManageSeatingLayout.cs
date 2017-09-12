@@ -156,6 +156,7 @@ namespace RestaurantSeatingProject {
             if (button != null) {
 
                 if (e.Button == MouseButtons.Left) {
+                    
                     button.Top += (e.Y - yPos);
                     button.Left += (e.X - xPos);
 
@@ -163,19 +164,23 @@ namespace RestaurantSeatingProject {
             }
         }
 
+        public void button_MouseUp(object sender, MouseEventArgs e) {
+
+            Button button = (Button)sender;
+
+            int tableIndex = (Int32)button.Tag - 1;
+            Table table = tables[tableIndex];
+
+            table.TablePositionX = button.Left;
+            table.TablePositionY = button.Top;
+
+        }
+
         private void UpdateView() {
 
             pnlRoom.Controls.Clear();
             Table.TotalTables = 1;
             LoadTables();
-
-        }
-
-        public void button_MouseUp(object sender, MouseEventArgs e) {
-
-            Button button = (Button)sender;
-            table.TablePositionX = button.Left;
-            table.TablePositionY = button.Top;
 
         }
 

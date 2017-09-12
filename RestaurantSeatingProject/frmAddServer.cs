@@ -57,16 +57,11 @@ namespace RestaurantSeatingProject
                 {
                     MessageBox.Show(sFirstName + " " + sLastName + " " + "has been Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                
-                
-
             }
             else
             {
                 MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
         }
     }
 }
