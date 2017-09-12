@@ -125,6 +125,43 @@ namespace RestaurantSeatingProject
             return success;
         }
 
+        public static int GetGroupSize(string sID)
+        {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            int groupSize = 0;
+            SqlDataReader oReader = null;
+            SqlCommand oCommand = new SqlCommand();
+
+            oCommand.CommandText = "Select * FROM customer " + "WHERE custID=@id";
+            oCommand.Parameters.AddWithValue("@id", sID);
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+            try
+            {
+                oConnection.Open();
+                oReader = oCommand.ExecuteReader();
+                while (oReader.Read())
+                {
+                    groupSize = (int)oReader["groupSize"];
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return groupSize;
+        }
 
 
 
