@@ -9,14 +9,16 @@ namespace RestaurantSeatingProject
     class Customer : Person
     {
         public string ReservationTime { get; set; }
+        public int GroupSize { get; set; }
         public Customer()
         {
             FirstName = "";
 
         }
-        public Customer(string sReservationTime)
+        public Customer(string sReservationTime, int sGroupsize)
         {            
             this.ReservationTime = sReservationTime;
+            this.GroupSize = sGroupsize;
         }
     }
 }
