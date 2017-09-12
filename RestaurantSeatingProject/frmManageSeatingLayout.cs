@@ -28,7 +28,6 @@ namespace RestaurantSeatingProject {
             LoadTables();
             lblMessage.Text = "";
             btnSaveLayout.Enabled = false;
-
         }
 
         private void btnCancelLayout_Click(object sender, EventArgs e) {
