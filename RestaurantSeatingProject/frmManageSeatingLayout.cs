@@ -170,8 +170,6 @@ namespace RestaurantSeatingProject {
 
             int tableIndex = (Int32)button.Tag - 1;
             Table table = tables[tableIndex];
-            //tables[Convert.ToInt16(button.Tag) - 1].TablePositionX = button.Left;
-            //tables[Convert.ToInt16(button.Tag) - 1].TablePositionY = button.Top;
 
             table.TablePositionX = button.Left;
             table.TablePositionY = button.Top;
