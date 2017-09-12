@@ -57,6 +57,8 @@ namespace RestaurantSeatingProject
                             bIsValid = false;
                             sErrorMess = "Error: Table is not clean";
                         }
+
+
                     }
                     else
                     {
@@ -113,6 +115,8 @@ namespace RestaurantSeatingProject
                     }
                     if (bReservationSelected)
                     {
+                        int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
+                        txtNumCustomers.Text = groupSize.ToString();
                         ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);
                         lstReservations.ClearSelected();
                     }
