@@ -22,6 +22,7 @@ namespace RestaurantSeatingProject
         {
             string sErrorMess = "";
             string sLastName = txtLastName.Text;
+            string sGroupSize = txtGroupSize.Text;
             string sReservationDate = dtpReservation.Value.ToString();
             bool bIsValid = true;
 
@@ -41,6 +42,7 @@ namespace RestaurantSeatingProject
                 Customer oCustomer = new Customer();
                 oCustomer.LastName = sLastName;
                 oCustomer.ReservationTime = sReservationDate;
+                oCustomer.GroupSize = Convert.ToInt16(sGroupSize);
                 ReservationDA.AddReservation(oCustomer);
                 MessageBox.Show(oCustomer.LastName + " Has been Added to the Wait List!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DisplayListBoxData();
@@ -62,10 +64,30 @@ namespace RestaurantSeatingProject
 
             foreach (Customer oCustomer in oReservationList)
             {
-                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.ReservationTime });
+                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
             }
             lstReservationList.DisplayMember = "Text";
             lstReservationList.DataSource = oDataDisplay;
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLastName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpReservation_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

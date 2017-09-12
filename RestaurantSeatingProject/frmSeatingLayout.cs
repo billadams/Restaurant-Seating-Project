@@ -205,7 +205,7 @@ namespace RestaurantSeatingProject
 
             foreach (Customer oCustomer in oReservationList)
             {
-                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.ReservationTime });
+                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
             }
             lstReservations.DisplayMember = "Text";
             lstReservations.DataSource = oDataDisplay;
