@@ -204,11 +204,14 @@ namespace RestaurantSeatingProject {
             if (barObject != null && barObject is BarTable) {
 
                 // Get positioning.
-
+                BarTable barTable = (BarTable)button.Tag;
+                barTable.TablePositionX = button.Left;
+                barTable.TablePositionY = button.Top;
 
             }
             else if (barObject != null && barObject is Table) {
 
+                // Get positioning.
                 Table table = (Table)button.Tag;
                 int tableNumber = table.TableNumber;
                 table = tables[tableNumber - 1];
@@ -223,7 +226,9 @@ namespace RestaurantSeatingProject {
             else if (barObject != null && barObject is BarSeat) {
 
                 // Get positioning.
-
+                BarSeat barSeat = (BarSeat)button.Tag;
+                int barSeatNumber = barSeat.TableNumber;
+                barSeat = barSeats.[barSeatNumber - 1];
 
             }
         }
