@@ -16,7 +16,7 @@ namespace RestaurantSeatingProject {
 
         public string TableState { get; set; }
 
-        //private static int totalTables = 1;
+        private static int totalTables = 1;
 
         public Table() {
 

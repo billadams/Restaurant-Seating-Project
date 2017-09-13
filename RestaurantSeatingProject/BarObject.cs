@@ -15,7 +15,7 @@ namespace RestaurantSeatingProject {
 
         public int TablePositionY { get; set; }
 
-        protected static int totalTables = 1;
+        //protected static int totalTables = 1;
 
         public BarObject() { }
 
@@ -25,7 +25,7 @@ namespace RestaurantSeatingProject {
             this.TableNumber = tableNumber;
             this.TablePositionX = tablePositionX;
             this.TablePositionY = tablePositionY;
-          
+            
         }
 
         public BarObject(int tableNumber, int tablePositionX, int tablePositionY) {
@@ -35,5 +35,13 @@ namespace RestaurantSeatingProject {
             this.TablePositionY = tablePositionY;
 
         }
+
+        //public BarObject(int tableNumber, int tablePositionX, int tablePositionY) {
+
+        //    this.TableNumber = tableNumber;
+        //    this.TablePositionX = tablePositionX;
+        //    this.TablePositionY = tablePositionY;
+
+        //}
     }
 }

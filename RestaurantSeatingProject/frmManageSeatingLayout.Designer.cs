@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelLayout = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBearSeatNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAddBarSeat = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -48,7 +48,7 @@
             this.btnDeleteBarseat = new System.Windows.Forms.Button();
             this.tabBarManager = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnRemoveBar = new System.Windows.Forms.Button();
+            this.btnDeleteBar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -149,7 +149,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtBearSeatNumber);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnAddBarSeat);
             this.groupBox2.Location = new System.Drawing.Point(5, 1);
@@ -161,15 +161,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Barseats";
             // 
-            // textBox2
+            // txtBearSeatNumber
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(167, 90);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(39, 22);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "1";
+            this.txtBearSeatNumber.Location = new System.Drawing.Point(167, 90);
+            this.txtBearSeatNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBearSeatNumber.Name = "txtBearSeatNumber";
+            this.txtBearSeatNumber.Size = new System.Drawing.Size(39, 22);
+            this.txtBearSeatNumber.TabIndex = 5;
+            this.txtBearSeatNumber.Text = "1";
             // 
             // label4
             // 
@@ -189,6 +188,7 @@
             this.btnAddBarSeat.TabIndex = 2;
             this.btnAddBarSeat.Text = "&Add Barseat";
             this.btnAddBarSeat.UseVisualStyleBackColor = true;
+            this.btnAddBarSeat.Click += new System.EventHandler(this.btnAddBarSeat_Click);
             // 
             // tabControl1
             // 
@@ -326,6 +326,7 @@
             this.btnDeleteBarseat.TabIndex = 3;
             this.btnDeleteBarseat.Text = "Delete Barseat";
             this.btnDeleteBarseat.UseVisualStyleBackColor = true;
+            this.btnDeleteBarseat.Click += new System.EventHandler(this.btnDeleteBarseat_Click);
             // 
             // tabBarManager
             // 
@@ -341,7 +342,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.btnRemoveBar);
+            this.groupBox7.Controls.Add(this.btnDeleteBar);
             this.groupBox7.Location = new System.Drawing.Point(285, 0);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox7.Name = "groupBox7";
@@ -351,15 +352,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Remove Bar";
             // 
-            // btnRemoveBar
+            // btnDeleteBar
             // 
-            this.btnRemoveBar.Location = new System.Drawing.Point(79, 123);
-            this.btnRemoveBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRemoveBar.Name = "btnRemoveBar";
-            this.btnRemoveBar.Size = new System.Drawing.Size(131, 46);
-            this.btnRemoveBar.TabIndex = 2;
-            this.btnRemoveBar.Text = "&Remove Bar";
-            this.btnRemoveBar.UseVisualStyleBackColor = true;
+            this.btnDeleteBar.Location = new System.Drawing.Point(79, 123);
+            this.btnDeleteBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteBar.Name = "btnDeleteBar";
+            this.btnDeleteBar.Size = new System.Drawing.Size(131, 46);
+            this.btnDeleteBar.TabIndex = 2;
+            this.btnDeleteBar.Text = "&Delete Bar";
+            this.btnDeleteBar.UseVisualStyleBackColor = true;
+            this.btnDeleteBar.Click += new System.EventHandler(this.btnDeleteBar_Click);
             // 
             // groupBox3
             // 
@@ -475,7 +477,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelLayout;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBearSeatNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAddBarSeat;
         private System.Windows.Forms.TabControl tabControl1;
@@ -493,7 +495,7 @@
         private System.Windows.Forms.Button btnDeleteBarseat;
         private System.Windows.Forms.TabPage tabBarManager;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button btnRemoveBar;
+        private System.Windows.Forms.Button btnDeleteBar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button2;

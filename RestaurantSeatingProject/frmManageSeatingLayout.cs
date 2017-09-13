@@ -18,12 +18,14 @@ namespace RestaurantSeatingProject {
         AssignedTable assigned = null;
         Table table;
         BarTable barTable;
-        BarSeat barseat;
+        BarSeat barSeat;
         private int xPos;
         private int yPos;
         private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
         // Flag for deleting a table
         bool deleteTable = false;
+        bool deleteBarSeat = false;
+        bool deleteBar = false;
 
         public frmManageSeatingLayout() {
 
@@ -126,15 +128,42 @@ namespace RestaurantSeatingProject {
 
             if (deleteTable == true) {
 
-                string tableID = Convert.ToString(button.Tag);
-                table = TableDA.GetTableByID(tableID);
+                table = (Table) button.Tag;
+                string tableNumber = Convert.ToString(table.TableNumber);
+                table = TableDA.GetTableByID(tableNumber);
 
                 TableDA.DeleteTable(table);
                 UpdateView();
-                lblMessage.Text = "Table " + tableID + " successfully deleted.";
+                lblMessage.Text = "Table " + tableNumber + " successfully deleted.";
 
                 // Set deleteTable back to false so it's ready to be used in another delete.
                 deleteTable = false;
+
+            }
+            else if (deleteBarSeat == true) {
+
+                barSeat = (BarSeat) button.Tag;
+                string barSeatNumber = Convert.ToString(barSeat.TableNumber);
+                //barSeat = BarSeatDA.GetBarSeatByID(barSeatNumber);
+
+                //BarSeatDA.DeleteBarSeata(barSeat);
+                UpdateView();
+                lblMessage.Text = "BarSeat " + barSeatNumber + " successfully deleted.";
+
+                // Set deleteBarSeat back to false so it's ready to be used in another delete.
+                deleteBarSeat = false;
+
+            }
+            else if (deleteBar == true) {
+
+                barTable = (BarTable)button.Tag;
+
+                //BarTableDA.DeleteBarTable(barTable);
+                UpdateView();
+                lblMessage.Text = "Bar successfully deleted.";
+
+                // Set deleteBar back to false so it's ready to be used in another delete.
+                deleteBar = false;
 
             }
             else if (e.Button == MouseButtons.Left) {
@@ -170,13 +199,15 @@ namespace RestaurantSeatingProject {
 
             Button button = (Button)sender;
 
-            if (barTable.Equals(typeof(BarTable))) {
+            BarObject barObject = (BarObject) button.Tag;
+
+            if (barObject != null && barObject is BarTable) {
 
                 // Get positioning.
 
 
             }
-            else if (table.Equals(typeof(Table))) {
+            else if (barObject != null && barObject is Table) {
 
                 Table table = (Table)button.Tag;
                 int tableNumber = table.TableNumber;
@@ -189,7 +220,7 @@ namespace RestaurantSeatingProject {
                 table.TablePositionY = button.Top;
 
             }
-            else if (barseat.Equals(typeof(BarSeat))) {
+            else if (barObject != null && barObject is BarSeat) {
 
                 // Get positioning.
 
@@ -298,8 +329,8 @@ namespace RestaurantSeatingProject {
             //tables.Add(table);
             //assignedList.Add(assigned);
             Button button = new Button();
-            button.Height = 20;
-            button.Width = 150;
+            button.Height = 30;
+            button.Width = 200;
             button.Tag = barTable;
             button.Text = "Bar";
             //button.Text = "Table " + Convert.ToString(table.TableNumber)
@@ -387,6 +418,84 @@ namespace RestaurantSeatingProject {
             //    MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             //}
+        }
+
+        private void btnAddBarSeat_Click(object sender, EventArgs e) {
+
+            barSeat = new BarSeat();
+            assigned = new AssignedTable();
+            int startLeft = pnlRoom.Left;
+            int startTop = pnlRoom.Top;
+
+            string sErrorMess = "";
+            bool bIsValid = true;
+
+            try {
+
+                barSeat.TableNumber = Convert.ToInt32(txtBearSeatNumber.Text);
+                assigned.TableNumber = barSeat.TableNumber;
+
+            }
+            catch (Exception) {
+
+                bIsValid = false;
+                sErrorMess += "TableNumber is required and must be a number";
+
+            }
+
+            try {
+
+                barSeat.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
+
+            }
+            catch (Exception) {
+
+                bIsValid = false;
+                sErrorMess += "\nNumber of Seats is required and must be a number";
+
+            }
+
+            if (bIsValid) {
+
+                barSeat.TablePositionX = startLeft;
+                barSeat.TablePositionY = startTop;
+                barSeats.Add(barSeat);
+                assignedList.Add(assigned);
+                Button button = new Button();
+                button.Height = 30;
+                button.Width = 30;
+                button.Tag = barSeat;
+                button.Text = "B" + Convert.ToString(barSeat.TableNumber);
+                button.Location = new Point(startLeft, startTop);
+                pnlRoom.Controls.Add(button);
+
+                button.MouseDown += button_MouseDown;
+                button.MouseUp += button_MouseUp;
+                button.MouseMove += button_MouseMove;
+
+                txtBearSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
+                btnSaveLayout.Enabled = true;
+                lblMessage.Text = "BarSeat " + barSeat.TableNumber + " successfully added.";
+
+            }
+            else {
+
+                MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+        }
+
+        private void btnDeleteBarseat_Click(object sender, EventArgs e) {
+
+            deleteBarSeat = true;
+
+        }
+
+        private void btnDeleteBar_Click(object sender, EventArgs e) {
+
+            deleteBar = true;
+
         }
     }
 }
