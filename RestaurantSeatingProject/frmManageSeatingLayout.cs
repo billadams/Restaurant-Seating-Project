@@ -228,7 +228,7 @@ namespace RestaurantSeatingProject {
                 // Get positioning.
                 BarSeat barSeat = (BarSeat)button.Tag;
                 int barSeatNumber = barSeat.TableNumber;
-                barSeat = barSeats.[barSeatNumber - 1];
+                barSeat = barSeats[barSeatNumber - 1];
 
             }
         }
