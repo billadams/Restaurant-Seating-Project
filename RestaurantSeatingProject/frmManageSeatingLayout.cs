@@ -245,12 +245,29 @@ namespace RestaurantSeatingProject {
 
             TableDA.SaveTableLayout(tables);
             SectionDA.AssignTableToSection(assignedList);
-            lblMessage.Text = "Table layout saved.";
+            lblMessage.Text = "Restaurant layout saved.";
             btnSaveLayout.Enabled = false;
 
         }
 
         private void btnDeleteLayout_Click(object sender, EventArgs e) {
+
+            DialogResult button =
+                MessageBox.Show(
+                    "Are you sure you want to delete the entire restaurant layout?",
+                    "Confirm Layout Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+
+            if (button == DialogResult.Yes) {
+
+                DeleteLayout();
+
+            }
+        }
+
+        public void DeleteLayout() {
 
             tables = TableDA.GetTableLayout();
 
@@ -262,11 +279,13 @@ namespace RestaurantSeatingProject {
             else {
 
                 TableDA.DeleteLayout();
-                MessageBox.Show("Table Layout was Successfully Deleted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+                lblMessage.Text = "Restaurant layout was successfully deleted.";
+
             }
 
             ResetLayout();
             btnSaveLayout.Enabled = true;
+
         }
 
         private void ResetLayout() {
@@ -307,11 +326,6 @@ namespace RestaurantSeatingProject {
                 }
 
                 txtTableNumber.Text = Convert.ToString(Table.TotalTables);
-
-            }
-            else {
-
-                //btnSaveLayout.Enabled = true;
 
             }
         }
