@@ -46,15 +46,15 @@
             this.tabBarSeatManager = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDeleteBarseat = new System.Windows.Forms.Button();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.btnDeleteLayout = new System.Windows.Forms.Button();
             this.tabBarManager = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveBar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCreateBar = new System.Windows.Forms.Button();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.btnDeleteLayout = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabTableManager.SuspendLayout();
@@ -63,9 +63,9 @@
             this.tabBarSeatManager.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabBarManager.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSaveLayout
@@ -327,27 +327,6 @@
             this.btnDeleteBarseat.Text = "Delete Barseat";
             this.btnDeleteBarseat.UseVisualStyleBackColor = true;
             // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(742, 50);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(123, 20);
-            this.lblMessage.TabIndex = 9;
-            this.lblMessage.Text = "Message Label";
-            // 
-            // btnDeleteLayout
-            // 
-            this.btnDeleteLayout.Location = new System.Drawing.Point(964, 581);
-            this.btnDeleteLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteLayout.Name = "btnDeleteLayout";
-            this.btnDeleteLayout.Size = new System.Drawing.Size(141, 50);
-            this.btnDeleteLayout.TabIndex = 10;
-            this.btnDeleteLayout.Text = "&Delete Layout";
-            this.btnDeleteLayout.UseVisualStyleBackColor = true;
-            this.btnDeleteLayout.Click += new System.EventHandler(this.btnDeleteLayout_Click);
-            // 
             // tabBarManager
             // 
             this.tabBarManager.Controls.Add(this.groupBox7);
@@ -360,10 +339,32 @@
             this.tabBarManager.Text = "Bar Manager";
             this.tabBarManager.UseVisualStyleBackColor = true;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnRemoveBar);
+            this.groupBox7.Location = new System.Drawing.Point(285, 0);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox7.Size = new System.Drawing.Size(272, 269);
+            this.groupBox7.TabIndex = 10;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Remove Bar";
+            // 
+            // btnRemoveBar
+            // 
+            this.btnRemoveBar.Location = new System.Drawing.Point(79, 123);
+            this.btnRemoveBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveBar.Name = "btnRemoveBar";
+            this.btnRemoveBar.Size = new System.Drawing.Size(131, 46);
+            this.btnRemoveBar.TabIndex = 2;
+            this.btnRemoveBar.Text = "&Remove Bar";
+            this.btnRemoveBar.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.groupBox6);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnCreateBar);
             this.groupBox3.Location = new System.Drawing.Point(6, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
@@ -372,16 +373,6 @@
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add Bar";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(79, 123);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 46);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "&Create Bar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -405,27 +396,37 @@
             this.button2.Text = "&Create Bar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // btnCreateBar
             // 
-            this.groupBox7.Controls.Add(this.button4);
-            this.groupBox7.Location = new System.Drawing.Point(285, 0);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Size = new System.Drawing.Size(272, 269);
-            this.groupBox7.TabIndex = 10;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Remove Bar";
+            this.btnCreateBar.Location = new System.Drawing.Point(79, 123);
+            this.btnCreateBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreateBar.Name = "btnCreateBar";
+            this.btnCreateBar.Size = new System.Drawing.Size(131, 46);
+            this.btnCreateBar.TabIndex = 2;
+            this.btnCreateBar.Text = "&Create Bar";
+            this.btnCreateBar.UseVisualStyleBackColor = true;
+            this.btnCreateBar.Click += new System.EventHandler(this.btnCreateBar_Click);
             // 
-            // button4
+            // lblMessage
             // 
-            this.button4.Location = new System.Drawing.Point(79, 123);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(131, 46);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "&Remove Bar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(742, 50);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(123, 20);
+            this.lblMessage.TabIndex = 9;
+            this.lblMessage.Text = "Message Label";
+            // 
+            // btnDeleteLayout
+            // 
+            this.btnDeleteLayout.Location = new System.Drawing.Point(964, 581);
+            this.btnDeleteLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteLayout.Name = "btnDeleteLayout";
+            this.btnDeleteLayout.Size = new System.Drawing.Size(141, 50);
+            this.btnDeleteLayout.TabIndex = 10;
+            this.btnDeleteLayout.Text = "&Delete Layout";
+            this.btnDeleteLayout.UseVisualStyleBackColor = true;
+            this.btnDeleteLayout.Click += new System.EventHandler(this.btnDeleteLayout_Click);
             // 
             // frmManageSeatingLayout
             // 
@@ -455,9 +456,9 @@
             this.tabBarSeatManager.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tabBarManager.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -492,10 +493,10 @@
         private System.Windows.Forms.Button btnDeleteBarseat;
         private System.Windows.Forms.TabPage tabBarManager;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnRemoveBar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCreateBar;
     }
 }

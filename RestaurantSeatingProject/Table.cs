@@ -4,19 +4,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RestaurantSeatingProject {
-    public class Table {
+    public class Table : BarObject {
 
-        public int TableNumber { get; set; }
+        //public int TableNumber { get; set; }
 
-        public virtual int NumberOfSeats { get; set; }
+        //public virtual int NumberOfSeats { get; set; }
 
-        public int TablePositionX { get; set; }
+        //public int TablePositionX { get; set; }
 
-        public int TablePositionY { get; set; }
+        //public int TablePositionY { get; set; }
 
         public string TableState { get; set; }
 
-        private static int totalTables = 1;
+        //private static int totalTables = 1;
 
         public Table() {
 
@@ -29,7 +29,8 @@ namespace RestaurantSeatingProject {
 
         }
 
-        public Table(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY, string tableState) {
+        public Table(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY, string tableState)
+            : base(numberOfSeats, tableNumber, tablePositionX, tablePositionY) {
 
             this.NumberOfSeats = numberOfSeats;
             this.TableNumber = tableNumber;

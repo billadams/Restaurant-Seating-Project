@@ -13,9 +13,12 @@ namespace RestaurantSeatingProject {
     public partial class frmManageSeatingLayout : Form {
 
         private List<Table> tables = new List<Table>();
+        private List<BarSeat> barSeats = new List<BarSeat>();
         private List<AssignedTable> assignedList = new List<AssignedTable>();
         AssignedTable assigned = null;
         Table table;
+        BarTable barTable;
+        BarSeat barseat;
         private int xPos;
         private int yPos;
         private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
@@ -95,7 +98,7 @@ namespace RestaurantSeatingProject {
                 assignedList.Add(assigned);
                 Button button = new Button();
                 button.Height = 50;
-                button.Tag = table.TableNumber;
+                button.Tag = table;
                 button.Text = "Table " + Convert.ToString(table.TableNumber)
                     + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                 button.Location = new Point(startLeft, startTop);
@@ -167,12 +170,31 @@ namespace RestaurantSeatingProject {
 
             Button button = (Button)sender;
 
-            int tableIndex = (Int32)button.Tag - 1;
-            Table table = tables[tableIndex];
+            if (barTable.Equals(typeof(BarTable))) {
 
-            table.TablePositionX = button.Left;
-            table.TablePositionY = button.Top;
+                // Get positioning.
 
+
+            }
+            else if (table.Equals(typeof(Table))) {
+
+                Table table = (Table)button.Tag;
+                int tableNumber = table.TableNumber;
+                table = tables[tableNumber - 1];
+
+                //int tableIndex = (Int32)button.Tag - 1;
+                //Table table = tables[tableIndex];
+
+                table.TablePositionX = button.Left;
+                table.TablePositionY = button.Top;
+
+            }
+            else if (barseat.Equals(typeof(BarSeat))) {
+
+                // Get positioning.
+
+
+            }
         }
 
         private void UpdateView() {
@@ -234,7 +256,7 @@ namespace RestaurantSeatingProject {
 
                     Button button = new Button();
                     button.Height = 50;
-                    button.Tag = table.TableNumber;
+                    button.Tag = table;
                     button.Text = "Table " + Convert.ToString(table.TableNumber)
                         + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                     button.Location = new Point(table.TablePositionX, table.TablePositionY);
@@ -262,6 +284,109 @@ namespace RestaurantSeatingProject {
 
             deleteTable = true;
 
+        }
+
+        private void btnCreateBar_Click(object sender, EventArgs e) {
+
+            barTable = new BarTable();
+            //assigned = new AssignedTable();
+            int startLeft = pnlRoom.Left;
+            int startTop = pnlRoom.Top;
+
+            barTable.TablePositionX = startLeft;
+            barTable.TablePositionY = startTop;
+            //tables.Add(table);
+            //assignedList.Add(assigned);
+            Button button = new Button();
+            button.Height = 20;
+            button.Width = 150;
+            button.Tag = barTable;
+            button.Text = "Bar";
+            //button.Text = "Table " + Convert.ToString(table.TableNumber)
+            //    + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
+            button.Location = new Point(startLeft, startTop);
+            pnlRoom.Controls.Add(button);
+
+            button.MouseDown += button_MouseDown;
+            button.MouseUp += button_MouseUp;
+            button.MouseMove += button_MouseMove;
+
+            //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
+            btnSaveLayout.Enabled = true;
+            lblMessage.Text = "Bar was successfully added.";
+
+            //string sErrorMess = "";
+            //bool bIsValid = true;
+
+            //try {
+
+                //barTable.TableNumber = Convert.ToInt32(txtTableNumber.Text);E
+                //assigned.TableNumber = table.TableNumber;
+
+                //if (rdoSection1.Checked) {
+
+                //    assigned.SectionNum = (int)AvailableSections.Section1;
+
+                //}
+                //else if (rdoSection2.Checked) {
+
+                //    assigned.SectionNum = (int)AvailableSections.Section2;
+
+                //}
+                //else if (rdoSection3.Checked) {
+
+                //    assigned.SectionNum = (int)AvailableSections.Section3;
+
+                //}
+            //}
+            //catch (Exception) {
+
+            //    bIsValid = false;
+            //    sErrorMess += "TableNumber is required and must be a number";
+
+            //}
+
+            //try {
+
+            //    table.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
+
+            //}
+            //catch (Exception) {
+
+            //    bIsValid = false;
+            //    sErrorMess += "\nNumber of Seats is required and must be a number";
+
+            //}
+
+            //if (bIsValid) {
+
+                //barTable.TablePositionX = startLeft;
+                //barTable.TablePositionY = startTop;
+                ////tables.Add(table);
+                ////assignedList.Add(assigned);
+                //Button button = new Button();
+                //button.Height = 20;
+                //button.Width = 150;
+                //button.Tag = table;
+                //button.Text = "Table " + Convert.ToString(table.TableNumber)
+                //    + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
+                //button.Location = new Point(startLeft, startTop);
+                //pnlRoom.Controls.Add(button);
+
+                //button.MouseDown += button_MouseDown;
+                //button.MouseUp += button_MouseUp;
+                //button.MouseMove += button_MouseMove;
+
+                //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
+                //btnSaveLayout.Enabled = true;
+                //lblMessage.Text = "Table " + table.TableNumber + " successfully added.";
+
+            //}
+            //else {
+
+            //    MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            //}
         }
     }
 }

@@ -4,21 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantSeatingProject
-{
-  public class BarSeat : Table
-  {
-    public override int NumberOfSeats
-    {
-      get
-      {
-        return 1;
-      }
-    }
+namespace RestaurantSeatingProject {
 
-    public BarSeat(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY, string tableState) 
-      : base(numberOfSeats, tableNumber, tablePositionX, tablePositionY, tableState)
-    {
+    public class BarSeat : BarObject {
+
+        public string tableState;
+
+        public override int NumberOfSeats {
+
+            get { return 1; }
+
+        }
+
+        public BarSeat(int numberOfSeats, int tableNumber, int tablePositionX, int tablePositionY, string tableState)
+            : base(numberOfSeats, tableNumber, tablePositionX, tablePositionY) {
+
+
+        }
     }
-  }
 }
