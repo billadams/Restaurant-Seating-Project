@@ -40,6 +40,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnDeleteTable = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboSeats = new System.Windows.Forms.ComboBox();
             this.rdoSection3 = new System.Windows.Forms.RadioButton();
             this.rdoSection2 = new System.Windows.Forms.RadioButton();
             this.rdoSection1 = new System.Windows.Forms.RadioButton();
@@ -90,6 +91,7 @@
             // 
             // btnAddTable
             // 
+            this.btnAddTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddTable.Location = new System.Drawing.Point(75, 138);
             this.btnAddTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTable.Name = "btnAddTable";
@@ -101,7 +103,7 @@
             // 
             // txtNumberOfSeats
             // 
-            this.txtNumberOfSeats.Location = new System.Drawing.Point(179, 105);
+            this.txtNumberOfSeats.Location = new System.Drawing.Point(167, 34);
             this.txtNumberOfSeats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumberOfSeats.Name = "txtNumberOfSeats";
             this.txtNumberOfSeats.Size = new System.Drawing.Size(39, 22);
@@ -110,17 +112,17 @@
             // 
             // txtTableNumber
             // 
-            this.txtTableNumber.Location = new System.Drawing.Point(179, 76);
+            this.txtTableNumber.Location = new System.Drawing.Point(174, 76);
             this.txtTableNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTableNumber.Name = "txtTableNumber";
-            this.txtTableNumber.Size = new System.Drawing.Size(39, 22);
+            this.txtTableNumber.Size = new System.Drawing.Size(49, 22);
             this.txtTableNumber.TabIndex = 5;
             this.txtTableNumber.Text = "1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 110);
+            this.label2.Location = new System.Drawing.Point(48, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 17);
             this.label2.TabIndex = 4;
@@ -129,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 79);
+            this.label1.Location = new System.Drawing.Point(64, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 3;
@@ -240,6 +242,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboSeats);
             this.groupBox1.Controls.Add(this.rdoSection3);
             this.groupBox1.Controls.Add(this.rdoSection2);
             this.groupBox1.Controls.Add(this.rdoSection1);
@@ -256,6 +259,20 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Tables";
+            // 
+            // cboSeats
+            // 
+            this.cboSeats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSeats.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboSeats.FormattingEnabled = true;
+            this.cboSeats.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "6"});
+            this.cboSeats.Location = new System.Drawing.Point(174, 103);
+            this.cboSeats.Name = "cboSeats";
+            this.cboSeats.Size = new System.Drawing.Size(49, 24);
+            this.cboSeats.TabIndex = 12;
             // 
             // rdoSection3
             // 
@@ -500,5 +517,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCreateBar;
+        private System.Windows.Forms.ComboBox cboSeats;
     }
 }

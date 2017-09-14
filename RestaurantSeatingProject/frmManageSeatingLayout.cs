@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
     public partial class frmManageSeatingLayout : Form {
-
+ 
         private List<Table> tables = new List<Table>();
         private List<BarSeat> barSeats = new List<BarSeat>();
         private List<AssignedTable> assignedList = new List<AssignedTable>();
@@ -33,10 +33,11 @@ namespace RestaurantSeatingProject {
             LoadTables();
             lblMessage.Text = "";
             btnSaveLayout.Enabled = false;
+            cboSeats.SelectedIndex = 0;
         }
 
         private void btnCancelLayout_Click(object sender, EventArgs e) {
-
+            
             Table.TotalTables = 1;
             this.Close();
 
@@ -82,7 +83,8 @@ namespace RestaurantSeatingProject {
 
             try {
 
-                table.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
+                table.NumberOfSeats = Convert.ToInt32(cboSeats.SelectedItem);
+                //table.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
 
             }
             catch (Exception) {
@@ -99,6 +101,7 @@ namespace RestaurantSeatingProject {
                 tables.Add(table);
                 assignedList.Add(assigned);
                 Button button = new Button();
+                button.Cursor = Cursors.Hand;
                 button.Height = 50;
                 button.Tag = table;
                 button.Text = "Table " + Convert.ToString(table.TableNumber)
@@ -310,6 +313,7 @@ namespace RestaurantSeatingProject {
                     table = eachTable;
 
                     Button button = new Button();
+                    button.Cursor = Cursors.Hand;
                     button.Height = 50;
                     button.Tag = table;
                     button.Text = "Table " + Convert.ToString(table.TableNumber)
