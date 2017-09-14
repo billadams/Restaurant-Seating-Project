@@ -1,0 +1,23 @@
+Final goals:
+----Quentin------
+Combine tables for merge
+
+barseatDA calls
+
+refactor some logic in seatinglayout based on if it is a bar or a table
+
+
+-----Bill----------
+Populate combo boxes
+
+Maybe add picture functionality (optional)
+
+locking in the panel so you can have collision
+
+
+----All---------
+
+Bug testing
+
+
+
