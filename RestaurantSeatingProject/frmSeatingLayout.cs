@@ -41,9 +41,21 @@ namespace RestaurantSeatingProject
              
             if (rdoAssignTable.Checked)
             {
+
                 //makes sure a server is selected in the list box
                 if (!(lstServers.SelectedIndex == -1))
                 {
+                    try
+                    {
+                        Convert.ToInt32(txtNumCustomers.Text);                       
+                    }
+                    catch (Exception)
+                    {
+
+                        bIsValid = false;
+                        sErrorMess += "\nNumber of Seats is required and must be a number";
+                    }
+                    if(bIsValid){
                     if (oSpecificTable.NumberOfSeats >= Convert.ToInt16(txtNumCustomers.Text))
                     {
                         //Number of seats fit the amount to be seated
@@ -65,6 +77,8 @@ namespace RestaurantSeatingProject
                         bIsValid = false;
                         sErrorMess = "Error: That table cannot seat that many customers";
                     }
+                }
+                   
                 }
                 else
                 {
@@ -209,7 +223,7 @@ namespace RestaurantSeatingProject
 
             foreach (Customer oCustomer in oReservationList)
             {
-                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
+                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " Group Size:" + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
             }
             lstReservations.DisplayMember = "Text";
             lstReservations.DataSource = oDataDisplay;

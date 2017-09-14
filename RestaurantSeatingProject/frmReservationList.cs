@@ -34,7 +34,16 @@ namespace RestaurantSeatingProject
             if(String.IsNullOrEmpty(sReservationDate))
             {
                 bIsValid = false;
-                sErrorMess = "\nReservation Date is Required for Reservation";
+                sErrorMess += "\nReservation Date is Required for Reservation";
+            }
+            try
+            {
+                Convert.ToInt32(txtGroupSize.Text);
+            }
+            catch (Exception)
+            {
+                bIsValid = false;
+                sErrorMess += "\nGroup size is required and must be a number";
             }
             if (bIsValid)
             {
@@ -64,7 +73,7 @@ namespace RestaurantSeatingProject
 
             foreach (Customer oCustomer in oReservationList)
             {
-                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " " + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
+                oDataDisplay.Add(new DisplayData() { Value = oCustomer.Id.ToString(), Text = oCustomer.LastName + " Group Size:" + oCustomer.GroupSize + " " + oCustomer.ReservationTime });
             }
             lstReservationList.DisplayMember = "Text";
             lstReservationList.DataSource = oDataDisplay;
