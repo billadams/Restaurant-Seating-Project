@@ -173,14 +173,27 @@ namespace RestaurantSeatingProject
             {
                 foreach (Table oTable in oTables)
                 {
-                    Button button = new Button();
+                    RoundButton button = new RoundButton();
+                    button.Cursor = Cursors.Hand;
                     button.Height = 50;
+                    button.Width = 50;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.FlatAppearance.BorderSize = 0;
+                    button.BackColor = Color.Cyan;
+                    button.Tag = oTable.TableNumber;
+                    button.Text = Convert.ToString(oTable.TableNumber)
+                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
+                    pnlRoom.Controls.Add(button);
+
+                    //Button button = new Button();
+                    //button.Height = 50;
                     //int nServerCheck = ServerDA.GetTableAssignment(oTable.TableNumber.ToString());
                     //if (nServerCheck == 0)
                     //{
                         //if no server is assigned
-                        button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
-                            + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                        //button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
+                            //+ "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
                     //}
                     //else
                     //{
@@ -191,9 +204,9 @@ namespace RestaurantSeatingProject
                     //}
 
 
-                    button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
+                    //button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     button.Click += new EventHandler(btnSeatClick);
-                    button.Tag = oTable.TableNumber;
+                    //button.Tag = oTable.TableNumber;
                     pnlRoom.Controls.Add(button);
                 }
 

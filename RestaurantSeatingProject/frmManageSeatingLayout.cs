@@ -100,11 +100,15 @@ namespace RestaurantSeatingProject {
                 table.TablePositionY = startTop;
                 tables.Add(table);
                 assignedList.Add(assigned);
-                Button button = new Button();
+                RoundButton button = new RoundButton();
                 button.Cursor = Cursors.Hand;
                 button.Height = 50;
+                button.Width = 50;
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.BackColor = Color.Cyan;
                 button.Tag = table;
-                button.Text = "Table " + Convert.ToString(table.TableNumber)
+                button.Text = Convert.ToString(table.TableNumber)
                     + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                 button.Location = new Point(startLeft, startTop);
                 pnlRoom.Controls.Add(button);
@@ -304,6 +308,7 @@ namespace RestaurantSeatingProject {
 
         public void LoadTables() {
 
+            // Load Tables
             tables = TableDA.GetTableLayout();
 
             if (!(Utility.IsNullOrEmpty(tables))) {
@@ -312,11 +317,15 @@ namespace RestaurantSeatingProject {
 
                     table = eachTable;
 
-                    Button button = new Button();
+                    RoundButton button = new RoundButton();
                     button.Cursor = Cursors.Hand;
                     button.Height = 50;
+                    button.Width = 50;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.FlatAppearance.BorderSize = 0;
+                    button.BackColor = Color.Cyan;
                     button.Tag = table;
-                    button.Text = "Table " + Convert.ToString(table.TableNumber)
+                    button.Text = Convert.ToString(table.TableNumber)
                         + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
                     button.Location = new Point(table.TablePositionX, table.TablePositionY);
                     pnlRoom.Controls.Add(button);
@@ -332,6 +341,14 @@ namespace RestaurantSeatingProject {
                 txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
             }
+
+            // Load BarSeats
+
+
+
+            // Load BarTable
+
+
         }
 
         private void btnDeleteTable_Click(object sender, EventArgs e) {

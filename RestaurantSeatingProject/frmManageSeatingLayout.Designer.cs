@@ -82,7 +82,7 @@
             // 
             // pnlRoom
             // 
-            this.pnlRoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRoom.BackColor = System.Drawing.Color.DimGray;
             this.pnlRoom.Location = new System.Drawing.Point(12, 12);
             this.pnlRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlRoom.Name = "pnlRoom";
