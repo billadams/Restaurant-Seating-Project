@@ -34,6 +34,7 @@ namespace RestaurantSeatingProject {
             LoadTables();
             btnSaveLayout.Enabled = false;
             cboSeats.SelectedIndex = 0;
+
         }
 
         private void btnCancelLayout_Click(object sender, EventArgs e) {
@@ -340,7 +341,7 @@ namespace RestaurantSeatingProject {
 
             }
 
-            // Load BarSeats - uncomment when DA complete.
+            // Load BarSeats - uncomment when BarSeatDA complete.
             //barSeats = BarSeatDA.GetBarSeatLayout();
 
             //if (!(Utility.IsNullOrEmpty(barSeats))) {
@@ -371,7 +372,7 @@ namespace RestaurantSeatingProject {
 
             //}
 
-            // Load BarTable - uncomment when DA complete.
+            // Load BarTable - uncomment when BarTableDA complete.
             //barTable = BarTable.GetBarTableLayout();
 
             //if (!(Utility.IsNullOrEmpty(barTable))) {
