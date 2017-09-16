@@ -30,8 +30,8 @@ namespace RestaurantSeatingProject {
         public frmManageSeatingLayout() {
 
             InitializeComponent();
-            LoadTables();
             lblMessage.Text = "";
+            LoadTables();
             btnSaveLayout.Enabled = false;
             cboSeats.SelectedIndex = 0;
         }
@@ -334,20 +334,67 @@ namespace RestaurantSeatingProject {
                     button.MouseUp += button_MouseUp;
                     button.MouseMove += button_MouseMove;
 
-                    btnSaveLayout.Enabled = false;
-
                 }
 
                 txtTableNumber.Text = Convert.ToString(Table.TotalTables);
 
             }
 
-            // Load BarSeats
+            // Load BarSeats - uncomment when DA complete.
+            //barSeats = BarSeatDA.GetBarSeatLayout();
 
+            //if (!(Utility.IsNullOrEmpty(barSeats))) {
 
+            //    foreach (BarSeat eachBarSeat in barSeats) {
 
-            // Load BarTable
+            //        barSeat = eachBarSeat;
 
+            //        RoundButton button = new RoundButton();
+            //        button.Cursor = Cursors.Hand;
+            //        button.Height = 30;
+            //        button.Width = 30;
+            //        button.FlatStyle = FlatStyle.Flat;
+            //        button.FlatAppearance.BorderSize = 0;
+            //        button.BackColor = Color.Cyan;
+            //        button.Tag = barSeat;
+            //        button.Text = "B" + Convert.ToString(barSeat.TableNumber);
+            //        button.Location = new Point(table.TablePositionX, table.TablePositionY);
+            //        pnlRoom.Controls.Add(button);
+
+            //        button.MouseDown += button_MouseDown;
+            //        button.MouseUp += button_MouseUp;
+            //        button.MouseMove += button_MouseMove;
+
+            //    }
+
+            //    txtBearSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
+
+            //}
+
+            // Load BarTable - uncomment when DA complete.
+            //barTable = BarTable.GetBarTableLayout();
+
+            //if (!(Utility.IsNullOrEmpty(barTable))) {
+
+            //    Button button = new Button();
+            //    button.Cursor = Cursors.Hand;
+            //    button.Height = 30;
+            //    button.Width = 200;
+            //    button.FlatStyle = FlatStyle.Flat;
+            //    button.FlatAppearance.BorderSize = 0;
+            //    button.BackColor = Color.Cyan;
+            //    button.Tag = barTable;
+            //    button.Text = "Bar";
+            //    button.Location = new Point(barTable.TablePositionX, barTable.TablePositionY);
+            //    pnlRoom.Controls.Add(button);
+
+            //    button.MouseDown += button_MouseDown;
+            //    button.MouseUp += button_MouseUp;
+            //    button.MouseMove += button_MouseMove;
+
+            //}
+
+            lblMessage.Text = "Seating layout successfully loaded!";
 
         }
 
@@ -360,21 +407,21 @@ namespace RestaurantSeatingProject {
         private void btnCreateBar_Click(object sender, EventArgs e) {
 
             barTable = new BarTable();
-            //assigned = new AssignedTable();
             int startLeft = pnlRoom.Left;
             int startTop = pnlRoom.Top;
 
             barTable.TablePositionX = startLeft;
             barTable.TablePositionY = startTop;
-            //tables.Add(table);
-            //assignedList.Add(assigned);
+
             Button button = new Button();
+            button.Cursor = Cursors.Hand;
             button.Height = 30;
             button.Width = 200;
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderSize = 0;
+            button.BackColor = Color.Cyan;
             button.Tag = barTable;
             button.Text = "Bar";
-            //button.Text = "Table " + Convert.ToString(table.TableNumber)
-            //    + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
             button.Location = new Point(startLeft, startTop);
             pnlRoom.Controls.Add(button);
 
@@ -382,82 +429,9 @@ namespace RestaurantSeatingProject {
             button.MouseUp += button_MouseUp;
             button.MouseMove += button_MouseMove;
 
-            //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
             btnSaveLayout.Enabled = true;
             lblMessage.Text = "Bar was successfully added.";
 
-            //string sErrorMess = "";
-            //bool bIsValid = true;
-
-            //try {
-
-                //barTable.TableNumber = Convert.ToInt32(txtTableNumber.Text);E
-                //assigned.TableNumber = table.TableNumber;
-
-                //if (rdoSection1.Checked) {
-
-                //    assigned.SectionNum = (int)AvailableSections.Section1;
-
-                //}
-                //else if (rdoSection2.Checked) {
-
-                //    assigned.SectionNum = (int)AvailableSections.Section2;
-
-                //}
-                //else if (rdoSection3.Checked) {
-
-                //    assigned.SectionNum = (int)AvailableSections.Section3;
-
-                //}
-            //}
-            //catch (Exception) {
-
-            //    bIsValid = false;
-            //    sErrorMess += "TableNumber is required and must be a number";
-
-            //}
-
-            //try {
-
-            //    table.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
-
-            //}
-            //catch (Exception) {
-
-            //    bIsValid = false;
-            //    sErrorMess += "\nNumber of Seats is required and must be a number";
-
-            //}
-
-            //if (bIsValid) {
-
-                //barTable.TablePositionX = startLeft;
-                //barTable.TablePositionY = startTop;
-                ////tables.Add(table);
-                ////assignedList.Add(assigned);
-                //Button button = new Button();
-                //button.Height = 20;
-                //button.Width = 150;
-                //button.Tag = table;
-                //button.Text = "Table " + Convert.ToString(table.TableNumber)
-                //    + "\n" + Convert.ToString(table.NumberOfSeats) + " seats";
-                //button.Location = new Point(startLeft, startTop);
-                //pnlRoom.Controls.Add(button);
-
-                //button.MouseDown += button_MouseDown;
-                //button.MouseUp += button_MouseUp;
-                //button.MouseMove += button_MouseMove;
-
-                //txtTableNumber.Text = Convert.ToString(Table.TotalTables);
-                //btnSaveLayout.Enabled = true;
-                //lblMessage.Text = "Table " + table.TableNumber + " successfully added.";
-
-            //}
-            //else {
-
-            //    MessageBox.Show(sErrorMess, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            //}
         }
 
         private void btnAddBarSeat_Click(object sender, EventArgs e) {
@@ -501,9 +475,13 @@ namespace RestaurantSeatingProject {
                 barSeat.TablePositionY = startTop;
                 barSeats.Add(barSeat);
                 assignedList.Add(assigned);
-                Button button = new Button();
+                RoundButton button = new RoundButton();
+                button.Cursor = Cursors.Hand;
                 button.Height = 30;
                 button.Width = 30;
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.BackColor = Color.Cyan;
                 button.Tag = barSeat;
                 button.Text = "B" + Convert.ToString(barSeat.TableNumber);
                 button.Location = new Point(startLeft, startTop);
