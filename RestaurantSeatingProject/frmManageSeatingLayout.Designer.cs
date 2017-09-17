@@ -30,7 +30,7 @@
             this.txtTableNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCancelLayout = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtBearSeatNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -137,17 +137,17 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Table Number:";
             // 
-            // btnCancelLayout
+            // btnClose
             // 
-            this.btnCancelLayout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelLayout.Location = new System.Drawing.Point(964, 636);
-            this.btnCancelLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCancelLayout.Name = "btnCancelLayout";
-            this.btnCancelLayout.Size = new System.Drawing.Size(141, 50);
-            this.btnCancelLayout.TabIndex = 4;
-            this.btnCancelLayout.Text = "&Cancel";
-            this.btnCancelLayout.UseVisualStyleBackColor = true;
-            this.btnCancelLayout.Click += new System.EventHandler(this.btnCancelLayout_Click);
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(964, 636);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(141, 50);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "&Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnCancelLayout_Click);
             // 
             // groupBox2
             // 
@@ -188,7 +188,7 @@
             this.btnAddBarSeat.Name = "btnAddBarSeat";
             this.btnAddBarSeat.Size = new System.Drawing.Size(131, 46);
             this.btnAddBarSeat.TabIndex = 2;
-            this.btnAddBarSeat.Text = "&Add Barseat";
+            this.btnAddBarSeat.Text = "Add Barseat";
             this.btnAddBarSeat.UseVisualStyleBackColor = true;
             this.btnAddBarSeat.Click += new System.EventHandler(this.btnAddBarSeat_Click);
             // 
@@ -376,7 +376,7 @@
             this.btnDeleteBar.Name = "btnDeleteBar";
             this.btnDeleteBar.Size = new System.Drawing.Size(131, 46);
             this.btnDeleteBar.TabIndex = 2;
-            this.btnDeleteBar.Text = "&Delete Bar";
+            this.btnDeleteBar.Text = "Delete Bar";
             this.btnDeleteBar.UseVisualStyleBackColor = true;
             this.btnDeleteBar.Click += new System.EventHandler(this.btnDeleteBar_Click);
             // 
@@ -422,7 +422,7 @@
             this.btnCreateBar.Name = "btnCreateBar";
             this.btnCreateBar.Size = new System.Drawing.Size(131, 46);
             this.btnCreateBar.TabIndex = 2;
-            this.btnCreateBar.Text = "&Create Bar";
+            this.btnCreateBar.Text = "Create Bar";
             this.btnCreateBar.UseVisualStyleBackColor = true;
             this.btnCreateBar.Click += new System.EventHandler(this.btnCreateBar_Click);
             // 
@@ -452,13 +452,13 @@
             this.AcceptButton = this.btnSaveLayout;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancelLayout;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1323, 709);
             this.ControlBox = false;
             this.Controls.Add(this.btnDeleteLayout);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnCancelLayout);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlRoom);
             this.Controls.Add(this.btnSaveLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -492,7 +492,7 @@
         private System.Windows.Forms.TextBox txtTableNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCancelLayout;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtBearSeatNumber;
         private System.Windows.Forms.Label label4;

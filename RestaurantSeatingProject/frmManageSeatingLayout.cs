@@ -407,31 +407,31 @@ namespace RestaurantSeatingProject {
 
         private void btnCreateBar_Click(object sender, EventArgs e) {
 
-            barTable = new BarTable();
-            int startLeft = pnlRoom.Left;
-            int startTop = pnlRoom.Top;
+                barTable = new BarTable();
+                int startLeft = pnlRoom.Left;
+                int startTop = pnlRoom.Top;
 
-            barTable.TablePositionX = startLeft;
-            barTable.TablePositionY = startTop;
+                barTable.TablePositionX = startLeft;
+                barTable.TablePositionY = startTop;
 
-            Button button = new Button();
-            button.Cursor = Cursors.Hand;
-            button.Height = 30;
-            button.Width = 200;
-            button.FlatStyle = FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
-            button.BackColor = Color.Cyan;
-            button.Tag = barTable;
-            button.Text = "Bar";
-            button.Location = new Point(startLeft, startTop);
-            pnlRoom.Controls.Add(button);
+                Button button = new Button();
+                button.Cursor = Cursors.Hand;
+                button.Height = 30;
+                button.Width = 200;
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.BackColor = Color.Cyan;
+                button.Tag = barTable;
+                button.Text = "Bar";
+                button.Location = new Point(startLeft, startTop);
+                pnlRoom.Controls.Add(button);
 
-            button.MouseDown += button_MouseDown;
-            button.MouseUp += button_MouseUp;
-            button.MouseMove += button_MouseMove;
+                button.MouseDown += button_MouseDown;
+                button.MouseUp += button_MouseUp;
+                button.MouseMove += button_MouseMove;
 
-            btnSaveLayout.Enabled = true;
-            lblMessage.Text = "Bar was successfully added.";
+                btnSaveLayout.Enabled = true;
+                lblMessage.Text = "Bar was successfully added.";
 
         }
 
@@ -507,13 +507,35 @@ namespace RestaurantSeatingProject {
 
         private void btnDeleteBarseat_Click(object sender, EventArgs e) {
 
-            deleteBarSeat = true;
+            if (btnDeleteBarseat.Text == "Delete Barseat") {
+
+                btnDeleteBarseat.Text = "Cancel";
+                deleteBarSeat = true;
+
+            }
+            else {
+
+                btnDeleteBarseat.Text = "Delete Barseat";
+                deleteBarSeat = false;
+
+            }
 
         }
 
         private void btnDeleteBar_Click(object sender, EventArgs e) {
 
-            deleteBar = true;
+            if (btnDeleteBar.Text == "Delete Bar") {
+
+                btnDeleteBar.Text = "Cancel";
+                deleteBar = true;
+
+            }
+            else {
+
+                btnDeleteBar.Text = "Delete Bar";
+                deleteBar = false;
+
+            }
 
         }
     }
