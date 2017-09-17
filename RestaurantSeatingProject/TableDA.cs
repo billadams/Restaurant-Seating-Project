@@ -157,7 +157,6 @@ namespace RestaurantSeatingProject {
         }
 
 
-
         public static Table GetTableByID(string id) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
@@ -209,7 +208,7 @@ namespace RestaurantSeatingProject {
         {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
-            List<Table> oTables = new List<Table>();
+            List<Table> tables = new List<Table>();
             SqlDataReader reader = null;
             SqlCommand command = new SqlCommand();
 
@@ -232,7 +231,7 @@ namespace RestaurantSeatingProject {
                     table.TablePositionX = (int)reader["tablePositionX"];
                     table.TablePositionY = (int)reader["tablePositionY"];
                     table.TableState = (string)reader["tableState"];
-                    oTables.Add(table);
+                    tables.Add(table);
                 }
 
             }
@@ -255,9 +254,10 @@ namespace RestaurantSeatingProject {
 
             }
 
-            return oTables;
+            return tables;
 
         }
+
         public static void UpdateTableState(string id, string tableState) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
