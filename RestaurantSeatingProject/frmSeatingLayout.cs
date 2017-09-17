@@ -378,8 +378,7 @@ namespace RestaurantSeatingProject
                 int seatNum = 0;                
                 bool bReservationSelected = false;
                 foreach (var item in lstAvailable.SelectedItems)
-                {
-                    //item.ToString();
+                {         
                     Table oTable = new Table();
                     string sAssign = ((DisplayData)item).Value;
                     oTable = TableDA.GetTableByID(sAssign);
@@ -404,7 +403,6 @@ namespace RestaurantSeatingProject
                         int nSectionNumber = SectionDA.GetAssignedSection(oTable.TableNumber.ToString());
                         ServerDA.AssignServerToTable(oTable.TableNumber.ToString(), sServerID, nSectionNumber.ToString());
                         TableDA.UpdateTableState(oTable.TableNumber.ToString(), TableState.Occupied.ToString()); 
-                        
 
                     }
                     if (bReservationSelected)
