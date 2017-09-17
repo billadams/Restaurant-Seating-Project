@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace RestaurantSeatingProject {
-    public class RoundButton : Button {
+
+    public class RoundButton : StayInsideButton  {
 
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) {
 
@@ -17,6 +19,5 @@ namespace RestaurantSeatingProject {
             base.OnPaint(e);
 
         }
-
     }
 }
