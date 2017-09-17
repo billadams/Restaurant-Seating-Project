@@ -48,12 +48,12 @@
             this.tabAvailableTables = new System.Windows.Forms.TabPage();
             this.tabAssignedTables = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.cboSeats = new System.Windows.Forms.ComboBox();
             this.grpBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -67,18 +67,17 @@
             // pnlRoom
             // 
             this.pnlRoom.BackColor = System.Drawing.Color.DimGray;
-            this.pnlRoom.Location = new System.Drawing.Point(12, 11);
-            this.pnlRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlRoom.Location = new System.Drawing.Point(9, 9);
+            this.pnlRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlRoom.Name = "pnlRoom";
-            this.pnlRoom.Size = new System.Drawing.Size(707, 674);
+            this.pnlRoom.Size = new System.Drawing.Size(530, 548);
             this.pnlRoom.TabIndex = 3;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(922, 635);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(692, 516);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 50);
+            this.btnClose.Size = new System.Drawing.Size(106, 41);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Cancel";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -89,11 +88,9 @@
             this.grpBox1.Controls.Add(this.rdoBusTable);
             this.grpBox1.Controls.Add(this.rdoClearTable);
             this.grpBox1.Controls.Add(this.rdoAssignTable);
-            this.grpBox1.Location = new System.Drawing.Point(749, 390);
-            this.grpBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.grpBox1.Location = new System.Drawing.Point(562, 317);
             this.grpBox1.Name = "grpBox1";
-            this.grpBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.grpBox1.Size = new System.Drawing.Size(260, 172);
+            this.grpBox1.Size = new System.Drawing.Size(195, 140);
             this.grpBox1.TabIndex = 5;
             this.grpBox1.TabStop = false;
             // 
@@ -101,10 +98,9 @@
             // 
             this.rdoBusTable.AutoSize = true;
             this.rdoBusTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
-            this.rdoBusTable.Location = new System.Drawing.Point(8, 116);
-            this.rdoBusTable.Margin = new System.Windows.Forms.Padding(4);
+            this.rdoBusTable.Location = new System.Drawing.Point(6, 94);
             this.rdoBusTable.Name = "rdoBusTable";
-            this.rdoBusTable.Size = new System.Drawing.Size(172, 38);
+            this.rdoBusTable.Size = new System.Drawing.Size(141, 31);
             this.rdoBusTable.TabIndex = 2;
             this.rdoBusTable.Text = "Bus Table";
             this.rdoBusTable.UseVisualStyleBackColor = true;
@@ -114,10 +110,9 @@
             // 
             this.rdoClearTable.AutoSize = true;
             this.rdoClearTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
-            this.rdoClearTable.Location = new System.Drawing.Point(9, 70);
-            this.rdoClearTable.Margin = new System.Windows.Forms.Padding(4);
+            this.rdoClearTable.Location = new System.Drawing.Point(7, 57);
             this.rdoClearTable.Name = "rdoClearTable";
-            this.rdoClearTable.Size = new System.Drawing.Size(190, 38);
+            this.rdoClearTable.Size = new System.Drawing.Size(155, 31);
             this.rdoClearTable.TabIndex = 1;
             this.rdoClearTable.Text = "Clear Table";
             this.rdoClearTable.UseVisualStyleBackColor = true;
@@ -128,10 +123,9 @@
             this.rdoAssignTable.AutoSize = true;
             this.rdoAssignTable.Checked = true;
             this.rdoAssignTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
-            this.rdoAssignTable.Location = new System.Drawing.Point(9, 25);
-            this.rdoAssignTable.Margin = new System.Windows.Forms.Padding(4);
+            this.rdoAssignTable.Location = new System.Drawing.Point(7, 20);
             this.rdoAssignTable.Name = "rdoAssignTable";
-            this.rdoAssignTable.Size = new System.Drawing.Size(213, 38);
+            this.rdoAssignTable.Size = new System.Drawing.Size(175, 31);
             this.rdoAssignTable.TabIndex = 0;
             this.rdoAssignTable.TabStop = true;
             this.rdoAssignTable.Text = "Assign Table";
@@ -141,19 +135,18 @@
             // lstServers
             // 
             this.lstServers.FormattingEnabled = true;
-            this.lstServers.ItemHeight = 16;
-            this.lstServers.Location = new System.Drawing.Point(15, 13);
-            this.lstServers.Margin = new System.Windows.Forms.Padding(4);
+            this.lstServers.Location = new System.Drawing.Point(11, 11);
             this.lstServers.Name = "lstServers";
-            this.lstServers.Size = new System.Drawing.Size(435, 260);
+            this.lstServers.Size = new System.Drawing.Size(327, 212);
             this.lstServers.TabIndex = 7;
             // 
             // lblNumCustomers
             // 
             this.lblNumCustomers.AutoSize = true;
-            this.lblNumCustomers.Location = new System.Drawing.Point(781, 588);
+            this.lblNumCustomers.Location = new System.Drawing.Point(586, 478);
+            this.lblNumCustomers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumCustomers.Name = "lblNumCustomers";
-            this.lblNumCustomers.Size = new System.Drawing.Size(149, 17);
+            this.lblNumCustomers.Size = new System.Drawing.Size(111, 13);
             this.lblNumCustomers.TabIndex = 9;
             this.lblNumCustomers.Text = "Number of Customers:";
             // 
@@ -161,32 +154,27 @@
             // 
             this.lstReservations.Enabled = false;
             this.lstReservations.FormattingEnabled = true;
-            this.lstReservations.ItemHeight = 16;
-            this.lstReservations.Location = new System.Drawing.Point(15, 13);
-            this.lstReservations.Margin = new System.Windows.Forms.Padding(4);
+            this.lstReservations.Location = new System.Drawing.Point(11, 11);
             this.lstReservations.Name = "lstReservations";
-            this.lstReservations.Size = new System.Drawing.Size(435, 260);
+            this.lstReservations.Size = new System.Drawing.Size(327, 212);
             this.lstReservations.TabIndex = 11;
             this.lstReservations.SelectedIndexChanged += new System.EventHandler(this.lstReservations_SelectedIndexChanged);
             // 
             // lstAssignments
             // 
             this.lstAssignments.FormattingEnabled = true;
-            this.lstAssignments.ItemHeight = 16;
-            this.lstAssignments.Location = new System.Drawing.Point(15, 13);
-            this.lstAssignments.Margin = new System.Windows.Forms.Padding(4);
+            this.lstAssignments.Location = new System.Drawing.Point(11, 11);
             this.lstAssignments.Name = "lstAssignments";
             this.lstAssignments.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstAssignments.Size = new System.Drawing.Size(435, 260);
+            this.lstAssignments.Size = new System.Drawing.Size(327, 212);
             this.lstAssignments.TabIndex = 0;
             this.lstAssignments.SelectedIndexChanged += new System.EventHandler(this.lstAssignments_SelectedIndexChanged);
             // 
             // btnUse
             // 
-            this.btnUse.Location = new System.Drawing.Point(165, 293);
-            this.btnUse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUse.Location = new System.Drawing.Point(124, 238);
             this.btnUse.Name = "btnUse";
-            this.btnUse.Size = new System.Drawing.Size(139, 28);
+            this.btnUse.Size = new System.Drawing.Size(104, 23);
             this.btnUse.TabIndex = 13;
             this.btnUse.Text = "Use Reservation";
             this.btnUse.UseVisualStyleBackColor = true;
@@ -194,10 +182,9 @@
             // 
             // btnClearTable
             // 
-            this.btnClearTable.Location = new System.Drawing.Point(165, 293);
-            this.btnClearTable.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClearTable.Location = new System.Drawing.Point(124, 238);
             this.btnClearTable.Name = "btnClearTable";
-            this.btnClearTable.Size = new System.Drawing.Size(139, 28);
+            this.btnClearTable.Size = new System.Drawing.Size(104, 23);
             this.btnClearTable.TabIndex = 14;
             this.btnClearTable.Text = "Clear Table";
             this.btnClearTable.UseVisualStyleBackColor = true;
@@ -206,10 +193,9 @@
             // 
             // btnMerge
             // 
-            this.btnMerge.Location = new System.Drawing.Point(165, 293);
-            this.btnMerge.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMerge.Location = new System.Drawing.Point(124, 238);
             this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(139, 28);
+            this.btnMerge.Size = new System.Drawing.Size(104, 23);
             this.btnMerge.TabIndex = 17;
             this.btnMerge.Text = "Merge Tables";
             this.btnMerge.UseVisualStyleBackColor = true;
@@ -219,12 +205,10 @@
             // lstAvailable
             // 
             this.lstAvailable.FormattingEnabled = true;
-            this.lstAvailable.ItemHeight = 16;
-            this.lstAvailable.Location = new System.Drawing.Point(15, 13);
-            this.lstAvailable.Margin = new System.Windows.Forms.Padding(4);
+            this.lstAvailable.Location = new System.Drawing.Point(11, 11);
             this.lstAvailable.Name = "lstAvailable";
             this.lstAvailable.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstAvailable.Size = new System.Drawing.Size(435, 260);
+            this.lstAvailable.Size = new System.Drawing.Size(327, 212);
             this.lstAvailable.TabIndex = 15;
             this.lstAvailable.SelectedIndexChanged += new System.EventHandler(this.lstAvailable_SelectedIndexChanged);
             // 
@@ -234,19 +218,21 @@
             this.tabControl1.Controls.Add(this.tabReservations);
             this.tabControl1.Controls.Add(this.tabAvailableTables);
             this.tabControl1.Controls.Add(this.tabAssignedTables);
-            this.tabControl1.Location = new System.Drawing.Point(748, 12);
+            this.tabControl1.Location = new System.Drawing.Point(561, 10);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(475, 371);
+            this.tabControl1.Size = new System.Drawing.Size(356, 301);
             this.tabControl1.TabIndex = 18;
             // 
             // tabaServers
             // 
             this.tabaServers.Controls.Add(this.lstServers);
-            this.tabaServers.Location = new System.Drawing.Point(4, 25);
+            this.tabaServers.Location = new System.Drawing.Point(4, 22);
+            this.tabaServers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabaServers.Name = "tabaServers";
-            this.tabaServers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabaServers.Size = new System.Drawing.Size(467, 342);
+            this.tabaServers.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabaServers.Size = new System.Drawing.Size(348, 275);
             this.tabaServers.TabIndex = 0;
             this.tabaServers.Text = "Servers";
             this.tabaServers.UseVisualStyleBackColor = true;
@@ -255,10 +241,11 @@
             // 
             this.tabReservations.Controls.Add(this.lstReservations);
             this.tabReservations.Controls.Add(this.btnUse);
-            this.tabReservations.Location = new System.Drawing.Point(4, 25);
+            this.tabReservations.Location = new System.Drawing.Point(4, 22);
+            this.tabReservations.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabReservations.Name = "tabReservations";
-            this.tabReservations.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReservations.Size = new System.Drawing.Size(467, 342);
+            this.tabReservations.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabReservations.Size = new System.Drawing.Size(348, 275);
             this.tabReservations.TabIndex = 1;
             this.tabReservations.Text = "Reservations";
             this.tabReservations.UseVisualStyleBackColor = true;
@@ -267,9 +254,10 @@
             // 
             this.tabAvailableTables.Controls.Add(this.btnMerge);
             this.tabAvailableTables.Controls.Add(this.lstAvailable);
-            this.tabAvailableTables.Location = new System.Drawing.Point(4, 25);
+            this.tabAvailableTables.Location = new System.Drawing.Point(4, 22);
+            this.tabAvailableTables.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabAvailableTables.Name = "tabAvailableTables";
-            this.tabAvailableTables.Size = new System.Drawing.Size(467, 342);
+            this.tabAvailableTables.Size = new System.Drawing.Size(348, 275);
             this.tabAvailableTables.TabIndex = 2;
             this.tabAvailableTables.Text = "Available Tables";
             this.tabAvailableTables.UseVisualStyleBackColor = true;
@@ -278,9 +266,10 @@
             // 
             this.tabAssignedTables.Controls.Add(this.lstAssignments);
             this.tabAssignedTables.Controls.Add(this.btnClearTable);
-            this.tabAssignedTables.Location = new System.Drawing.Point(4, 25);
+            this.tabAssignedTables.Location = new System.Drawing.Point(4, 22);
+            this.tabAssignedTables.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabAssignedTables.Name = "tabAssignedTables";
-            this.tabAssignedTables.Size = new System.Drawing.Size(467, 342);
+            this.tabAssignedTables.Size = new System.Drawing.Size(348, 275);
             this.tabAssignedTables.TabIndex = 3;
             this.tabAssignedTables.Text = "Assigned Tables";
             this.tabAssignedTables.UseVisualStyleBackColor = true;
@@ -293,63 +282,14 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(1019, 391);
+            this.groupBox1.Location = new System.Drawing.Point(764, 318);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 171);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(150, 139);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Table Legend";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Empty";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Assigned";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 125);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Bussable";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Cyan;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(126, 43);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(126, 83);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(20, 20);
-            this.button2.TabIndex = 4;
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -357,31 +297,95 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(126, 123);
+            this.button3.Location = new System.Drawing.Point(94, 100);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(20, 20);
+            this.button3.Size = new System.Drawing.Size(15, 16);
             this.button3.TabIndex = 5;
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(94, 67);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(15, 16);
+            this.button2.TabIndex = 4;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Cyan;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(94, 35);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(15, 16);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 102);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Bussable";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Assigned";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Empty";
+            // 
             // cboSeats
             // 
-            this.cboSeats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSeats.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboSeats.FormattingEnabled = true;
             this.cboSeats.Items.AddRange(new object[] {
+            "1",
             "2",
+            "3",
             "4",
-            "6"});
-            this.cboSeats.Location = new System.Drawing.Point(936, 585);
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.cboSeats.Location = new System.Drawing.Point(702, 475);
+            this.cboSeats.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboSeats.MaxDropDownItems = 9;
             this.cboSeats.Name = "cboSeats";
-            this.cboSeats.Size = new System.Drawing.Size(49, 24);
+            this.cboSeats.Size = new System.Drawing.Size(38, 21);
             this.cboSeats.TabIndex = 20;
             // 
             // frmSeatingLayout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 713);
+            this.ClientSize = new System.Drawing.Size(928, 579);
             this.ControlBox = false;
             this.Controls.Add(this.cboSeats);
             this.Controls.Add(this.groupBox1);
@@ -390,7 +394,7 @@
             this.Controls.Add(this.grpBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlRoom);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmSeatingLayout";
             this.Text = "Seating Layout";
             this.grpBox1.ResumeLayout(false);

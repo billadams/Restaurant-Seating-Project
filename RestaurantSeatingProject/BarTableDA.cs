@@ -107,7 +107,6 @@ namespace RestaurantSeatingProject {
                 while (reader.Read()) {
 
                     barTable = new BarTable();
-
                     barTable.TableNumber = (int)reader["tableNumber"];
                     barTable.TablePositionX = (int)reader["tablePositionX"];
                     barTable.TablePositionY = (int)reader["tablePositionY"];

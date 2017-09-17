@@ -136,7 +136,6 @@ namespace RestaurantSeatingProject {
         public void button_MouseDown(object sender, MouseEventArgs e) {
 
             Button button = (Button)sender;
-            Type t;
 
             if (deleteTable == true)  {
 
@@ -391,8 +390,9 @@ namespace RestaurantSeatingProject {
             // Resets the table layout as if none was created
             Table.TotalTables = 1;
             tables = new List<Table>();
+            BarSeat.TotalTables = 1;
             txtTableNumber.Text = "1";
-
+            txtBarSeatNumber.Text = "1";
             pnlRoom.Controls.Clear();
 
         }
