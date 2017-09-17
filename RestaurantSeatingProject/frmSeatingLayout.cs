@@ -47,7 +47,7 @@ namespace RestaurantSeatingProject
                 {
                     try
                     {
-                        Convert.ToInt32(txtNumCustomers.Text);                       
+                        Convert.ToInt32(cboSeats.SelectedItem);                       
                     }
                     catch (Exception)
                     {
@@ -60,9 +60,9 @@ namespace RestaurantSeatingProject
                         {
                             bReservationSelected = true;
                             int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
-                            txtNumCustomers.Text = groupSize.ToString();
+                            cboSeats.SelectedItem = groupSize.ToString();
                         } 
-                    if (oSpecificTable.NumberOfSeats >= Convert.ToInt16(txtNumCustomers.Text))
+                    if (oSpecificTable.NumberOfSeats >= Convert.ToInt16(cboSeats.SelectedItem))
                     {
                         //Number of seats fit the amount to be seated
                         if (oSpecificTable.TableState.ToLower() == TableState.Occupied.ToString().ToLower())
@@ -280,7 +280,7 @@ namespace RestaurantSeatingProject
 
         private void rdoAssignTable_CheckedChanged(object sender, EventArgs e)
         {
-            txtNumCustomers.Visible = true;
+            cboSeats.Visible = true;
             lblNumCustomers.Visible = true;
         }
 
@@ -296,9 +296,9 @@ namespace RestaurantSeatingProject
 
         private void NotAssigningCustomer()
         {
-            txtNumCustomers.Visible = false;
+            cboSeats.Visible = false;
             lblNumCustomers.Visible = false;
-            txtNumCustomers.Text = "1";
+            //txtNumCustomers.Text = "1";
         }
 
         private void btnUse_Click(object sender, EventArgs e)
@@ -392,9 +392,9 @@ namespace RestaurantSeatingProject
                 {
                     bReservationSelected = true;
                     int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
-                    txtNumCustomers.Text = groupSize.ToString();
+                    cboSeats.SelectedItem = groupSize.ToString();
                 }
-                if (seatNum >= Convert.ToInt16(txtNumCustomers.Text))
+                if (seatNum >= Convert.ToInt16(cboSeats.SelectedItem))
                 {
                     //assign here
                     foreach (Table oTable in oTables)
