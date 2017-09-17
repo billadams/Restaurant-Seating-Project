@@ -17,15 +17,15 @@ namespace RestaurantSeatingProject {
         private List<BarSeat> barSeats = new List<BarSeat>();
         private List<AssignedTable> assignedList = new List<AssignedTable>();
         AssignedTable assigned = null;
-        Table table;
-        BarTable barTable;
-        BarSeat barSeat;
-        private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
-        // Flag for deleting a table
+        Table table = null;
+        BarTable barTable = null;
+        BarSeat barSeat = null;
+        private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3, Section4 = 4 };
+        Point mouseDownPoint;
+        // Flags for deleting a table
         bool deleteTable = false;
         bool deleteBarSeat = false;
         bool deleteBar = false;
-        Point mouseDnPt;
 
 
         public frmManageSeatingLayout() {
@@ -36,12 +36,15 @@ namespace RestaurantSeatingProject {
             btnSaveLayout.Enabled = false;
             cboSeats.SelectedIndex = 0;
             StayInsideButton.SetPanelSize(pnlRoom.Size);
+
     }
 
     private void btnCancelLayout_Click(object sender, EventArgs e) {
             
             Table.TotalTables = 1;
+            BarSeat.TotalTables = 1;
             this.Close();
+
         }
 
         private void btnAddTable_Click(object sender, EventArgs e) {
@@ -133,8 +136,9 @@ namespace RestaurantSeatingProject {
         public void button_MouseDown(object sender, MouseEventArgs e) {
 
             Button button = (Button)sender;
+            Type t;
 
-            if (deleteTable == true) {
+            if (deleteTable == true)  {
 
                 table = (Table) button.Tag;
                 string tableNumber = Convert.ToString(table.TableNumber);
@@ -152,9 +156,9 @@ namespace RestaurantSeatingProject {
 
                 barSeat = (BarSeat) button.Tag;
                 string barSeatNumber = Convert.ToString(barSeat.TableNumber);
-                //barSeat = BarSeatDA.GetBarSeatByID(barSeatNumber);
+                //barSeat = BarSeatDA.DeleteBarSeat(barSeat);
 
-                //BarSeatDA.DeleteBarSeata(barSeat);
+                BarSeatDA.DeleteBarSeat(barSeat);
                 UpdateView();
                 lblMessage.Text = "BarSeat " + barSeatNumber + " successfully deleted.";
 
@@ -164,9 +168,9 @@ namespace RestaurantSeatingProject {
             }
             else if (deleteBar == true) {
 
-                barTable = (BarTable)button.Tag;
+                //barTable = (BarTable)button.Tag;
 
-                //BarTableDA.DeleteBarTable(barTable);
+                BarTableDA.DeleteBarTable();
                 UpdateView();
                 lblMessage.Text = "Bar successfully deleted.";
 
@@ -179,7 +183,7 @@ namespace RestaurantSeatingProject {
                 //xPos = e.X;
                 //yPos = e.Y;
 
-                mouseDnPt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
+                mouseDownPoint = pnlRoom.PointToClient(button.PointToScreen(e.Location));
  
                 if (btnSaveLayout.Enabled == false) {
 
@@ -202,17 +206,16 @@ namespace RestaurantSeatingProject {
 
                     if (barObject != null)
                     {
-                      Point mouseMovePt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
+                      Point mouseMovePoint = pnlRoom.PointToClient(button.PointToScreen(e.Location));
 
-                      button.CheckSetLocation(barObject.TablePositionX + (mouseMovePt.X - mouseDnPt.X),
-                          barObject.TablePositionY + (mouseMovePt.Y - mouseDnPt.Y));
+                      button.CheckSetLocation(barObject.TablePositionX + (mouseMovePoint.X - mouseDownPoint.X),
+                          barObject.TablePositionY + (mouseMovePoint.Y - mouseDownPoint.Y));
                     }
                 }
             }
         }
 
-        public void button_MouseUp(object sender, MouseEventArgs e)
-        {
+        public void button_MouseUp(object sender, MouseEventArgs e) {
 
             Button button = (Button)sender;
 
@@ -252,80 +255,94 @@ namespace RestaurantSeatingProject {
 
             //}
 
-            if (barObject != null)
-            {
+            if (barObject != null) {
+
                 // Get positioning.
 
-                if (IsCollision(button))
-                {
+                if (IsCollision(button)) {
+
                   // If the table, barseat, or bar has been dropped on top of another
                   // table, barseat, or bar, set its position back to the position it was being dragged from
+                    button.Left = barObject.TablePositionX;
+                    button.Top = barObject.TablePositionY;
 
-                  button.Left = barObject.TablePositionX;
-                  button.Top = barObject.TablePositionY;
                 }
-                else
-                {
+                else {
+
                   // If the table, barseat, or bar has been dropped on an empty area of the panel,
                   // set the record of its position that will be saved to the database to the position where it was dropped.
 
-                  barObject.TablePositionX = button.Left;
-                  barObject.TablePositionY = button.Top;
+                    barObject.TablePositionX = button.Left;
+                    barObject.TablePositionY = button.Top;
+
                 }
             }
         }
 
-
         // IsCollision() will return true if its argument has been dropped on another table, barseat, or bar
         //
-        bool IsCollision(Button button)
-        {
+        bool IsCollision(Button button) {
+
             bool bCollision = false;
             Rectangle rctButton = button.Bounds;
 
-            foreach (Control control in pnlRoom.Controls)
-            {
+            foreach (Control control in pnlRoom.Controls) {
+
               // We are going to look at each control on the panel.  They should all be derived from StayInsideButton.
 
-              if(control != null && control is StayInsideButton)
-              {
+                if (control != null && control is StayInsideButton) {
+
                   // button is the control we just dropped and which we are checking if we dropped it on another control.
                   // It would always appear to intersect with itself so we must not check it.
 
-                  if (control != button) 
-                  {
+                    if (control != button) {
+
                       Button chkButton = (Button)control;                  
                       Rectangle rctChkButton = chkButton.Bounds;
 
-                      if(rctButton.IntersectsWith(rctChkButton))
-                      {
+                        if(rctButton.IntersectsWith(rctChkButton)) {
+
                         bCollision = true;
                         break;
-                      }
-                  }
-              }
+
+                        }
+                    }
+                }
             }
 
             return bCollision;
 
         }
 
-
-
         private void UpdateView() {
 
             pnlRoom.Controls.Clear();
             Table.TotalTables = 1;
+            BarSeat.TotalTables = 1;
             LoadTables();
 
         }
 
         private void btnSaveLayout_Click(object sender, EventArgs e) {
 
+            btnSaveLayout.Enabled = false;
+
             TableDA.SaveTableLayout(tables);
+            
+            if (barTable != null) {
+
+                BarTableDA.SaveBarTableLayout(barTable);
+
+            }
+
+            if (barSeats != null) {
+
+                BarSeatDA.SaveBarSeatLayout(barSeats);
+
+            }
+
             SectionDA.AssignTableToSection(assignedList);
             lblMessage.Text = "Restaurant layout saved.";
-            btnSaveLayout.Enabled = false;
 
         }
 
@@ -357,7 +374,9 @@ namespace RestaurantSeatingProject {
             }
             else {
 
-                TableDA.DeleteLayout();
+                TableDA.DeleteAllTables();
+                BarTableDA.DeleteBarTable();
+                BarSeatDA.DeleteAllBarSeats();
                 lblMessage.Text = "Restaurant layout was successfully deleted.";
 
             }
@@ -412,59 +431,59 @@ namespace RestaurantSeatingProject {
 
             }
 
-            // Load BarSeats - uncomment when BarSeatDA complete.
-            //barSeats = BarSeatDA.GetBarSeatLayout();
+            //Load BarSeats.
+            barSeats = BarSeatDA.GetBarSeatLayout();
 
-            //if (!(Utility.IsNullOrEmpty(barSeats))) {
+            if (!(Utility.IsNullOrEmpty(barSeats))) {
 
-            //    foreach (BarSeat eachBarSeat in barSeats) {
+                foreach (BarSeat eachBarSeat in barSeats) {
 
-            //        barSeat = eachBarSeat;
+                    barSeat = eachBarSeat;
 
-            //        RoundButton button = new RoundButton();
-            //        button.Cursor = Cursors.Hand;
-            //        button.Height = 30;
-            //        button.Width = 30;
-            //        button.FlatStyle = FlatStyle.Flat;
-            //        button.FlatAppearance.BorderSize = 0;
-            //        button.BackColor = Color.Cyan;
-            //        button.Tag = barSeat;
-            //        button.Text = "B" + Convert.ToString(barSeat.TableNumber);
-            //        button.Location = new Point(table.TablePositionX, table.TablePositionY);
-            //        pnlRoom.Controls.Add(button);
+                    RoundButton button = new RoundButton();
+                    button.Cursor = Cursors.Hand;
+                    button.Height = 30;
+                    button.Width = 30;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.FlatAppearance.BorderSize = 0;
+                    button.BackColor = Color.Cyan;
+                    button.Tag = barSeat;
+                    button.Text = "B" + Convert.ToString(barSeat.TableNumber);
+                    button.Location = new Point(barSeat.TablePositionX, barSeat.TablePositionY);
+                    pnlRoom.Controls.Add(button);
 
-            //        button.MouseDown += button_MouseDown;
-            //        button.MouseUp += button_MouseUp;
-            //        button.MouseMove += button_MouseMove;
+                    button.MouseDown += button_MouseDown;
+                    button.MouseUp += button_MouseUp;
+                    button.MouseMove += button_MouseMove;
 
-            //    }
+                }
 
-            //    txtBearSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
+                txtBarSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
 
-            //}
+            }
 
-            // Load BarTable - uncomment when BarTableDA complete.
-            //barTable = BarTable.GetBarTableLayout();
+            // Load BarTable.
+            barTable = BarTableDA.GetBarTableLayout();
 
-            //if (!(Utility.IsNullOrEmpty(barTable))) {
+            if (barTable != null) {
 
-            //    Button button = new Button();
-            //    button.Cursor = Cursors.Hand;
-            //    button.Height = 30;
-            //    button.Width = 200;
-            //    button.FlatStyle = FlatStyle.Flat;
-            //    button.FlatAppearance.BorderSize = 0;
-            //    button.BackColor = Color.Cyan;
-            //    button.Tag = barTable;
-            //    button.Text = "Bar";
-            //    button.Location = new Point(barTable.TablePositionX, barTable.TablePositionY);
-            //    pnlRoom.Controls.Add(button);
+                StayInsideButton button = new StayInsideButton();
+                button.Cursor = Cursors.Hand;
+                button.Height = 30;
+                button.Width = 200;
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.BackColor = Color.Cyan;
+                button.Tag = barTable;
+                button.Text = "Bar";
+                button.Location = new Point(barTable.TablePositionX, barTable.TablePositionY);
+                pnlRoom.Controls.Add(button);
 
-            //    button.MouseDown += button_MouseDown;
-            //    button.MouseUp += button_MouseUp;
-            //    button.MouseMove += button_MouseMove;
+                button.MouseDown += button_MouseDown;
+                button.MouseUp += button_MouseUp;
+                button.MouseMove += button_MouseMove;
 
-            //}
+            }
 
             lblMessage.Text = "Seating layout successfully loaded!";
 
@@ -472,8 +491,18 @@ namespace RestaurantSeatingProject {
 
         private void btnDeleteTable_Click(object sender, EventArgs e) {
 
-            deleteTable = true;
+            if (btnDeleteTable.Text == "Delete Table") {
 
+                deleteTable = true;
+                btnDeleteTable.Text = "Cancel";
+
+            }
+            else {
+
+                deleteTable = false;
+                btnDeleteTable.Text = "Delete Table";
+
+            }
         }
 
         private void btnCreateBar_Click(object sender, EventArgs e) {
@@ -482,6 +511,7 @@ namespace RestaurantSeatingProject {
             int startLeft = pnlRoom.Left;
             int startTop = pnlRoom.Top;
 
+            barTable.TableNumber = 1;
             barTable.TablePositionX = startLeft;
             barTable.TablePositionY = startTop;
 
@@ -504,6 +534,8 @@ namespace RestaurantSeatingProject {
             btnSaveLayout.Enabled = true;
             lblMessage.Text = "Bar was successfully added.";
 
+            btnCreateBar.Enabled = false;
+
         }
 
         private void btnAddBarSeat_Click(object sender, EventArgs e) {
@@ -518,8 +550,9 @@ namespace RestaurantSeatingProject {
 
             try {
 
-                barSeat.TableNumber = Convert.ToInt32(txtBearSeatNumber.Text);
+                barSeat.TableNumber = Convert.ToInt32(txtBarSeatNumber.Text);
                 assigned.TableNumber = barSeat.TableNumber;
+                assigned.SectionNum = (int)AvailableSections.Section4;
 
             }
             catch (Exception) {
@@ -529,17 +562,17 @@ namespace RestaurantSeatingProject {
 
             }
 
-            try {
+            //try {
 
-                barSeat.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
+            //    barSeat.NumberOfSeats = Convert.ToInt32(txtNumberOfSeats.Text);
 
-            }
-            catch (Exception) {
+            //}
+            //catch (Exception) {
 
-                bIsValid = false;
-                sErrorMess += "\nNumber of Seats is required and must be a number";
+            //    bIsValid = false;
+            //    sErrorMess += "\nNumber of Seats is required and must be a number";
 
-            }
+            //}
 
             if (bIsValid) {
 
@@ -563,7 +596,7 @@ namespace RestaurantSeatingProject {
                 button.MouseUp += button_MouseUp;
                 button.MouseMove += button_MouseMove;
 
-                txtBearSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
+                txtBarSeatNumber.Text = Convert.ToString(BarSeat.TotalTables);
                 btnSaveLayout.Enabled = true;
                 lblMessage.Text = "BarSeat " + barSeat.TableNumber + " successfully added.";
 
@@ -578,14 +611,35 @@ namespace RestaurantSeatingProject {
 
         private void btnDeleteBarseat_Click(object sender, EventArgs e) {
 
-            deleteBarSeat = true;
+            if (btnDeleteBarseat.Text == "Delete Barseat") {
 
+                deleteBarSeat = true;
+                btnDeleteBarseat.Text = "Cancel";
+
+            }
+            else {
+
+                deleteBarSeat = false;
+                btnDeleteBarseat.Text = "Delete Barseat";
+
+            }
         }
 
         private void btnDeleteBar_Click(object sender, EventArgs e) {
 
-            deleteBar = true;
+            if (btnDeleteBar.Text == "Delete Bar") {
 
+                deleteBar = true;
+                btnDeleteBar.Text = "Cancel";
+                btnCreateBar.Enabled = true;
+
+            }
+            else {
+
+                deleteBar = false;
+                btnDeleteBar.Text = "Delete Bar";
+
+            }
         }
     }
 }

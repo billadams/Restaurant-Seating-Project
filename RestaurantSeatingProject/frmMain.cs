@@ -9,22 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RestaurantSeatingProject {
+
     public partial class frmMain : Form {
+
         public frmMain() {
+
             InitializeComponent();
             //SectionDA.AddStaticSections();            
             //RestaurantDA.DeleteRestaurant();
             //SectionDA.DeleteSectionAssignments();
             //DeleteSectionAssignments();
             Restaurant oRestaurant = RestaurantDA.GetRestaurantInfo();
-           if (oRestaurant.RestaurantID != 0)
-           {
+           if (oRestaurant.RestaurantID != 0) {
+
                //restaurant has been set
                CurrentRestaurant();
-               mnuAbout.Text = "About " + oRestaurant.RestaurantName;
+                mnuAbout.Text = "About " + oRestaurant.RestaurantName;
+
            }
-           else
-           {
+           else {
+
                //if you want to force a delete of restraunt call RestaurantDA.DeleteRestaurant();
                //restaurant hasnt been set
                NoCurrentRestaurant();
@@ -33,46 +37,52 @@ namespace RestaurantSeatingProject {
         }
 
         private void mnuCreateSeatingLayout_Click(object sender, EventArgs e) {
+
             Form createTableLayout = new frmManageSeatingLayout();
             createTableLayout.MdiParent = this;
             createTableLayout.Show();
+
         }
 
         private void mnuExit_Click(object sender, EventArgs e) {
+
             this.Close();
+
         }
 
-        private void mnuAddServer_Click(object sender, EventArgs e)
-        {
+        private void mnuAddServer_Click(object sender, EventArgs e) {
+
             Form frmAddServer = new frmAddServer();
             frmAddServer.MdiParent = this;
             frmAddServer.Show();
+
         }
 
-        private void mnuRegisterRestaurant_Click(object sender, EventArgs e)
-        {
+        private void mnuRegisterRestaurant_Click(object sender, EventArgs e) {
+
             Form frmRegister = new frmRegister();
             frmRegister.MdiParent = this;
             frmRegister.Show();
 
         }
 
-        private void mnuManageServers_Click(object sender, EventArgs e)
-        {
+        private void mnuManageServers_Click(object sender, EventArgs e) {
+
             Form frmManageServers = new frmManageServers();
             frmManageServers.MdiParent = this;
             frmManageServers.Show();
         }
 
-        private void mnuReservationList_Click(object sender, EventArgs e)
-        {
+
+        private void mnuReservationList_Click(object sender, EventArgs e) {
+
             Form frmReservationList = new frmReservationList();
             frmReservationList.MdiParent = this;
             frmReservationList.Show();
+
         }
 
-        private void NoCurrentRestaurant()
-        {
+        private void NoCurrentRestaurant() {
             
             mnuAddServer.Enabled = false;
             mnuAbout.Enabled = false;
@@ -80,25 +90,30 @@ namespace RestaurantSeatingProject {
             mnuManageServers.Enabled = false;
             mnuSeatingLayout.Enabled = false;
             mnuReservationList.Enabled = false;
+
         }
 
-        private void CurrentRestaurant()
-        {
+        private void CurrentRestaurant() {
+
             mnuRegisterRestaurant.Enabled = false;
+
         }
 
-        private void mnuAbout_Click(object sender, EventArgs e)
-        {
+        private void mnuAbout_Click(object sender, EventArgs e) {
+
             frmAbout oFrmAbout = new frmAbout();
             oFrmAbout.MdiParent = this;
             oFrmAbout.Show();
+
         }
 
-        private void mnuSeatingLayout_Click(object sender, EventArgs e)
-        {
+        private void mnuSeatingLayout_Click(object sender, EventArgs e) {
+
             frmSeatingLayout oFrmSeatingLayout = new frmSeatingLayout();
             oFrmSeatingLayout.MdiParent = this;
             oFrmSeatingLayout.Show();
+
         }
+
     }
 }

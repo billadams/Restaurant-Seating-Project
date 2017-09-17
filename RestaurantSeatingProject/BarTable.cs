@@ -12,6 +12,10 @@ namespace RestaurantSeatingProject {
         public BarTable(int tableNumber, int tablePositionX, int tablePositionY) 
             : base(tableNumber, tablePositionX, tablePositionY) {
 
+            this.TableNumber = tableNumber;
+            this.TablePositionX = tablePositionX;
+            this.TablePositionY = tablePositionY;
+
         }
     }
 }

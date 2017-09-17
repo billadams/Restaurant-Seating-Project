@@ -36,12 +36,5 @@ namespace RestaurantSeatingProject {
 
         }
 
-        //public BarObject(int tableNumber, int tablePositionX, int tablePositionY) {
-
-        //    this.TableNumber = tableNumber;
-        //    this.TablePositionX = tablePositionX;
-        //    this.TablePositionY = tablePositionY;
-
-        //}
     }
 }

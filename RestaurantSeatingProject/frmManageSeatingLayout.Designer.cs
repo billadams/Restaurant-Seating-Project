@@ -26,13 +26,12 @@
             this.btnSaveLayout = new System.Windows.Forms.Button();
             this.pnlRoom = new System.Windows.Forms.Panel();
             this.btnAddTable = new System.Windows.Forms.Button();
-            this.txtNumberOfSeats = new System.Windows.Forms.TextBox();
             this.txtTableNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtBearSeatNumber = new System.Windows.Forms.TextBox();
+            this.txtBarSeatNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnAddBarSeat = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -101,15 +100,6 @@
             this.btnAddTable.UseVisualStyleBackColor = true;
             this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
-            // txtNumberOfSeats
-            // 
-            this.txtNumberOfSeats.Location = new System.Drawing.Point(167, 34);
-            this.txtNumberOfSeats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNumberOfSeats.Name = "txtNumberOfSeats";
-            this.txtNumberOfSeats.Size = new System.Drawing.Size(39, 22);
-            this.txtNumberOfSeats.TabIndex = 6;
-            this.txtNumberOfSeats.Text = "4";
-            // 
             // txtTableNumber
             // 
             this.txtTableNumber.Location = new System.Drawing.Point(174, 76);
@@ -151,7 +141,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtBearSeatNumber);
+            this.groupBox2.Controls.Add(this.txtBarSeatNumber);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnAddBarSeat);
             this.groupBox2.Location = new System.Drawing.Point(5, 1);
@@ -163,14 +153,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Barseats";
             // 
-            // txtBearSeatNumber
+            // txtBarSeatNumber
             // 
-            this.txtBearSeatNumber.Location = new System.Drawing.Point(167, 90);
-            this.txtBearSeatNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBearSeatNumber.Name = "txtBearSeatNumber";
-            this.txtBearSeatNumber.Size = new System.Drawing.Size(39, 22);
-            this.txtBearSeatNumber.TabIndex = 5;
-            this.txtBearSeatNumber.Text = "1";
+            this.txtBarSeatNumber.Location = new System.Drawing.Point(167, 90);
+            this.txtBarSeatNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBarSeatNumber.Name = "txtBarSeatNumber";
+            this.txtBarSeatNumber.Size = new System.Drawing.Size(39, 22);
+            this.txtBarSeatNumber.TabIndex = 5;
+            this.txtBarSeatNumber.Text = "1";
             // 
             // label4
             // 
@@ -236,7 +226,7 @@
             this.btnDeleteTable.Name = "btnDeleteTable";
             this.btnDeleteTable.Size = new System.Drawing.Size(131, 46);
             this.btnDeleteTable.TabIndex = 2;
-            this.btnDeleteTable.Text = "&Delete Table";
+            this.btnDeleteTable.Text = "Delete Table";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
             this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
@@ -248,7 +238,6 @@
             this.groupBox1.Controls.Add(this.rdoSection1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNumberOfSeats);
             this.groupBox1.Controls.Add(this.txtTableNumber);
             this.groupBox1.Controls.Add(this.btnAddTable);
             this.groupBox1.Location = new System.Drawing.Point(5, 0);
@@ -488,13 +477,12 @@
         private System.Windows.Forms.Button btnSaveLayout;
         private System.Windows.Forms.Panel pnlRoom;
         private System.Windows.Forms.Button btnAddTable;
-        private System.Windows.Forms.TextBox txtNumberOfSeats;
         private System.Windows.Forms.TextBox txtTableNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtBearSeatNumber;
+        private System.Windows.Forms.TextBox txtBarSeatNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAddBarSeat;
         private System.Windows.Forms.TabControl tabControl1;

@@ -325,7 +325,7 @@ namespace RestaurantSeatingProject {
             return success;
         }
 
-        public static int DeleteLayout() {
+        public static int DeleteAllTables() {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
             SqlCommand command = new SqlCommand();
@@ -354,5 +354,6 @@ namespace RestaurantSeatingProject {
             return success;           
 
         }
+
     }
 }

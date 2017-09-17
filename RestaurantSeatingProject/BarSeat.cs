@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace RestaurantSeatingProject {
 
         public string TableState { get; set; }
 
-        protected static int totalTables = 1;
+        private static int totalTables = 1;
 
         public override int NumberOfSeats {
 
@@ -20,7 +19,6 @@ namespace RestaurantSeatingProject {
 
         public BarSeat() {
 
-            //this.NumberOfSeats = 0;
             this.TableNumber = 0;
             this.TablePositionX = 0;
             this.TablePositionY = 0;
@@ -32,7 +30,6 @@ namespace RestaurantSeatingProject {
         public BarSeat(int tableNumber, int tablePositionX, int tablePositionY, string tableState)
             : base(tableNumber, tablePositionX, tablePositionY) {
 
-            //this.NumberOfSeats = 0;
             this.TableNumber = tableNumber;
             this.TablePositionX = tablePositionX;
             this.TablePositionY = tablePositionY;

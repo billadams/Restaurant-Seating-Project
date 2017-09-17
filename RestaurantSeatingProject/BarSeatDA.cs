@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RestaurantSeatingProject {
     class BarSeatDA {
 
-        public static void SaveBarSeats(List<BarSeat> oBarSeats)
+        public static void SaveBarSeatLayout(List<BarSeat> barSeats)
         {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
@@ -36,8 +36,8 @@ namespace RestaurantSeatingProject {
 
             // Update Statement.
             string updateStatement = "UPDATE barSeats "
-                //+ "SET tableNumber = @tableNumber, "
-                //+ "numberofSeats = @numberOfSeats, "
+                                    //+ "SET tableNumber = @tableNumber, "
+                                    //+ "numberofSeats = @numberOfSeats, "
                                    + "SET tablePositionX = @tablePositionX, "
                                    + "tablePositionY = @tablePositionY "
                                    + "WHERE tableNumber = @tableNumber";
@@ -52,7 +52,7 @@ namespace RestaurantSeatingProject {
             try
             {
 
-                foreach (BarSeat barSeat in oBarSeats)
+                foreach (BarSeat barSeat in barSeats)
                 {
 
                     // Execute the select statement to see if the row exists.
@@ -99,5 +99,118 @@ namespace RestaurantSeatingProject {
 
             }
         }
+
+        public static List<BarSeat> GetBarSeatLayout() {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            List<BarSeat> barSeats = new List<BarSeat>();
+            SqlCommand command = new SqlCommand();
+            SqlDataReader reader = null;
+
+            command.CommandText = "Select * FROM barSeats";
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+                connection.Open();
+                reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+
+                    BarSeat barSeat = new BarSeat();
+
+                    //uncomment for sqldb
+                    //barSeat.NumberOfSeats = (int)reader["numberOfSeats"];
+                    barSeat.TableNumber = (int)reader["tableNumber"];
+                    barSeat.TablePositionX = (int)reader["tablePositionX"];
+                    barSeat.TablePositionY = (int)reader["tablePositionY"];
+                    barSeat.TableState = (string)reader["tableState"];
+
+                    barSeats.Add(barSeat);
+                }
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally {
+
+                connection.Close();
+
+            }
+
+            return barSeats;
+
+        }
+
+        public static int DeleteBarSeat(BarSeat barSeat) {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;
+            int barSeatNumber = barSeat.TableNumber;
+            command.CommandText = "DELETE FROM barSeats "
+                                + "WHERE tableNumber = @barSeatNumber";
+            command.Parameters.AddWithValue("@barSeatNumber", barSeatNumber);
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
+        }
+
+        public static int DeleteAllBarSeats() {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;
+            command.CommandText = "DELETE FROM barSeats";
+            //+ "DBCC CHECKIDENT ('tables', RESEED, 0)";                      
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
+
+        }
+
     }
 }

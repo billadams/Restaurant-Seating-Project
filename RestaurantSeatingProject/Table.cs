@@ -4,15 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RestaurantSeatingProject {
+
     public class Table : BarObject {
-
-        //public int TableNumber { get; set; }
-
-        //public virtual int NumberOfSeats { get; set; }
-
-        //public int TablePositionX { get; set; }
-
-        //public int TablePositionY { get; set; }
 
         public string TableState { get; set; }
 
