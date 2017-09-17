@@ -12,7 +12,6 @@ namespace RestaurantSeatingProject {
     public partial class frmMain : Form {
         public frmMain() {
             InitializeComponent();
-
             //SectionDA.AddStaticSections();            
             //RestaurantDA.DeleteRestaurant();
             //SectionDA.DeleteSectionAssignments();

@@ -19,6 +19,7 @@ namespace RestaurantSeatingProject
             DisplayListBoxData();
             DisplayReservationList();
             DisplayAssignments();
+            DisplayAvailableTables();
             lstReservations.ClearSelected();
             lstAssignments.ClearSelected();
         }
@@ -152,6 +153,7 @@ namespace RestaurantSeatingProject
                 LoadTables();
                 DisplayReservationList();
                 DisplayAssignments();
+                DisplayAvailableTables();
                 if (btnUse.Text == "Cancel")
                 {
                     lstReservations.Enabled = false;
@@ -261,6 +263,20 @@ namespace RestaurantSeatingProject
                 
         }
 
+        private void DisplayAvailableTables()
+        {
+            List<Table> oTables = TableDA.GetAvailableTables();
+            List<DisplayData> oDataDisplay = new List<DisplayData>();
+            foreach (Table oTable in oTables)
+            {
+                oDataDisplay.Add(new DisplayData() { Value = oTable.TableNumber.ToString(), Text = "Table Number: " + oTable.TableNumber + " Seats: "  + oTable.NumberOfSeats});
+            }
+            lstAvailable.DisplayMember = "Text";
+            lstAvailable.DataSource = oDataDisplay;
+            lstAvailable.ClearSelected();
+
+        }
+
 
         private void rdoAssignTable_CheckedChanged(object sender, EventArgs e)
         {
@@ -318,10 +334,15 @@ namespace RestaurantSeatingProject
         private void btnClearTable_Click(object sender, EventArgs e)
         {
             //clear table from assigned table list
-            ServerDA.FreeTable((lstAssignments.SelectedItem as DisplayData).Value);
-            TableDA.UpdateTableState((lstAssignments.SelectedItem as DisplayData).Value, TableState.Bussable.ToString());            
+            foreach (var item in lstAssignments.SelectedItems)
+            {
+                ServerDA.FreeTable(((DisplayData)item).Value);
+                TableDA.UpdateTableState(((DisplayData)item).Value, TableState.Bussable.ToString());    
+            }
+                   
             pnlRoom.Controls.Clear();
             DisplayAssignments();
+            DisplayAvailableTables();
             LoadTables();
             btnClearTable.Visible = false;
             lstAssignments.ClearSelected();
@@ -332,6 +353,88 @@ namespace RestaurantSeatingProject
             if (!(lstAssignments.SelectedIndex == -1))
             {
                 
+            }
+        }
+
+        private void lstAvailable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(lstAvailable.SelectedIndex == -1))
+            {
+                btnMerge.Visible = true;
+            }
+            else
+            {
+                btnMerge.Visible = false;
+            }
+        }
+
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            bool bIsValid = true;
+            string sErrorMess = "";
+            if (!(lstServers.SelectedIndex == -1))
+            {
+                List<Table> oTables = new List<Table>();
+                int seatNum = 0;                
+                bool bReservationSelected = false;
+                foreach (var item in lstAvailable.SelectedItems)
+                {
+                    //item.ToString();
+                    Table oTable = new Table();
+                    string sAssign = ((DisplayData)item).Value;
+                    oTable = TableDA.GetTableByID(sAssign);
+                    oTables.Add(oTable);
+                }
+                foreach (Table oTable in oTables)
+                {
+                    seatNum += oTable.NumberOfSeats;
+                }
+                if (!(lstReservations.SelectedIndex == -1))
+                {
+                    bReservationSelected = true;
+                    int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
+                    txtNumCustomers.Text = groupSize.ToString();
+                }
+                if (seatNum >= Convert.ToInt16(txtNumCustomers.Text))
+                {
+                    //assign here
+                    foreach (Table oTable in oTables)
+                    {
+                        string sServerID = (lstServers.SelectedItem as DisplayData).Value;
+                        int nSectionNumber = SectionDA.GetAssignedSection(oTable.TableNumber.ToString());
+                        ServerDA.AssignServerToTable(oTable.TableNumber.ToString(), sServerID, nSectionNumber.ToString());
+                        TableDA.UpdateTableState(oTable.TableNumber.ToString(), TableState.Occupied.ToString()); 
+                        
+
+                    }
+                    if (bReservationSelected)
+                    {
+                        ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);
+                        lstReservations.ClearSelected();
+                    }
+                    pnlRoom.Controls.Clear();
+                    LoadTables();
+                    DisplayReservationList();
+                    DisplayAssignments();
+                    DisplayAvailableTables();
+ 
+                }
+                else
+                {
+                    bIsValid = false;
+                    sErrorMess = "Error: Those tables cannot seat that many customers";
+                }
+
+            }
+            else
+            {
+                bIsValid = false;
+                sErrorMess = "Error: Those tables cannot seat that many customers";
+            }
+
+            if (!bIsValid)
+            {
+                MessageBox.Show(sErrorMess, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

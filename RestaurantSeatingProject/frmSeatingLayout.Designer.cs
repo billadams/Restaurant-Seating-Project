@@ -45,6 +45,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnUse = new System.Windows.Forms.Button();
             this.btnClearTable = new System.Windows.Forms.Button();
+            this.btnMerge = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstAvailable = new System.Windows.Forms.ListBox();
             this.grpBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +55,7 @@
             // 
             this.pnlRoom.BackColor = System.Drawing.Color.DimGray;
             this.pnlRoom.Location = new System.Drawing.Point(9, 9);
-            this.pnlRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlRoom.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRoom.Name = "pnlRoom";
             this.pnlRoom.Size = new System.Drawing.Size(530, 548);
             this.pnlRoom.TabIndex = 3;
@@ -157,7 +160,7 @@
             // txtNumCustomers
             // 
             this.txtNumCustomers.Location = new System.Drawing.Point(699, 475);
-            this.txtNumCustomers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumCustomers.Name = "txtNumCustomers";
             this.txtNumCustomers.Size = new System.Drawing.Size(30, 20);
             this.txtNumCustomers.TabIndex = 10;
@@ -178,6 +181,7 @@
             this.lstAssignments.FormattingEnabled = true;
             this.lstAssignments.Location = new System.Drawing.Point(821, 317);
             this.lstAssignments.Name = "lstAssignments";
+            this.lstAssignments.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstAssignments.Size = new System.Drawing.Size(327, 212);
             this.lstAssignments.TabIndex = 0;
             this.lstAssignments.SelectedIndexChanged += new System.EventHandler(this.lstAssignments_SelectedIndexChanged);
@@ -223,12 +227,46 @@
             this.btnClearTable.Visible = false;
             this.btnClearTable.Click += new System.EventHandler(this.btnClearTable_Click);
             // 
+            // btnMerge
+            // 
+            this.btnMerge.Location = new System.Drawing.Point(1044, 244);
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(104, 23);
+            this.btnMerge.TabIndex = 17;
+            this.btnMerge.Text = "Merge Tables";
+            this.btnMerge.UseVisualStyleBackColor = true;
+            this.btnMerge.Visible = false;
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 11F);
+            this.label3.Location = new System.Drawing.Point(1037, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Available Tables";
+            // 
+            // lstAvailable
+            // 
+            this.lstAvailable.FormattingEnabled = true;
+            this.lstAvailable.Location = new System.Drawing.Point(928, 26);
+            this.lstAvailable.Name = "lstAvailable";
+            this.lstAvailable.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstAvailable.Size = new System.Drawing.Size(327, 212);
+            this.lstAvailable.TabIndex = 15;
+            this.lstAvailable.SelectedIndexChanged += new System.EventHandler(this.lstAvailable_SelectedIndexChanged);
+            // 
             // frmSeatingLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 579);
             this.ControlBox = false;
+            this.Controls.Add(this.btnMerge);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lstAvailable);
             this.Controls.Add(this.btnClearTable);
             this.Controls.Add(this.btnUse);
             this.Controls.Add(this.label1);
@@ -243,7 +281,7 @@
             this.Controls.Add(this.grpBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlRoom);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSeatingLayout";
             this.Text = "Seating Layout";
             this.grpBox1.ResumeLayout(false);
@@ -272,5 +310,8 @@
         private System.Windows.Forms.ListBox lstAssignments;
         private System.Windows.Forms.Button btnUse;
         private System.Windows.Forms.Button btnClearTable;
+        private System.Windows.Forms.Button btnMerge;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lstAvailable;
     }
 }

@@ -156,6 +156,8 @@ namespace RestaurantSeatingProject {
 
         }
 
+
+
         public static Table GetTableByID(string id) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
@@ -203,7 +205,59 @@ namespace RestaurantSeatingProject {
             return table;
 
         }
+        public static List<Table> GetAvailableTables()
+        {
 
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            List<Table> oTables = new List<Table>();
+            SqlDataReader reader = null;
+            SqlCommand command = new SqlCommand();
+
+            command.CommandText = "Select * FROM tables "
+                                + "WHERE tableState = @tableState";
+            command.Parameters.AddWithValue("@tableState", "Empty");
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try
+            {
+
+                connection.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Table table = new Table();
+                    table.NumberOfSeats = (int)reader["numberOfSeats"];
+                    table.TableNumber = (int)reader["tableNumber"];
+                    table.TablePositionX = (int)reader["tablePositionX"];
+                    table.TablePositionY = (int)reader["tablePositionY"];
+                    table.TableState = (string)reader["tableState"];
+                    oTables.Add(table);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                connection.Close();
+
+            }
+
+            return oTables;
+
+        }
         public static void UpdateTableState(string id, string tableState) {
 
             SqlConnection connection = RestaurantConnection.GetConnection();
