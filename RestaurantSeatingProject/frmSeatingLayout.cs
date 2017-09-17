@@ -38,10 +38,9 @@ namespace RestaurantSeatingProject
             //get table by id to check/update state
             Table oSpecificTable = TableDA.GetTableByID(sTableNumber);
             int nSectionNumber = SectionDA.GetAssignedSection(sTableNumber);
-             
+            
             if (rdoAssignTable.Checked)
-            {
-
+            {                
                 //makes sure a server is selected in the list box
                 if (!(lstServers.SelectedIndex == -1))
                 {
@@ -56,6 +55,12 @@ namespace RestaurantSeatingProject
                         sErrorMess += "\nNumber of Seats is required and must be a number";
                     }
                     if(bIsValid){
+                        if (!(lstReservations.SelectedIndex == -1))
+                        {
+                            bReservationSelected = true;
+                            int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
+                            txtNumCustomers.Text = groupSize.ToString();
+                        } 
                     if (oSpecificTable.NumberOfSeats >= Convert.ToInt16(txtNumCustomers.Text))
                     {
                         //Number of seats fit the amount to be seated
@@ -123,14 +128,8 @@ namespace RestaurantSeatingProject
                     string sServerID = (lstServers.SelectedItem as DisplayData).Value;
                     ServerDA.AssignServerToTable(sTableNumber, sServerID, nSectionNumber.ToString());
                     
-                    if (!(lstReservations.SelectedIndex == -1))
-                    {
-                        bReservationSelected = true;
-                    }
                     if (bReservationSelected)
-                    {
-                        int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
-                        txtNumCustomers.Text = groupSize.ToString();
+                    {                        
                         ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);
                         lstReservations.ClearSelected();
                     }
@@ -181,8 +180,8 @@ namespace RestaurantSeatingProject
                     button.FlatAppearance.BorderSize = 0;
                     button.BackColor = Color.Cyan;
                     button.Tag = oTable.TableNumber;
-                    button.Text = Convert.ToString(oTable.TableNumber)
-                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    button.Text = "#"+Convert.ToString(oTable.TableNumber) +" "+ Convert.ToString(oTable.NumberOfSeats)
+                        + "\n" + oTable.TableState;
                     button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     pnlRoom.Controls.Add(button);
 
@@ -326,6 +325,14 @@ namespace RestaurantSeatingProject
             LoadTables();
             btnClearTable.Visible = false;
             lstAssignments.ClearSelected();
+        }
+
+        private void lstReservations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(lstAssignments.SelectedIndex == -1))
+            {
+                
+            }
         }
 
     }
