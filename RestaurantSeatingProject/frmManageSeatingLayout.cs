@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RestaurantSeatingProject {
     public partial class frmManageSeatingLayout : Form {
@@ -26,6 +27,10 @@ namespace RestaurantSeatingProject {
         bool deleteTable = false;
         bool deleteBarSeat = false;
         bool deleteBar = false;
+        //bool moveTableStarted = false;
+        Point mouseDnPt;
+        StreamWriter textOut;
+
 
         public frmManageSeatingLayout() {
 
@@ -34,13 +39,17 @@ namespace RestaurantSeatingProject {
             LoadTables();
             btnSaveLayout.Enabled = false;
             cboSeats.SelectedIndex = 0;
+            RoundButton.SetPanelSize(pnlRoom.Size);
+            //textOut =
+            //  new StreamWriter(
+            //    new FileStream("C:\\temp\\Q7_Grp_prj.txt", FileMode.Create, FileAccess.Write));
+    }
 
-        }
-
-        private void btnCancelLayout_Click(object sender, EventArgs e) {
+    private void btnCancelLayout_Click(object sender, EventArgs e) {
             
             Table.TotalTables = 1;
             this.Close();
+            //textOut.Close();
 
         }
 
@@ -178,6 +187,9 @@ namespace RestaurantSeatingProject {
 
                 xPos = e.X;
                 yPos = e.Y;
+                mouseDnPt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
+ 
+                //moveTableStarted = true;
 
                 if (btnSaveLayout.Enabled == false) {
 
@@ -190,56 +202,120 @@ namespace RestaurantSeatingProject {
 
         public void button_MouseMove(object sender, MouseEventArgs e) {
 
-            Button button = (Button)sender;
+            StayInsideButton button = (StayInsideButton)sender;
 
             if (button != null) {
 
                 if (e.Button == MouseButtons.Left) {
-                    
-                    button.Top += (e.Y - yPos);
-                    button.Left += (e.X - xPos);
 
+                    BarObject barObject = (BarObject)button.Tag;
+
+                    if (barObject != null)
+                    {
+                      //textOut.Write("In MouseMove: XPos="+ xPos + " YPos=" + yPos + " e.Y=" + e.Y + " e.x=" + e.X + " MTS=" + moveTableStarted + " button.Top=" + button.Top + " button.Left=" + button.Left + "\r\n");
+                      //moveTableStarted = false;
+                      Point mouseMovePt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
+
+                      button.CheckSetLocation(barObject.TablePositionX + (mouseMovePt.X - mouseDnPt.X),
+                          barObject.TablePositionY + (mouseMovePt.Y - mouseDnPt.Y));
+                    }
                 }
             }
         }
 
-        public void button_MouseUp(object sender, MouseEventArgs e) {
+        public void button_MouseUp(object sender, MouseEventArgs e)
+        {
 
             Button button = (Button)sender;
 
             BarObject barObject = (BarObject) button.Tag;
 
-            if (barObject != null && barObject is BarTable) {
+            //if (barObject != null && barObject is BarTable) {
+
+            //    // Get positioning.
+            //    BarTable barTable = (BarTable)button.Tag;
+            //    barTable.TablePositionX = button.Left;
+            //    barTable.TablePositionY = button.Top;
+
+            //}
+            //else if (barObject != null && barObject is Table) {
+
+            //    // Get positioning.
+            //    Table table = (Table)button.Tag;
+            //    int tableNumber = table.TableNumber;
+            //    table = tables[tableNumber - 1];
+
+            //    //int tableIndex = (Int32)button.Tag - 1;
+            //    //Table table = tables[tableIndex];
+
+            //    table.TablePositionX = button.Left;
+            //    table.TablePositionY = button.Top;
+
+            //}
+            //else if (barObject != null && barObject is BarSeat) {
+
+            //    // Get positioning.
+            //    BarSeat barSeat = (BarSeat)button.Tag;
+            //    int barSeatNumber = barSeat.TableNumber;
+            //    barSeat = barSeats[barSeatNumber - 1];
+
+            //}
+
+            if (barObject != null)
+            {
+              //if (barObject is BarSeat)
+             // {
 
                 // Get positioning.
-                BarTable barTable = (BarTable)button.Tag;
-                barTable.TablePositionX = button.Left;
-                barTable.TablePositionY = button.Top;
+              //  BarSeat barSeat = (BarSeat)button.Tag;
+              //  int barSeatNumber = barSeat.TableNumber;
+              //  barSeat = barSeats[barSeatNumber - 1];
 
-            }
-            else if (barObject != null && barObject is Table) {
-
+              //}
+              //else
+              {
                 // Get positioning.
-                Table table = (Table)button.Tag;
-                int tableNumber = table.TableNumber;
-                table = tables[tableNumber - 1];
-
-                //int tableIndex = (Int32)button.Tag - 1;
-                //Table table = tables[tableIndex];
-
-                table.TablePositionX = button.Left;
-                table.TablePositionY = button.Top;
-
-            }
-            else if (barObject != null && barObject is BarSeat) {
-
-                // Get positioning.
-                BarSeat barSeat = (BarSeat)button.Tag;
-                int barSeatNumber = barSeat.TableNumber;
-                barSeat = barSeats[barSeatNumber - 1];
-
+                if (IsCollision(button))
+                {
+                  button.Left = barObject.TablePositionX;
+                  button.Top = barObject.TablePositionY;
+                }
+                else
+                {
+                  barObject.TablePositionX = button.Left;
+                  barObject.TablePositionY = button.Top;
+                }
+              }
             }
         }
+
+
+        bool IsCollision(Button button)
+        {
+            bool bCollision = false;
+
+            foreach(Control control in pnlRoom.Controls)
+            {
+              if(control != null && control is StayInsideButton)
+              {
+                if(control != button)
+                {
+                  Button chkButton = (Button)control;
+                  Rectangle rctButton = button.Bounds;
+                  Rectangle rctChkButton = chkButton.Bounds;
+                  if(rctButton.IntersectsWith(rctChkButton))
+                  {
+                    bCollision = true;
+                    break;
+                  }
+                }
+              }
+            }
+
+            return bCollision;
+        }
+
+
 
         private void UpdateView() {
 
@@ -414,7 +490,7 @@ namespace RestaurantSeatingProject {
             barTable.TablePositionX = startLeft;
             barTable.TablePositionY = startTop;
 
-            Button button = new Button();
+            Button button = new StayInsideButton();  
             button.Cursor = Cursors.Hand;
             button.Height = 30;
             button.Width = 200;

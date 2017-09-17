@@ -126,6 +126,9 @@
     <Compile Include="Restaurant.cs" />
     <Compile Include="RestaurantConnection.cs" />
     <Compile Include="RestaurantDA.cs" />
+    <Compile Include="StayInsideButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
