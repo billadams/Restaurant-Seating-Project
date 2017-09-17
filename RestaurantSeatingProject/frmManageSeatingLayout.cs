@@ -20,16 +20,12 @@ namespace RestaurantSeatingProject {
         Table table;
         BarTable barTable;
         BarSeat barSeat;
-        private int xPos;
-        private int yPos;
         private enum AvailableSections { Section1 = 1, Section2 = 2, Section3 = 3 };
         // Flag for deleting a table
         bool deleteTable = false;
         bool deleteBarSeat = false;
         bool deleteBar = false;
-        //bool moveTableStarted = false;
         Point mouseDnPt;
-        StreamWriter textOut;
 
 
         public frmManageSeatingLayout() {
@@ -39,18 +35,13 @@ namespace RestaurantSeatingProject {
             LoadTables();
             btnSaveLayout.Enabled = false;
             cboSeats.SelectedIndex = 0;
-            RoundButton.SetPanelSize(pnlRoom.Size);
-            //textOut =
-            //  new StreamWriter(
-            //    new FileStream("C:\\temp\\Q7_Grp_prj.txt", FileMode.Create, FileAccess.Write));
+            StayInsideButton.SetPanelSize(pnlRoom.Size);
     }
 
     private void btnCancelLayout_Click(object sender, EventArgs e) {
             
             Table.TotalTables = 1;
             this.Close();
-            //textOut.Close();
-
         }
 
         private void btnAddTable_Click(object sender, EventArgs e) {
@@ -185,12 +176,11 @@ namespace RestaurantSeatingProject {
             }
             else if (e.Button == MouseButtons.Left) {
 
-                xPos = e.X;
-                yPos = e.Y;
+                //xPos = e.X;
+                //yPos = e.Y;
+
                 mouseDnPt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
  
-                //moveTableStarted = true;
-
                 if (btnSaveLayout.Enabled == false) {
 
                     btnSaveLayout.Enabled = true;
@@ -212,8 +202,6 @@ namespace RestaurantSeatingProject {
 
                     if (barObject != null)
                     {
-                      //textOut.Write("In MouseMove: XPos="+ xPos + " YPos=" + yPos + " e.Y=" + e.Y + " e.x=" + e.X + " MTS=" + moveTableStarted + " button.Top=" + button.Top + " button.Left=" + button.Left + "\r\n");
-                      //moveTableStarted = false;
                       Point mouseMovePt = pnlRoom.PointToClient(button.PointToScreen(e.Location));
 
                       button.CheckSetLocation(barObject.TablePositionX + (mouseMovePt.X - mouseDnPt.X),
@@ -229,6 +217,9 @@ namespace RestaurantSeatingProject {
             Button button = (Button)sender;
 
             BarObject barObject = (BarObject) button.Tag;
+
+            // The following code down to, but not including the uncommented  if(barObject != null)
+            // was the original code before it was modified to implement collision protection.
 
             //if (barObject != null && barObject is BarTable) {
 
@@ -263,52 +254,55 @@ namespace RestaurantSeatingProject {
 
             if (barObject != null)
             {
-              //if (barObject is BarSeat)
-             // {
-
                 // Get positioning.
-              //  BarSeat barSeat = (BarSeat)button.Tag;
-              //  int barSeatNumber = barSeat.TableNumber;
-              //  barSeat = barSeats[barSeatNumber - 1];
 
-              //}
-              //else
-              {
-                // Get positioning.
                 if (IsCollision(button))
                 {
+                  // If the table, barseat, or bar has been dropped on top of another
+                  // table, barseat, or bar, set its position back to the position it was being dragged from
+
                   button.Left = barObject.TablePositionX;
                   button.Top = barObject.TablePositionY;
                 }
                 else
                 {
+                  // If the table, barseat, or bar has been dropped on an empty area of the panel,
+                  // set the record of its position that will be saved to the database to the position where it was dropped.
+
                   barObject.TablePositionX = button.Left;
                   barObject.TablePositionY = button.Top;
                 }
-              }
             }
         }
 
 
+        // IsCollision() will return true if its argument has been dropped on another table, barseat, or bar
+        //
         bool IsCollision(Button button)
         {
             bool bCollision = false;
+            Rectangle rctButton = button.Bounds;
 
-            foreach(Control control in pnlRoom.Controls)
+            foreach (Control control in pnlRoom.Controls)
             {
+              // We are going to look at each control on the panel.  They should all be derived from StayInsideButton.
+
               if(control != null && control is StayInsideButton)
               {
-                if(control != button)
-                {
-                  Button chkButton = (Button)control;
-                  Rectangle rctButton = button.Bounds;
-                  Rectangle rctChkButton = chkButton.Bounds;
-                  if(rctButton.IntersectsWith(rctChkButton))
+                  // button is the control we just dropped and which we are checking if we dropped it on another control.
+                  // It would always appear to intersect with itself so we must not check it.
+
+                  if (control != button) 
                   {
-                    bCollision = true;
-                    break;
+                      Button chkButton = (Button)control;                  
+                      Rectangle rctChkButton = chkButton.Bounds;
+
+                      if(rctButton.IntersectsWith(rctChkButton))
+                      {
+                        bCollision = true;
+                        break;
+                      }
                   }
-                }
               }
             }
 
