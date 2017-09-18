@@ -337,8 +337,12 @@ namespace RestaurantSeatingProject {
 
             btnSaveLayout.Enabled = false;
 
-            TableDA.SaveTableLayout(tables);
-            
+            if (tables != null) {
+
+                TableDA.SaveTableLayout(tables);
+
+            }
+
             if (barTable != null) {
 
                 BarTableDA.SaveBarTableLayout(barTable);
