@@ -163,7 +163,33 @@ namespace RestaurantSeatingProject
             return groupSize;
         }
 
+        public static int DeleteAllReservations() {
 
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            int success = 0;
+            command.CommandText = "DELETE FROM customer";
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try {
+
+                connection.Open();
+                success = command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            return success;
+        }
 
     }
 }

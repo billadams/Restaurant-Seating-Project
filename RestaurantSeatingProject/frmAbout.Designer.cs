@@ -39,6 +39,7 @@
             this.lblState = new System.Windows.Forms.Label();
             this.lblZip = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnUnregister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCNameTitle
@@ -155,7 +156,7 @@
             // 
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Location = new System.Drawing.Point(207, 223);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 28);
             this.btnClose.TabIndex = 10;
@@ -163,11 +164,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnUnregister
+            // 
+            this.btnUnregister.Location = new System.Drawing.Point(472, 395);
+            this.btnUnregister.Name = "btnUnregister";
+            this.btnUnregister.Size = new System.Drawing.Size(111, 32);
+            this.btnUnregister.TabIndex = 11;
+            this.btnUnregister.Text = "Unregister";
+            this.btnUnregister.UseVisualStyleBackColor = true;
+            this.btnUnregister.Click += new System.EventHandler(this.btnUnregister_Click);
+            // 
             // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 439);
+            this.Controls.Add(this.btnUnregister);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblZip);
             this.Controls.Add(this.lblState);
@@ -179,7 +191,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCNameTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAbout";
             this.Text = "About Us";
             this.ResumeLayout(false);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Label lblZip;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnUnregister;
     }
 }

@@ -317,5 +317,35 @@ namespace RestaurantSeatingProject
             return nSuccess;
         }
 
+        public static int DeleteAllServers() {
+            SqlConnection oConnection = RestaurantConnection.GetConnection();
+            SqlCommand oCommand = new SqlCommand();
+            int nSuccess = 0;
+
+            oCommand.CommandText = "Delete FROM server";
+            oCommand.CommandType = CommandType.Text;
+            oCommand.Connection = oConnection;
+
+            try {
+                oConnection.Open();
+                nSuccess = oCommand.ExecuteNonQuery();
+
+                return nSuccess;
+
+            }
+            catch (SqlException ex) {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally {
+                oConnection.Close();
+            }
+            return nSuccess;
+        }
+
     }
 }
