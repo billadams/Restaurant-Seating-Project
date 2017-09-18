@@ -40,7 +40,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(147, 66);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(344, 22);
             this.txtFirstName.TabIndex = 0;
@@ -68,7 +68,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(147, 108);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(344, 22);
             this.txtLastName.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             this.btnAddServer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddServer.Location = new System.Drawing.Point(168, 176);
-            this.btnAddServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddServer.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddServer.Name = "btnAddServer";
             this.btnAddServer.Size = new System.Drawing.Size(100, 28);
             this.btnAddServer.TabIndex = 5;
@@ -99,8 +99,9 @@
             // btnCancel
             // 
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(337, 176);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 6;
@@ -110,8 +111,10 @@
             // 
             // frmAddServer
             // 
+            this.AcceptButton = this.btnAddServer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(643, 257);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAddServer);
@@ -120,8 +123,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtFirstName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAddServer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Server";
             this.ResumeLayout(false);
             this.PerformLayout();

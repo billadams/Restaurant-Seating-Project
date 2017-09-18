@@ -148,6 +148,7 @@
             // 
             // frmReservationList
             // 
+            this.AcceptButton = this.btnAddReservation;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 545);
@@ -163,6 +164,7 @@
             this.Controls.Add(this.lstReservationList);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmReservationList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation List";
             this.ResumeLayout(false);
             this.PerformLayout();

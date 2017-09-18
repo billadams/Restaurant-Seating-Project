@@ -38,6 +38,8 @@
             this.mnuReservationList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuUnregisterRestaurant = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +77,9 @@
             // mnuRegister
             // 
             this.mnuRegister.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuRegisterRestaurant});
+            this.mnuRegisterRestaurant,
+            this.toolStripSeparator2,
+            this.mnuUnregisterRestaurant});
             this.mnuRegister.Name = "mnuRegister";
             this.mnuRegister.Size = new System.Drawing.Size(75, 24);
             this.mnuRegister.Text = "&Register";
@@ -83,7 +87,7 @@
             // mnuRegisterRestaurant
             // 
             this.mnuRegisterRestaurant.Name = "mnuRegisterRestaurant";
-            this.mnuRegisterRestaurant.Size = new System.Drawing.Size(212, 26);
+            this.mnuRegisterRestaurant.Size = new System.Drawing.Size(226, 26);
             this.mnuRegisterRestaurant.Text = "Register Restaurant";
             this.mnuRegisterRestaurant.Click += new System.EventHandler(this.mnuRegisterRestaurant_Click);
             // 
@@ -101,26 +105,26 @@
             // mnuCreateSeatingLayout
             // 
             this.mnuCreateSeatingLayout.Name = "mnuCreateSeatingLayout";
-            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(212, 26);
+            this.mnuCreateSeatingLayout.Size = new System.Drawing.Size(189, 26);
             this.mnuCreateSeatingLayout.Text = "&Seating Layout";
             this.mnuCreateSeatingLayout.Click += new System.EventHandler(this.mnuCreateSeatingLayout_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // mnuAddServer
             // 
             this.mnuAddServer.Name = "mnuAddServer";
-            this.mnuAddServer.Size = new System.Drawing.Size(212, 26);
+            this.mnuAddServer.Size = new System.Drawing.Size(189, 26);
             this.mnuAddServer.Text = "Add a Server";
             this.mnuAddServer.Click += new System.EventHandler(this.mnuAddServer_Click);
             // 
             // mnuManageServers
             // 
             this.mnuManageServers.Name = "mnuManageServers";
-            this.mnuManageServers.Size = new System.Drawing.Size(212, 26);
+            this.mnuManageServers.Size = new System.Drawing.Size(189, 26);
             this.mnuManageServers.Text = "Manage Servers";
             this.mnuManageServers.Click += new System.EventHandler(this.mnuManageServers_Click);
             // 
@@ -162,6 +166,18 @@
             this.mnuAbout.Text = "About Us";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(223, 6);
+            // 
+            // mnuUnregisterRestaurant
+            // 
+            this.mnuUnregisterRestaurant.Name = "mnuUnregisterRestaurant";
+            this.mnuUnregisterRestaurant.Size = new System.Drawing.Size(226, 26);
+            this.mnuUnregisterRestaurant.Text = "Unregister Restaurant";
+            this.mnuUnregisterRestaurant.Click += new System.EventHandler(this.mnuUnregisterRestaurant_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -197,6 +213,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuManageServers;
         private System.Windows.Forms.ToolStripMenuItem mnuReservationList;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem mnuUnregisterRestaurant;
     }
 }
 

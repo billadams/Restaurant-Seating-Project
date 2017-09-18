@@ -76,12 +76,13 @@
             // btnClose
             // 
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(923, 635);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 50);
             this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Cancel";
+            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -91,9 +92,9 @@
             this.grpBox1.Controls.Add(this.rdoClearTable);
             this.grpBox1.Controls.Add(this.rdoAssignTable);
             this.grpBox1.Location = new System.Drawing.Point(749, 390);
-            this.grpBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpBox1.Margin = new System.Windows.Forms.Padding(4);
             this.grpBox1.Name = "grpBox1";
-            this.grpBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpBox1.Padding = new System.Windows.Forms.Padding(4);
             this.grpBox1.Size = new System.Drawing.Size(260, 172);
             this.grpBox1.TabIndex = 5;
             this.grpBox1.TabStop = false;
@@ -104,7 +105,7 @@
             this.rdoBusTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdoBusTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
             this.rdoBusTable.Location = new System.Drawing.Point(8, 116);
-            this.rdoBusTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoBusTable.Margin = new System.Windows.Forms.Padding(4);
             this.rdoBusTable.Name = "rdoBusTable";
             this.rdoBusTable.Size = new System.Drawing.Size(172, 38);
             this.rdoBusTable.TabIndex = 2;
@@ -118,7 +119,7 @@
             this.rdoClearTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdoClearTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
             this.rdoClearTable.Location = new System.Drawing.Point(9, 70);
-            this.rdoClearTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoClearTable.Margin = new System.Windows.Forms.Padding(4);
             this.rdoClearTable.Name = "rdoClearTable";
             this.rdoClearTable.Size = new System.Drawing.Size(190, 38);
             this.rdoClearTable.TabIndex = 1;
@@ -133,7 +134,7 @@
             this.rdoAssignTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdoAssignTable.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Bold);
             this.rdoAssignTable.Location = new System.Drawing.Point(9, 25);
-            this.rdoAssignTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAssignTable.Margin = new System.Windows.Forms.Padding(4);
             this.rdoAssignTable.Name = "rdoAssignTable";
             this.rdoAssignTable.Size = new System.Drawing.Size(213, 38);
             this.rdoAssignTable.TabIndex = 0;
@@ -147,7 +148,7 @@
             this.lstServers.FormattingEnabled = true;
             this.lstServers.ItemHeight = 16;
             this.lstServers.Location = new System.Drawing.Point(15, 14);
-            this.lstServers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstServers.Margin = new System.Windows.Forms.Padding(4);
             this.lstServers.Name = "lstServers";
             this.lstServers.Size = new System.Drawing.Size(435, 260);
             this.lstServers.TabIndex = 7;
@@ -167,7 +168,7 @@
             this.lstReservations.FormattingEnabled = true;
             this.lstReservations.ItemHeight = 16;
             this.lstReservations.Location = new System.Drawing.Point(15, 14);
-            this.lstReservations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstReservations.Margin = new System.Windows.Forms.Padding(4);
             this.lstReservations.Name = "lstReservations";
             this.lstReservations.Size = new System.Drawing.Size(435, 260);
             this.lstReservations.TabIndex = 11;
@@ -178,7 +179,7 @@
             this.lstAssignments.FormattingEnabled = true;
             this.lstAssignments.ItemHeight = 16;
             this.lstAssignments.Location = new System.Drawing.Point(15, 14);
-            this.lstAssignments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstAssignments.Margin = new System.Windows.Forms.Padding(4);
             this.lstAssignments.Name = "lstAssignments";
             this.lstAssignments.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstAssignments.Size = new System.Drawing.Size(435, 260);
@@ -189,7 +190,7 @@
             // 
             this.btnUse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUse.Location = new System.Drawing.Point(165, 293);
-            this.btnUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUse.Margin = new System.Windows.Forms.Padding(4);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(139, 28);
             this.btnUse.TabIndex = 13;
@@ -201,7 +202,7 @@
             // 
             this.btnClearTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearTable.Location = new System.Drawing.Point(165, 293);
-            this.btnClearTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearTable.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearTable.Name = "btnClearTable";
             this.btnClearTable.Size = new System.Drawing.Size(139, 28);
             this.btnClearTable.TabIndex = 14;
@@ -214,7 +215,7 @@
             // 
             this.btnMerge.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMerge.Location = new System.Drawing.Point(165, 293);
-            this.btnMerge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMerge.Margin = new System.Windows.Forms.Padding(4);
             this.btnMerge.Name = "btnMerge";
             this.btnMerge.Size = new System.Drawing.Size(139, 28);
             this.btnMerge.TabIndex = 17;
@@ -228,7 +229,7 @@
             this.lstAvailable.FormattingEnabled = true;
             this.lstAvailable.ItemHeight = 16;
             this.lstAvailable.Location = new System.Drawing.Point(15, 14);
-            this.lstAvailable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstAvailable.Margin = new System.Windows.Forms.Padding(4);
             this.lstAvailable.Name = "lstAvailable";
             this.lstAvailable.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstAvailable.Size = new System.Drawing.Size(435, 260);
@@ -405,6 +406,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1237, 713);
             this.ControlBox = false;
             this.Controls.Add(this.cboSeats);
@@ -416,6 +418,7 @@
             this.Controls.Add(this.pnlRoom);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmSeatingLayout";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seating Layout";
             this.grpBox1.ResumeLayout(false);
             this.grpBox1.PerformLayout();

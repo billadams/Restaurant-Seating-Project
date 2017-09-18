@@ -46,8 +46,9 @@
             // btnCancel
             // 
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(337, 345);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 7;
@@ -59,7 +60,7 @@
             // 
             this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegister.Location = new System.Drawing.Point(168, 345);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(100, 28);
             this.btnRegister.TabIndex = 6;
@@ -91,7 +92,7 @@
             // txtRName
             // 
             this.txtRName.Location = new System.Drawing.Point(149, 66);
-            this.txtRName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRName.Name = "txtRName";
             this.txtRName.Size = new System.Drawing.Size(344, 22);
             this.txtRName.TabIndex = 1;
@@ -109,7 +110,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(149, 118);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(344, 22);
             this.txtAddress.TabIndex = 2;
@@ -117,7 +118,7 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(149, 170);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(213, 22);
             this.txtCity.TabIndex = 3;
@@ -135,7 +136,7 @@
             // txtState
             // 
             this.txtState.Location = new System.Drawing.Point(149, 222);
-            this.txtState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtState.Margin = new System.Windows.Forms.Padding(4);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(213, 22);
             this.txtState.TabIndex = 4;
@@ -143,7 +144,7 @@
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(149, 273);
-            this.txtZip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtZip.Margin = new System.Windows.Forms.Padding(4);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(213, 22);
             this.txtZip.TabIndex = 5;
@@ -170,8 +171,10 @@
             // 
             // frmRegister
             // 
+            this.AcceptButton = this.btnRegister;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(655, 519);
             this.Controls.Add(this.lblZip);
             this.Controls.Add(this.lblState);
@@ -186,8 +189,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblRestName);
             this.Controls.Add(this.txtRName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.Load += new System.EventHandler(this.frmRegister_Load);
             this.ResumeLayout(false);

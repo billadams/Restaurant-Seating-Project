@@ -90,6 +90,7 @@ namespace RestaurantSeatingProject {
             mnuManageServers.Enabled = false;
             mnuSeatingLayout.Enabled = false;
             mnuReservationList.Enabled = false;
+            mnuUnregisterRestaurant.Enabled = false;
 
         }
 
@@ -115,5 +116,37 @@ namespace RestaurantSeatingProject {
 
         }
 
+        private void mnuUnregisterRestaurant_Click(object sender, EventArgs e) {
+
+            DialogResult button =
+                 MessageBox.Show(
+                    "Are you sure you want to delete the entire restaurant layout?",
+                    "Confirm Layout Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+
+            if (button == DialogResult.Yes) {
+
+                ReservationDA.DeleteAllReservations();
+                TableDA.DeleteAllTables();
+                BarSeatDA.DeleteAllBarSeats();
+                BarTableDA.DeleteBarTable();
+                ServerDA.DeleteAllServers();
+                RestaurantDA.DeleteRestaurant();
+
+                NoCurrentRestaurant();
+
+                if (mnuRegisterRestaurant.Enabled == false) {
+
+                    mnuRegisterRestaurant.Enabled = true;
+                }
+
+                MessageBox.Show("Restaurant has been unregistered!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+
+        }
     }
 }

@@ -38,7 +38,7 @@
             this.lstServers.FormattingEnabled = true;
             this.lstServers.ItemHeight = 16;
             this.lstServers.Location = new System.Drawing.Point(199, 36);
-            this.lstServers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstServers.Margin = new System.Windows.Forms.Padding(4);
             this.lstServers.Name = "lstServers";
             this.lstServers.Size = new System.Drawing.Size(288, 340);
             this.lstServers.TabIndex = 0;
@@ -49,7 +49,7 @@
             this.btnDeleteServer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteServer.Enabled = false;
             this.btnDeleteServer.Location = new System.Drawing.Point(269, 395);
-            this.btnDeleteServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteServer.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteServer.Name = "btnDeleteServer";
             this.btnDeleteServer.Size = new System.Drawing.Size(129, 28);
             this.btnDeleteServer.TabIndex = 1;
@@ -70,14 +70,16 @@
             // 
             // frmManageServers
             // 
+            this.AcceptButton = this.btnDeleteServer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 482);
             this.Controls.Add(this.lblManageServers);
             this.Controls.Add(this.btnDeleteServer);
             this.Controls.Add(this.lstServers);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmManageServers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Servers";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -144,8 +144,11 @@ namespace RestaurantSeatingProject {
                 table = TableDA.GetTableByID(tableNumber);
 
                 TableDA.DeleteTable(table);
-                UpdateView();
+                pnlRoom.Controls.Remove(button);
+                //UpdateView();
                 lblMessage.Text = "Table " + tableNumber + " successfully deleted.";
+
+                btnDeleteTable.Text = "Delete Table";
 
                 // Set deleteTable back to false so it's ready to be used in another delete.
                 deleteTable = false;
@@ -158,8 +161,12 @@ namespace RestaurantSeatingProject {
                 //barSeat = BarSeatDA.DeleteBarSeat(barSeat);
 
                 BarSeatDA.DeleteBarSeat(barSeat);
-                UpdateView();
+                pnlRoom.Controls.Remove(button);
+
+                //UpdateView();
                 lblMessage.Text = "BarSeat " + barSeatNumber + " successfully deleted.";
+
+                btnDeleteBarseat.Text = "Delete Barseat";
 
                 // Set deleteBarSeat back to false so it's ready to be used in another delete.
                 deleteBarSeat = false;
@@ -170,8 +177,12 @@ namespace RestaurantSeatingProject {
                 //barTable = (BarTable)button.Tag;
 
                 BarTableDA.DeleteBarTable();
-                UpdateView();
+                pnlRoom.Controls.Remove(button);
+
+                //UpdateView();
                 lblMessage.Text = "Bar successfully deleted.";
+
+                btnDeleteBar.Text = "Delete Bar";
 
                 // Set deleteBar back to false so it's ready to be used in another delete.
                 deleteBar = false;
@@ -381,7 +392,7 @@ namespace RestaurantSeatingProject {
             }
 
             ResetLayout();
-            btnSaveLayout.Enabled = true;
+            //btnSaveLayout.Enabled = true;
 
         }
 

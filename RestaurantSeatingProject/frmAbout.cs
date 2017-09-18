@@ -34,15 +34,5 @@ namespace RestaurantSeatingProject
             lblZip.Text = oRestaurant.Zip;
         }
 
-        private void btnUnregister_Click(object sender, EventArgs e) {
-
-            ReservationDA.DeleteAllReservations();
-            TableDA.DeleteAllTables();
-            BarSeatDA.DeleteAllBarSeats();
-            BarTableDA.DeleteBarTable();
-            ServerDA.DeleteAllServers();
-            RestaurantDA.DeleteRestaurant();
-
-        }
     }
 }
