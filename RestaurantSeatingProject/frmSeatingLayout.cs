@@ -34,10 +34,128 @@ namespace RestaurantSeatingProject
         private void btnBarSeatClick(object sender, EventArgs e)
         {
             Button oButton = sender as Button;
-            string sTableNumber = oButton.Tag.ToString();
+            BarSeat oBarSeat = (BarSeat)oButton.Tag;
             string sErrorMess = "";
             bool bIsValid = true;
             bool bReservationSelected = false;
+            if (rdoAssignTable.Checked)
+            {              
+
+                    try
+                    {
+                        Convert.ToInt32(cboSeats.SelectedItem);
+                    }
+                    catch (Exception)
+                    {
+
+                        bIsValid = false;
+                        sErrorMess += "\nNumber of Seats is required and must be a number";
+                    }
+
+                    if (bIsValid)
+                    {
+                        if (!(lstReservations.SelectedIndex == -1))
+                        {
+                            bReservationSelected = true;
+                            int groupSize = ReservationDA.GetGroupSize((lstReservations.SelectedItem as DisplayData).Value);
+                            cboSeats.SelectedItem = groupSize.ToString();
+                        }
+                        if (cboSeats.SelectedItem == null)
+                        {
+                            bIsValid = false;
+                            sErrorMess += "Number of seats must be provided";
+                        }
+                        if (Convert.ToInt16(cboSeats.SelectedItem) <=1 && Convert.ToInt16(cboSeats.SelectedItem) >0  && bIsValid)
+                        {
+                            //Number of seats fit the amount to be seated
+                            if (oBarSeat.TableState.ToLower() == TableState.Occupied.ToString().ToLower())
+                            {
+                                bIsValid = false;
+                                sErrorMess = "Error: Bar Seat is currently busy";
+                            }
+                            else if (oBarSeat.TableState.ToLower() == TableState.Bussable.ToString().ToLower())
+                            {
+                                bIsValid = false;
+                                sErrorMess = "Error: Bar Seat is not clean";
+                            }
+
+                        }
+                        else
+                        {
+                            bIsValid = false;
+                            sErrorMess = "Error: That Bar Seat cannot seat that many customers";
+                        }
+                    }
+
+
+            }
+            else if (rdoClearTable.Checked)
+            {
+                if (oBarSeat.TableState.ToLower() == TableState.Empty.ToString().ToLower())
+                {
+                    bIsValid = false;
+                    sErrorMess = "Error: Bar Seat has nothing to clear";
+                }
+                else if (oBarSeat.TableState.ToLower() == TableState.Bussable.ToString().ToLower())
+                {
+                    bIsValid = false;
+                    sErrorMess = "Error: Bar Seat is not clean";
+                }
+            }
+            else if (rdoBusTable.Checked)
+            {
+                if (oBarSeat.TableState.ToLower() == TableState.Empty.ToString().ToLower())
+                {
+                    bIsValid = false;
+                    sErrorMess = "Error: Bar Seat is already clean";
+                }
+                else if (oBarSeat.TableState.ToLower() == TableState.Occupied.ToString().ToLower())
+                {
+                    bIsValid = false;
+                    sErrorMess = "Error: Bar Seat is currently busy";
+                }
+            }
+
+            if (bIsValid)
+            {
+                string sUpdatedState = oBarSeat.TableState;
+                if (sUpdatedState.ToLower() == TableState.Empty.ToString().ToLower())
+                {
+                    if (bReservationSelected)
+                    {
+                        ReservationDA.DeleteReservation((lstReservations.SelectedItem as DisplayData).Value);
+                        lstReservations.ClearSelected();
+                    }
+                    sUpdatedState = TableState.Occupied.ToString();
+                }
+                else if (sUpdatedState.ToLower() == TableState.Occupied.ToString().ToLower())
+                {
+                    sUpdatedState = TableState.Bussable.ToString();
+                }
+                else if (sUpdatedState.ToLower() == TableState.Bussable.ToString().ToLower())
+                {
+                    sUpdatedState = TableState.Empty.ToString();
+                }
+
+                //Updating Table State
+                BarSeatDA.UpdateBarSeatState(oBarSeat.TableNumber.ToString(), sUpdatedState);
+                pnlRoom.Controls.Clear();
+                LoadTables();
+                LoadBarTable();
+                LoadBarSeats();
+                DisplayReservationList();
+                DisplayAssignments();
+                DisplayAvailableTables();
+                if (btnUse.Text == "Cancel")
+                {
+                    lstReservations.Enabled = false;
+                    btnUse.Text = "Use Reservation";
+                }
+            }
+            else
+            {
+                MessageBox.Show(sErrorMess, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         private void btnSeatClick(object sender, EventArgs e)
         {
@@ -211,32 +329,10 @@ namespace RestaurantSeatingProject
                         button.BackColor = Color.Yellow;
                     }                    
                     button.Tag = oTable.TableNumber;
-                    button.Text = "#"+Convert.ToString(oTable.TableNumber) +" "+ Convert.ToString(oTable.NumberOfSeats)
-                        + "\n" + oTable.TableState;
+                    button.Text = "#"+Convert.ToString(oTable.TableNumber)
+                        + "\nSeats " + Convert.ToString(oTable.NumberOfSeats);
                     button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
-                    //pnlRoom.Controls.Add(button);
-
-                    //Button button = new Button();
-                    //button.Height = 50;
-                    //int nServerCheck = ServerDA.GetTableAssignment(oTable.TableNumber.ToString());
-                    //if (nServerCheck == 0)
-                    //{
-                        //if no server is assigned
-                        //button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
-                            //+ "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
-                    //}
-                    //else
-                    //{
-                    //    //if server is assigned
-                    //    Server oServer = ServerDA.GetServerbyID(nServerCheck.ToString());
-                    //    button.Text = "Table " + Convert.ToString(oTable.TableNumber) + " " + oTable.TableState
-                    //         + "\nServer: " + oServer.FirstName;
-                    //}
-
-
-                    //button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     button.Click += new EventHandler(btnSeatClick);
-                    //button.Tag = oTable.TableNumber;
                     pnlRoom.Controls.Add(button);
                 }
 
@@ -286,7 +382,7 @@ namespace RestaurantSeatingProject
                     {
                         button.BackColor = Color.Yellow;
                     }    
-                    button.Tag = oBarSeat.TableNumber;
+                    button.Tag = oBarSeat;
                     button.Text = "B" + Convert.ToString(oBarSeat.TableNumber);
                     button.Location = new Point(oBarSeat.TablePositionX, oBarSeat.TablePositionY);
                     button.Click += new EventHandler(btnBarSeatClick);

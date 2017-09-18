@@ -212,5 +212,47 @@ namespace RestaurantSeatingProject {
 
         }
 
+
+        public static void UpdateBarSeatState(string id, string seatState)
+        {
+
+            SqlConnection connection = RestaurantConnection.GetConnection();
+            SqlCommand command = new SqlCommand();
+            //int success = 0;
+            command.CommandText = "UPDATE barSeats set tableState = @seatState "
+                                + "WHERE tableNumber = @tableNumber";
+            command.Parameters.AddWithValue("@tableNumber", id);
+            command.Parameters.AddWithValue("@seatState", seatState);
+            command.CommandType = CommandType.Text;
+            command.Connection = connection;
+
+            try
+            {
+
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                connection.Close();
+
+            }
+
+        }
+
     }
 }
