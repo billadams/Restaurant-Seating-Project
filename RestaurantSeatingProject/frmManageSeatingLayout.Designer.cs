@@ -70,7 +70,8 @@
             // 
             // btnSaveLayout
             // 
-            this.btnSaveLayout.Location = new System.Drawing.Point(964, 526);
+            this.btnSaveLayout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveLayout.Location = new System.Drawing.Point(964, 473);
             this.btnSaveLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveLayout.Name = "btnSaveLayout";
             this.btnSaveLayout.Size = new System.Drawing.Size(141, 50);
@@ -91,7 +92,7 @@
             // btnAddTable
             // 
             this.btnAddTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddTable.Location = new System.Drawing.Point(75, 138);
+            this.btnAddTable.Location = new System.Drawing.Point(75, 115);
             this.btnAddTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddTable.Name = "btnAddTable";
             this.btnAddTable.Size = new System.Drawing.Size(131, 46);
@@ -102,7 +103,7 @@
             // 
             // txtTableNumber
             // 
-            this.txtTableNumber.Location = new System.Drawing.Point(174, 76);
+            this.txtTableNumber.Location = new System.Drawing.Point(174, 39);
             this.txtTableNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTableNumber.Name = "txtTableNumber";
             this.txtTableNumber.Size = new System.Drawing.Size(49, 22);
@@ -112,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 110);
+            this.label2.Location = new System.Drawing.Point(48, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 17);
             this.label2.TabIndex = 4;
@@ -121,7 +122,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 79);
+            this.label1.Location = new System.Drawing.Point(64, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 3;
@@ -129,6 +130,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Location = new System.Drawing.Point(964, 636);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -173,6 +175,7 @@
             // 
             // btnAddBarSeat
             // 
+            this.btnAddBarSeat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddBarSeat.Location = new System.Drawing.Point(77, 124);
             this.btnAddBarSeat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddBarSeat.Name = "btnAddBarSeat";
@@ -221,6 +224,7 @@
             // 
             // btnDeleteTable
             // 
+            this.btnDeleteTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteTable.Location = new System.Drawing.Point(80, 115);
             this.btnDeleteTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteTable.Name = "btnDeleteTable";
@@ -258,7 +262,7 @@
             "2",
             "4",
             "6"});
-            this.cboSeats.Location = new System.Drawing.Point(174, 103);
+            this.cboSeats.Location = new System.Drawing.Point(174, 65);
             this.cboSeats.Name = "cboSeats";
             this.cboSeats.Size = new System.Drawing.Size(49, 24);
             this.cboSeats.TabIndex = 12;
@@ -266,7 +270,8 @@
             // rdoSection3
             // 
             this.rdoSection3.AutoSize = true;
-            this.rdoSection3.Location = new System.Drawing.Point(96, 239);
+            this.rdoSection3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdoSection3.Location = new System.Drawing.Point(96, 231);
             this.rdoSection3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection3.Name = "rdoSection3";
             this.rdoSection3.Size = new System.Drawing.Size(88, 21);
@@ -277,7 +282,8 @@
             // rdoSection2
             // 
             this.rdoSection2.AutoSize = true;
-            this.rdoSection2.Location = new System.Drawing.Point(96, 214);
+            this.rdoSection2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdoSection2.Location = new System.Drawing.Point(96, 204);
             this.rdoSection2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection2.Name = "rdoSection2";
             this.rdoSection2.Size = new System.Drawing.Size(88, 21);
@@ -289,7 +295,8 @@
             // 
             this.rdoSection1.AutoSize = true;
             this.rdoSection1.Checked = true;
-            this.rdoSection1.Location = new System.Drawing.Point(96, 188);
+            this.rdoSection1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdoSection1.Location = new System.Drawing.Point(96, 177);
             this.rdoSection1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSection1.Name = "rdoSection1";
             this.rdoSection1.Size = new System.Drawing.Size(88, 21);
@@ -325,6 +332,7 @@
             // 
             // btnDeleteBarseat
             // 
+            this.btnDeleteBarseat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteBarseat.Location = new System.Drawing.Point(64, 124);
             this.btnDeleteBarseat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteBarseat.Name = "btnDeleteBarseat";
@@ -360,6 +368,7 @@
             // 
             // btnDeleteBar
             // 
+            this.btnDeleteBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteBar.Location = new System.Drawing.Point(79, 123);
             this.btnDeleteBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteBar.Name = "btnDeleteBar";
@@ -406,6 +415,7 @@
             // 
             // btnCreateBar
             // 
+            this.btnCreateBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateBar.Location = new System.Drawing.Point(79, 123);
             this.btnCreateBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateBar.Name = "btnCreateBar";
@@ -419,7 +429,7 @@
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(742, 50);
+            this.lblMessage.Location = new System.Drawing.Point(742, 54);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(123, 20);
             this.lblMessage.TabIndex = 9;
@@ -427,7 +437,8 @@
             // 
             // btnDeleteLayout
             // 
-            this.btnDeleteLayout.Location = new System.Drawing.Point(964, 581);
+            this.btnDeleteLayout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteLayout.Location = new System.Drawing.Point(964, 534);
             this.btnDeleteLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteLayout.Name = "btnDeleteLayout";
             this.btnDeleteLayout.Size = new System.Drawing.Size(141, 50);

@@ -45,9 +45,10 @@
             // 
             this.lblCNameTitle.AutoSize = true;
             this.lblCNameTitle.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblCNameTitle.Location = new System.Drawing.Point(25, 33);
+            this.lblCNameTitle.Location = new System.Drawing.Point(33, 41);
+            this.lblCNameTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCNameTitle.Name = "lblCNameTitle";
-            this.lblCNameTitle.Size = new System.Drawing.Size(112, 16);
+            this.lblCNameTitle.Size = new System.Drawing.Size(131, 19);
             this.lblCNameTitle.TabIndex = 0;
             this.lblCNameTitle.Text = "Company Name:";
             // 
@@ -55,9 +56,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(25, 59);
+            this.label1.Location = new System.Drawing.Point(33, 73);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 16);
+            this.label1.Size = new System.Drawing.Size(74, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Address:";
             // 
@@ -65,9 +67,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(25, 84);
+            this.label2.Location = new System.Drawing.Point(33, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(43, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "City:";
             // 
@@ -75,9 +78,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(25, 110);
+            this.label3.Location = new System.Drawing.Point(33, 135);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.Size = new System.Drawing.Size(51, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "State:";
             // 
@@ -85,9 +89,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10F);
-            this.label4.Location = new System.Drawing.Point(25, 135);
+            this.label4.Location = new System.Drawing.Point(33, 166);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 16);
+            this.label4.Size = new System.Drawing.Size(36, 19);
             this.label4.TabIndex = 4;
             this.label4.Text = "Zip:";
             // 
@@ -95,9 +100,10 @@
             // 
             this.lblCompanyName.AutoSize = true;
             this.lblCompanyName.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblCompanyName.Location = new System.Drawing.Point(152, 33);
+            this.lblCompanyName.Location = new System.Drawing.Point(203, 41);
+            this.lblCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(82, 16);
+            this.lblCompanyName.Size = new System.Drawing.Size(93, 19);
             this.lblCompanyName.TabIndex = 5;
             this.lblCompanyName.Text = "placeholder";
             // 
@@ -105,9 +111,10 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblAddress.Location = new System.Drawing.Point(152, 59);
+            this.lblAddress.Location = new System.Drawing.Point(203, 73);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(82, 16);
+            this.lblAddress.Size = new System.Drawing.Size(93, 19);
             this.lblAddress.TabIndex = 6;
             this.lblAddress.Text = "placeholder";
             // 
@@ -115,9 +122,10 @@
             // 
             this.lblCity.AutoSize = true;
             this.lblCity.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblCity.Location = new System.Drawing.Point(152, 84);
+            this.lblCity.Location = new System.Drawing.Point(203, 103);
+            this.lblCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(82, 16);
+            this.lblCity.Size = new System.Drawing.Size(93, 19);
             this.lblCity.TabIndex = 7;
             this.lblCity.Text = "placeholder";
             // 
@@ -125,9 +133,10 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblState.Location = new System.Drawing.Point(152, 110);
+            this.lblState.Location = new System.Drawing.Point(203, 135);
+            this.lblState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(82, 16);
+            this.lblState.Size = new System.Drawing.Size(93, 19);
             this.lblState.TabIndex = 8;
             this.lblState.Text = "placeholder";
             // 
@@ -135,17 +144,20 @@
             // 
             this.lblZip.AutoSize = true;
             this.lblZip.Font = new System.Drawing.Font("Arial", 10F);
-            this.lblZip.Location = new System.Drawing.Point(152, 135);
+            this.lblZip.Location = new System.Drawing.Point(203, 166);
+            this.lblZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblZip.Name = "lblZip";
-            this.lblZip.Size = new System.Drawing.Size(82, 16);
+            this.lblZip.Size = new System.Drawing.Size(93, 19);
             this.lblZip.TabIndex = 9;
             this.lblZip.Text = "placeholder";
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(155, 181);
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Location = new System.Drawing.Point(207, 223);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(100, 28);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -153,9 +165,9 @@
             // 
             // frmAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 357);
+            this.ClientSize = new System.Drawing.Size(595, 439);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblZip);
             this.Controls.Add(this.lblState);
@@ -167,6 +179,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCNameTitle);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAbout";
             this.Text = "About Us";
             this.ResumeLayout(false);

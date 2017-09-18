@@ -45,7 +45,7 @@
             this.lstReservationList.FormattingEnabled = true;
             this.lstReservationList.ItemHeight = 16;
             this.lstReservationList.Location = new System.Drawing.Point(13, 256);
-            this.lstReservationList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstReservationList.Margin = new System.Windows.Forms.Padding(4);
             this.lstReservationList.Name = "lstReservationList";
             this.lstReservationList.Size = new System.Drawing.Size(523, 276);
             this.lstReservationList.TabIndex = 0;
@@ -64,7 +64,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(141, 37);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(272, 22);
             this.txtLastName.TabIndex = 13;
@@ -86,7 +86,7 @@
             this.dtpReservation.CustomFormat = "MM/dd/yyyy hh:mm";
             this.dtpReservation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReservation.Location = new System.Drawing.Point(141, 97);
-            this.dtpReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpReservation.Margin = new System.Windows.Forms.Padding(4);
             this.dtpReservation.Name = "dtpReservation";
             this.dtpReservation.Size = new System.Drawing.Size(265, 22);
             this.dtpReservation.TabIndex = 15;
@@ -116,8 +116,9 @@
             // 
             // btnAddReservation
             // 
+            this.btnAddReservation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddReservation.Location = new System.Drawing.Point(160, 145);
-            this.btnAddReservation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddReservation.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(164, 28);
             this.btnAddReservation.TabIndex = 18;
@@ -160,7 +161,7 @@
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lstReservationList);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmReservationList";
             this.Text = "Reservation List";
             this.ResumeLayout(false);

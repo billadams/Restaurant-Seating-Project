@@ -28,6 +28,8 @@ namespace RestaurantSeatingProject
         private enum TableState { Empty, Occupied, Bussable };
         private void btnClose_Click(object sender, EventArgs e)
         {
+            BarSeat.TotalTables = 1;
+            Table.TotalTables = 1;
             this.Close();
         }
 
@@ -329,8 +331,10 @@ namespace RestaurantSeatingProject
                         button.BackColor = Color.Yellow;
                     }                    
                     button.Tag = oTable.TableNumber;
-                    button.Text = "#"+Convert.ToString(oTable.TableNumber)
-                        + "\nSeats " + Convert.ToString(oTable.NumberOfSeats);
+                    button.Text = Convert.ToString(oTable.TableNumber)
+                        + "\n" + Convert.ToString(oTable.NumberOfSeats) + " seats";
+                    //button.Text = "#"+Convert.ToString(oTable.TableNumber)
+                    //    + "\nSeats " + Convert.ToString(oTable.NumberOfSeats);
                     button.Location = new Point(oTable.TablePositionX, oTable.TablePositionY);
                     button.Click += new EventHandler(btnSeatClick);
                     pnlRoom.Controls.Add(button);

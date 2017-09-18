@@ -36,18 +36,22 @@
             // lstServers
             // 
             this.lstServers.FormattingEnabled = true;
-            this.lstServers.Location = new System.Drawing.Point(149, 29);
+            this.lstServers.ItemHeight = 16;
+            this.lstServers.Location = new System.Drawing.Point(199, 36);
+            this.lstServers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstServers.Name = "lstServers";
-            this.lstServers.Size = new System.Drawing.Size(217, 277);
+            this.lstServers.Size = new System.Drawing.Size(288, 340);
             this.lstServers.TabIndex = 0;
             this.lstServers.SelectedIndexChanged += new System.EventHandler(this.lstServers_SelectedIndexChanged);
             // 
             // btnDeleteServer
             // 
+            this.btnDeleteServer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteServer.Enabled = false;
-            this.btnDeleteServer.Location = new System.Drawing.Point(202, 321);
+            this.btnDeleteServer.Location = new System.Drawing.Point(269, 395);
+            this.btnDeleteServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteServer.Name = "btnDeleteServer";
-            this.btnDeleteServer.Size = new System.Drawing.Size(97, 23);
+            this.btnDeleteServer.Size = new System.Drawing.Size(129, 28);
             this.btnDeleteServer.TabIndex = 1;
             this.btnDeleteServer.Text = "Delete Server";
             this.btnDeleteServer.UseVisualStyleBackColor = true;
@@ -57,20 +61,22 @@
             // 
             this.lblManageServers.AutoSize = true;
             this.lblManageServers.Font = new System.Drawing.Font("Arial", 15F);
-            this.lblManageServers.Location = new System.Drawing.Point(172, 3);
+            this.lblManageServers.Location = new System.Drawing.Point(229, 4);
+            this.lblManageServers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblManageServers.Name = "lblManageServers";
-            this.lblManageServers.Size = new System.Drawing.Size(155, 23);
+            this.lblManageServers.Size = new System.Drawing.Size(195, 28);
             this.lblManageServers.TabIndex = 5;
             this.lblManageServers.Text = "Manage Servers";
             // 
             // frmManageServers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 392);
+            this.ClientSize = new System.Drawing.Size(720, 482);
             this.Controls.Add(this.lblManageServers);
             this.Controls.Add(this.btnDeleteServer);
             this.Controls.Add(this.lstServers);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmManageServers";
             this.Text = "Manage Servers";
             this.ResumeLayout(false);
