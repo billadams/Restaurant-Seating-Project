@@ -48,7 +48,7 @@
             this.lstReservationList.Margin = new System.Windows.Forms.Padding(4);
             this.lstReservationList.Name = "lstReservationList";
             this.lstReservationList.Size = new System.Drawing.Size(523, 276);
-            this.lstReservationList.TabIndex = 0;
+            this.lstReservationList.TabIndex = 5;
             // 
             // lblTitle
             // 
@@ -67,7 +67,7 @@
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(272, 22);
-            this.txtLastName.TabIndex = 13;
+            this.txtLastName.TabIndex = 1;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // lblLastName
@@ -89,7 +89,7 @@
             this.dtpReservation.Margin = new System.Windows.Forms.Padding(4);
             this.dtpReservation.Name = "dtpReservation";
             this.dtpReservation.Size = new System.Drawing.Size(265, 22);
-            this.dtpReservation.TabIndex = 15;
+            this.dtpReservation.TabIndex = 3;
             this.dtpReservation.ValueChanged += new System.EventHandler(this.dtpReservation_ValueChanged);
             // 
             // label1
@@ -121,7 +121,7 @@
             this.btnAddReservation.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(164, 28);
-            this.btnAddReservation.TabIndex = 18;
+            this.btnAddReservation.TabIndex = 4;
             this.btnAddReservation.Text = "Add Reservation";
             this.btnAddReservation.UseVisualStyleBackColor = true;
             this.btnAddReservation.Click += new System.EventHandler(this.btnAddReservation_Click);
@@ -132,7 +132,7 @@
             this.txtGroupSize.Margin = new System.Windows.Forms.Padding(4);
             this.txtGroupSize.Name = "txtGroupSize";
             this.txtGroupSize.Size = new System.Drawing.Size(272, 22);
-            this.txtGroupSize.TabIndex = 13;
+            this.txtGroupSize.TabIndex = 2;
             this.txtGroupSize.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // label3
